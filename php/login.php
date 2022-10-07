@@ -29,7 +29,12 @@ if (isset($_POST['btn-login'])) :
                 session_start();
             }
             $_SESSION['id'] = $dados['id'];
-            header("Location: ../index.php");
+            if ($_SESSION['id'] != 0) {
+                header("Location: ../index.php");
+            }else{
+                header("Location: ../adm.php");
+            }
+            
         } else {
             $_SESSION['erro'] = true;
             header("Location: ../login.php");

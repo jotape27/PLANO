@@ -36,6 +36,14 @@ abstract class CRUD extends Database
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
 
+	public function findADM()
+	{
+		$sql = "SELECT * FROM $this->table";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_BOTH);
+	}
+
 	/***************
 		Objetivo: Método que consulta pelo id
 		Parâmetro de saída: Retorna a tabela com registros. Em caso de falha na consulta, retorna falso.

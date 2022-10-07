@@ -40,7 +40,7 @@ body {
   flex-direction: row;
   background: #17181a;
   transition: 0.2s linear;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 
 .bodysobre,
@@ -1349,4 +1349,8 @@ p.desc {
   text-transform: uppercase;
   position: absolute;
   letter-spacing: 0.1em;
+}
+
+table{
+  color: #fff;
 }
