@@ -13,7 +13,6 @@ if (isset($_POST['btn-update'])) :
 
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $cpf = $_POST['cpf'];
     $nascimento = $_POST['nascimento'];
     $genero = $_POST['genero'];
@@ -23,7 +22,6 @@ if (isset($_POST['btn-update'])) :
 
     $update->setNome($nome);
     $update->setSobrenome($sobrenome);
-    $update->setEmail($email);
     $update->setCpf($cpf);
     $update->setNascimento($nascimento);
     $update->setGenero($genero);

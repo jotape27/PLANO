@@ -74,9 +74,14 @@ $dados = $index->find($id);
         <!-- Gastos fixos, em azul -->
         <br>
         <div class="L1"><br>
+
             <h2>Fixo</h2>
             <ul>
-                <li>-</li>
+                <?php
+                $i = 1;
+                while ($i < 10) {
+                    ?><li><?php echo $i++;?></li><?php
+                } ?>
             </ul>
         </div>
         <br>
