@@ -36,19 +36,29 @@ if (isset($_POST['btn-cadastro'])) :
     $estado = $_POST['estado'];
     $logradouro = $_POST['logradouro'];
 
+    $profissao = $_POST['profissao'];
+    $renda = $_POST['renda'];
+
+    $gasto = $_POST['gasto'];
+
 
 
     $usuario = new Usuario();
     $enderecos = new Endereco();
+    $planejamento = new Planejamento();
+    $profissoes = new Profissao();
+    $gastos = new Gasto();
 
+    $usuario->setEmail($emailvalidado);
+    $usuario->setCelular($celular);
     $usuario->setNome($nome);
     $usuario->setSobrenome($sobrenome);
-    //$usuario->setEmail($emailvalidado);
     $usuario->setCpf($cpf);
     $usuario->setNascimento($nascimento);
     $usuario->setGenero($genero);
     $usuario->setSenha($senhacriptografada);
     $usuario->setPerfil($perfil);
+
 
     $enderecos->setCep($cep);
     $enderecos->setEndereco($endereco);
@@ -58,10 +68,29 @@ if (isset($_POST['btn-cadastro'])) :
     $enderecos->setLogradouro($logradouro);
 
 
+
+
     if ($usuario->insert()) {
-        header('Location: ../login.php?sucesso');
+        if ($enderecos->insert()) {
+            /*if ($profissoes->insert()) {
+                if ($planejamento->insert()) {
+                    if ($gastos->insert()) {
+                        */
+            header('Location: ../login.php?sucesso');/*
+                    } else {
+                        header('Location: ../login.php?erro_gastos');
+                    }
+                } else {
+                    header('Location: ../login.php?erro_planejamento');
+                }
+            } else {
+                header('Location: ../login.php?erro_profissao');
+            }*/
+        } else {
+            header('Location: ../login.php?erro_endereco');
+        }
     } else {
-        header('Location: ../login.php?erro');
+        header('Location: ../login.php?erro_usuario');
     }
 
 endif;

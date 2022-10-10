@@ -30,11 +30,12 @@ if (isset($_POST['btn-login'])) :
             }
             $_SESSION['id'] = $dados['id'];
             if ($_SESSION['id'] != 0) {
+
                 header("Location: ../index.php");
-            }else{
+            } else {
+                $_SESSION['admin'] = true;
                 header("Location: ../adm.php");
             }
-            
         } else {
             $_SESSION['erro'] = true;
             header("Location: ../login.php");
@@ -43,5 +44,5 @@ if (isset($_POST['btn-login'])) :
         $_SESSION['erro'] = true;
         header("Location: ../login.php");
     }
-//echo $login['id'];   
+//echo $login['id'];
 endif;

@@ -28,7 +28,7 @@ $dados = $index->find($id);
     <h4>Olá, <?php echo $dados['nome'] ?></h4>
     <?php
     echo "<input type='hidden' id='lazerid' name='lazername' value='" . $dados['lazer'] = 21 . "'>";
-    echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] = 50 . "'>";
+    echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] = 35 . "'>";
     ?>
     <div class="preloader">
         <div class="loader"></div>
@@ -79,9 +79,9 @@ $dados = $index->find($id);
             <ul>
                 <?php
                 $i = 1;
-                while ($i < 10) {
-                    ?><li><?php echo $i++;?></li><?php
-                } ?>
+                while ($i < 4) { ?>
+                    <li><?php echo $i++; ?></li>
+                <?php } ?>
             </ul>
         </div>
         <br>

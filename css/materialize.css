@@ -2999,6 +2999,10 @@ td {
   border: none;
 }
 
+table.table.nao {
+  border: none;
+}
+
 table {
   width: 100%;
   display: table;

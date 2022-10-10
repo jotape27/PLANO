@@ -357,7 +357,7 @@
                                 <span>profissão</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
+                                <input type="text" id="dinheiro" name="renda" value="1111111111" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
                                 <span>renda</span>
                                 <p class="desc">todos os tipos de renda somados</p>
                             </div>

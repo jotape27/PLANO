@@ -245,7 +245,9 @@ if ($genero == "f") {
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <?php include_once 'php/footer.php'; ?>
+    <?php
+    include_once 'php/footer.php';
+    ?>
 
     <script>
         M.AutoInit();

@@ -10,3 +10,8 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['id'])) {
     die(header("Location: login.php"));
 }
+if (isset($_SESSION['admin'])) {
+    if ($_SESSION['admin'] == true) {
+        header('Location: adm.php');
+    }
+}

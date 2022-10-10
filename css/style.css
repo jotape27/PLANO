@@ -30,13 +30,13 @@
   color: #fff;
 }
 
-body {
+body,
+body.body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  max-width: 100vw;
   flex-direction: row;
   background: #17181a;
   transition: 0.2s linear;
@@ -48,16 +48,10 @@ body.index {
   flex-direction: column;
 }
 
-body.perfil,
-body.body {
-  max-height: 100vh;
-}
-
 body.cadastro {
   flex-direction: row-reverse;
   gap: 7em;
   justify-content: center;
-  max-height: 100vh;
 }
 
 body.cadastro div.img {
@@ -1106,8 +1100,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 5em;
   background: transparent;
 }
 
@@ -1305,7 +1298,6 @@ body.index h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 1em;
   gap: 5em;
 }
 
@@ -1314,7 +1306,7 @@ body.index h4 {
 }
 
 .L1 {
-  color: #093ba0;
+  color: #a200ff;
   font-size: large;
 }
 
@@ -1351,6 +1343,43 @@ p.desc {
   letter-spacing: 0.1em;
 }
 
-table{
+table {
+  color: #fff;
+  width: 70vw;
+}
+
+table.table {
+  width: 20vw;
+}
+
+div.tables {
+  display: flex;
+  flex-direction: column;
+}
+
+tr {
+  border: 1px solid #fff;
+}
+
+table.nao tr {
+  border: none;
+}
+
+body.adm {
+  display: flex;
+  flex-direction: column;
+}
+
+body.adm button {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  font-size: xx-large;
+  background-color: transparent;
+  color: #fff;
+  scale: 1.5;
+}
+
+body.adm button * .icon {
   color: #fff;
 }

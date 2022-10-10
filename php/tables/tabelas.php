@@ -29,6 +29,8 @@ class Usuario extends CRUD
 {
 
     protected $table = 'usuario';
+    protected $table1 = 'usuario_tpcontato';
+    protected $collum = 'id';
 
     private $id;
     private $nome;
@@ -76,6 +78,14 @@ class Usuario extends CRUD
     {
         return $this->celular;
     }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
     public function setCpf($cpf)
     {
         $this->cpf = $cpf;
@@ -120,9 +130,13 @@ class Usuario extends CRUD
 
     public function insert()
     {
-        //$id=3;
         $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil)";
+        $sql1 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (45,:email)";
+        $sql2 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (36,:celular)";
+
         $stmt = Database::prepare($sql);
+        $stmt1 = Database::prepare($sql1);
+        $stmt2 = Database::prepare($sql2);
         //$stmt->bindParam(':id', $id);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':sobrenome', $this->sobrenome);
@@ -133,7 +147,21 @@ class Usuario extends CRUD
         $stmt->bindParam(':perfil', $this->perfil);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
+        $stmt1->bindParam(':email', $this->email);
+        $stmt2->bindParam(':celular', $this->celular);
+
         return $stmt->execute();
+        return $stmt1->execute();
+        return $stmt2->execute();
+    }
+
+    public function findPerfil()
+    {
+        $sql = "SELECT perfil FROM perfil INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0);";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_BOTH);
     }
 
     public function update($id)
@@ -255,7 +283,7 @@ class Endereco extends CRUD
     /***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,fk_logradouro_id) VALUES (:nome,:sobrenome,:email,:nascimento,:cpf,:genero,:senha,:logradouro)";
+        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,fk_logradouro_id) VALUES (:cep,:endereco,:numero,:cidade,:uf,:logradouro)";
         $stmt = Database::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->endereco);
@@ -291,13 +319,13 @@ class Endereco extends CRUD
 class Profissao extends CRUD
 {
 
-    protected $table = 'profissao';
-    protected $table1 = 'usuario_profissao';
+    protected $table = 'usuario_profissao';
+    protected $collum = 'renda';
 
     private $profissao;
     private $renda;
     private $id;
-    private $id_up;
+    private $id_profissao;
 
 
 
@@ -310,13 +338,13 @@ class Profissao extends CRUD
     {
         return $this->id;
     }
-    public function setIDup($id_up)
+    public function setIDprofissao($id_profissao)
     {
-        $this->id_up = $id_up;
+        $this->id_profissao = $id_profissao;
     }
-    public function getIDup()
+    public function getIDprofissao()
     {
-        return $this->id_up;
+        return $this->id_profissao;
     }
     public function setprofissao($profissao)
     {
@@ -345,20 +373,16 @@ class Profissao extends CRUD
      ***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (descricao) VALUES (:profissao)";
-        $sql1 = "INSERT INTO $this->table1 (renda) VALUES (:renda)";
+        $sql = "INSERT INTO $this->table (fk_profissao_id,renda) VALUES (:profissao,:renda)";
 
         $stmt = Database::prepare($sql);
-        $stmt1 = Database::prepare($sql1);
 
         $stmt->bindParam(':profissao', $this->profissao);
-        $stmt1->bindParam(':renda', $this->renda);
+        $stmt->bindParam(':renda', $this->renda);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
         return $stmt->execute();
-        return $stmt1->execute();
     }
-
     /***************
         Objetivo: Atuliza um cliente pelo id
         Parâmetro de entrada: $id - id do cliente
@@ -374,15 +398,6 @@ class Profissao extends CRUD
         $stmt->bindParam(':nascimento', $this->nascimento);
         $stmt->bindParam(':cpf', $this->cpf);
         $stmt->bindParam(':genero', $this->genero);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
-    public function update_password($id)
-    {
-        $sql = "UPDATE $this->table SET senha = :senha WHERE id = :id ";
-        $stmt = Database::prepare($sql);
-        $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }

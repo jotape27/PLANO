@@ -16,17 +16,17 @@
     <div class="loader"></div>
   </div>
   <!--div class="darkthemes">
-    <input type="checkbox" class="checkbox" id="chk">
-    <label class="label" for="chk">
-      <div class="lua">
-        <ion-icon name="moon-sharp"></ion-icon>
-      </div>
-      <div class=sol>
-        <ion-icon name="sunny"></ion-icon>
-      </div>
-      <div class="ball"></div>
-    </label>
-  </div-->
+<input type="checkbox" class="checkbox" id="chk">
+<label class="label" for="chk">
+<div class="lua">
+<ion-icon name="moon-sharp"></ion-icon>
+</div>
+<div class=sol>
+<ion-icon name="sunny"></ion-icon>
+</div>
+<div class="ball"></div>
+</label>
+</div-->
 
   <div class="img imglogin">
     <img src="img/plano-dark.png" class="img-dark">
@@ -41,7 +41,7 @@
           <div class="gap">
 
             <div class="input-box">
-              <input type="text" id="cpf3" name="cpf" onkeydown="maskcpf3()" placeholder="⠀" required>
+              <input type="text" id="cpf3" name="cpf" onkeydown="maskcpf3()" maxlength="14" placeholder="⠀" required>
               <span>cpf</span>
               <p class="desc">digite apenas números</p>
             </div>
@@ -68,7 +68,7 @@
         if (isset($_SESSION['erro'])) {
         ?>
           <div class="error email">
-            <span>Email ou senha incorretos ou não cadastrado</span>
+            <span>CPF ou senha incorretos ou não cadastrado, tente novamente</span>
           </div>
 
         <?php

@@ -19,6 +19,7 @@ abstract class CRUD extends Database
 {
 
 	protected $table;
+	protected $collum;
 
 	abstract public function insert();
 	abstract public function update($id);
@@ -27,7 +28,7 @@ abstract class CRUD extends Database
 		Objetivo: Método que consulta pelo id
 		Parâmetro de saída: Retorna o registro da tabela. Em caso de falha na consulta ou não existir o registro, retorna falso.
 	 ***************/
-	public function  find($id)
+	public function find($id)
 	{
 		$sql = "SELECT * FROM $this->table WHERE id = :id";
 		$stmt = Database::prepare($sql);
@@ -36,25 +37,44 @@ abstract class CRUD extends Database
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
 
-	public function findADM()
-	{
-		$sql = "SELECT * FROM $this->table";
-		$stmt = Database::prepare($sql);
-		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_BOTH);
-	}
-
 	/***************
 		Objetivo: Método que consulta pelo id
 		Parâmetro de saída: Retorna a tabela com registros. Em caso de falha na consulta, retorna falso.
 	 ***************/
-	public function  findAll()
+	public function findAll()
 	{
-		$sql = "SELECT * FROM $this->table ";
+		$sql = "SELECT * FROM $this->table WHERE id != 0";
 		$stmt = Database::prepare($sql);
 		$stmt->execute();
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetchAll(PDO::FETCH_BOTH);
+	}
+
+	public function findCount()
+	{
+		$sql = "SELECT count($this->collum) FROM $this->table WHERE id != 0";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetch(PDO::FETCH_BOTH);
+	}
+
+	public function findCollum()
+	{
+		$sql = "SELECT $this->collum FROM $this->table WHERE id != 0";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetch(PDO::FETCH_BOTH);
+	}
+
+	public function findSoma()
+	{
+		$sql = "SELECT sum($this->collum) FROM $this->table WHERE id != 0";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
 
 	/***************
