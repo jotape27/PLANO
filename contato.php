@@ -6,8 +6,10 @@ include_once 'php/tables/tabelas.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if ($_SESSION['admin'] == true) {
-    header('Location: adm.php');
+if (isset($_SESSION['admin'])) {
+    if ($_SESSION['admin'] == true) {
+        header('Location: adm.php');
+    }
 }
 
 

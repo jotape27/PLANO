@@ -5,8 +5,16 @@ include_once 'php/crud_db.php';
 include_once 'php/tables/tabelas.php';
 
 $id = $_SESSION['id'];
-$index = new Usuario();
-$dados = $index->find($id);
+$indexUsuario = new Usuario();
+$indexGasto = new Gasto();
+$indexEndereco = new Endereco();
+$indexPlano = new Planejamento();
+$indexProfissao = new Profissao();
+
+
+
+
+$dados = $indexUsuario->find($id);
 //echo $dados['nome'];
 ?>
 
@@ -27,8 +35,10 @@ $dados = $index->find($id);
 <body class="index">
     <h4>Olá, <?php echo $dados['nome'] ?></h4>
     <?php
-    echo "<input type='hidden' id='lazerid' name='lazername' value='" . $dados['lazer'] = 21 . "'>";
-    echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] = 35 . "'>";
+    $dados['lazer'] = 21;
+    $dados['investimento'] = 35;
+    echo "<input type='hidden' id='lazerid' name='lazername' value='" . $dados['lazer'] . "'>";
+    echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] . "'>";
     ?>
     <div class="preloader">
         <div class="loader"></div>
@@ -78,10 +88,40 @@ $dados = $index->find($id);
             <h2>Fixo</h2>
             <ul>
                 <?php
-                $i = 1;
-                while ($i < 4) { ?>
-                    <li><?php echo $i++; ?></li>
-                <?php } ?>
+
+                //echo "<li>" . $dados['lazer'] . "</li>";
+
+                $listaGasto = null;
+
+                $listaGasto = $indexGasto->listaGasto();
+
+                //print_r($listaGasto);
+
+                //var_dump($listaGasto); 
+                
+                
+                
+                if (count($listaGasto) > 0) {
+                    foreach ($listaGasto as $linhaGasto) {
+                        
+                        var_dump($linhaGasto);
+                        
+                        echo "<br><br>";
+                    }
+                }
+                
+                ?>
+                <div class="adcGasto">
+                    <button class="adcLista" onclick="adcGasto()">
+                        <span class="icon">
+                            <ion-icon name="add"></ion-icon>
+                        </span>
+                    </button>
+
+                    <input type="text" hidden id="input1" placeholder="Nomeie seu gasto">
+                </div>
+
+
             </ul>
         </div>
         <br>

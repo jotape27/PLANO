@@ -10,16 +10,19 @@ var barColors = [
 ];
 
 var itemgraf = [];
-itemgraf[0] = valor;
+itemgraf[0] = 0;
 itemgraf[1] = document.getElementById("lazerid").value;
 itemgraf[2] = document.getElementById("investeid").value;
+itemgraf[3] = 5;
 
 var valor = itemgraf[1];
 var valor1 = itemgraf[2];
+var valor2 = itemgraf[3];
 
 
-var valor2 = parseInt(valor) + parseInt(valor1);
-itemgraf[0] = 100 - parseInt(valor2);
+
+var valor3 = parseInt(valor) + parseInt(valor1) + parseInt(valor2);
+itemgraf[0] = 100 - parseInt(valor3);
 
 new Chart("planejamento1", {
    type: "pie",

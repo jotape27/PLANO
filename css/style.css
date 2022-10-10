@@ -1383,3 +1383,21 @@ body.adm button {
 body.adm button * .icon {
   color: #fff;
 }
+
+button.adcLista{
+  background-color: transparent;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+div.adcGasto{
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+  z-index: 15;
+  width: 5vw;
+}
+
+div.adcGasto input{
+  z-index: 15;
+}

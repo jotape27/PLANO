@@ -244,3 +244,13 @@ function closeEndereco() {
         fechar[i].style.display = "none";
     }
 }
+
+function adcGasto(){
+    var i, input1;
+
+    input1 = document.getElementById("input1");
+    
+    for (i = 0; i < input1.length; i++) {
+        input1[i].style.display = "block";        
+    }
+}
