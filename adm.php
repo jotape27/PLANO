@@ -55,6 +55,8 @@ include_once 'php/tables/tabelas.php';
 
     $countRenda = $admProfissao->findCount();
     $Soma = $admProfissao->findSoma();
+
+    //$teste = $admGasto->listaGasto();
     ?>
 
     <div class="adm-usuario">
@@ -102,6 +104,7 @@ include_once 'php/tables/tabelas.php';
                             <td><?php echo $data; ?></td>
                             <td><?php echo $perfil['perfil']; ?></td>
                         </tr>
+
                     <?php
                     } //endforeach; 
                 } else { ?>
@@ -113,8 +116,56 @@ include_once 'php/tables/tabelas.php';
                         <td>-</td>
                         <td>-</td>
                     </tr>
-                <?php
+                    <?php
                 }; //endif;
+                /*if (count($teste) > 0) {
+                    foreach ($teste as $testando) {
+                        var_dump($testando);
+                    }
+                }*/
+                class Teste extends CRUD
+                {
+                    function teste()
+                    {
+                        /*$sql = "SELECT tipo_contato.tp_contato, usuario_tpcontato.descricao 
+                FROM usuario_tpcontato 
+                INNER JOIN tipo_contato 
+                ON tipo_contato.id = usuario_tpcontato.fk_TIPO_CONTATO_id 
+                INNER JOIN usuario 
+                ON usuario.id = usuario_tpcontato.fk_USUARIO_id 
+                WHERE (usuario.id = 6);";*/
+                        $sql = "SELECT * FROM recomendacao;";
+
+                        $stmt = Database::prepare($sql);
+
+                        $stmt->execute();
+
+                        return $stmt->fetch(PDO::FETCH_BOTH);
+                    }
+
+
+                    function insert()
+                    {
+                    }
+                    function update($id)
+                    {
+                    }
+                }
+
+                $teste = new Teste;
+                $testando = $teste->teste();
+
+                if (count($testando) > 0) {
+                    foreach ($testando as $testado) {
+                    ?>
+                        <ul>
+                            <li><?php echo $testado['id']; ?></li>
+                            <li><?php echo $testado['descricao']; ?></li>
+                            <li><?php print_r($testando); ?></li>
+                        </ul>
+                <?php
+                    } //endforeach; 
+                }
                 ?>
 
             </table>

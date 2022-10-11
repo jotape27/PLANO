@@ -15,7 +15,7 @@ $indexProfissao = new Profissao();
 
 
 $dados = $indexUsuario->find($id);
-//echo $dados['nome'];
+
 ?>
 
 
@@ -95,21 +95,17 @@ $dados = $indexUsuario->find($id);
 
                 $listaGasto = $indexGasto->listaGasto();
 
-                //print_r($listaGasto);
-
+                // print_r($listaGasto);
+                // echo "<br>";
                 //var_dump($listaGasto); 
-                
-                
-                
+
+
+
                 if (count($listaGasto) > 0) {
                     foreach ($listaGasto as $linhaGasto) {
-                        
-                        var_dump($linhaGasto);
-                        
-                        echo "<br><br>";
+                        echo $linhaGasto[1];
                     }
                 }
-                
                 ?>
                 <div class="adcGasto">
                     <button class="adcLista" onclick="adcGasto()">
@@ -128,7 +124,7 @@ $dados = $indexUsuario->find($id);
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
-                <li>-</li>
+                <li><?php print_r($dados); ?></li>
             </ul>
         </div>
         <!-- Gastos com lazer, em laranja -->

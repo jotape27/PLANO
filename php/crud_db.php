@@ -79,12 +79,19 @@ abstract class CRUD extends Database
 
 	public function listaGasto()
 	{
-		$sql = "SELECT gasto , valor FROM $this->table join usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento usr_tpTD on (gasto.id = usr_tpTD.fk_gasto_id) join usuario usr on (usr.id = usr_tpTD.fk_usuario_id) where (usr_tpTD.fk_usuario_id = 6 and usr_tpTD.fk_tipo_gasto_id = 444)";
+		$sql = "SELECT gasto.gasto, gasto.valor
+		FROM gasto 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE (usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = 6 
+		AND usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444);";
 
-		
+
 
 		$stmt = Database::prepare($sql);
-		
+
 		$stmt->execute();
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetch(PDO::FETCH_BOTH);
