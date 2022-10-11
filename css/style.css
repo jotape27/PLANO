@@ -1372,7 +1372,7 @@ body.adm {
 
 body.adm button {
   position: absolute;
-  bottom: 1em;
+  top: 1em;
   right: 1em;
   font-size: xx-large;
   background-color: transparent;

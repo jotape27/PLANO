@@ -79,16 +79,69 @@ abstract class CRUD extends Database
 
 	public function listaGasto()
 	{
-		$sql = "SELECT gasto.gasto, gasto.valor
-		FROM gasto 
+		$sql = "SELECT * FROM gasto 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE (usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = 6 
-		AND usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444);";
+		AND usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111);";
 
+		$stmt = Database::prepare($sql);
 
+		$stmt->execute();
+
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		//print_r($stmt->fetch(PDO::FETCH_BOTH));
+		return $stmt->fetch(PDO::FETCH_BOTH);
+
+	}
+
+	public function rendaProfissao()
+	{
+		$sql = "SELECT usuario_profissao.renda, profissao.descricao 
+		FROM usuario_PROFISSAO 
+		INNER JOIN profissao 
+		ON profissao.id = usuario_profissao.fk_PROFISSAO_id 
+		INNER JOIN usuario 
+		ON usuario.id = usuario_profissao.fk_USUARIO_id 
+		WHERE (usuario_profissao.fk_usuario_id = 6);";
+
+		$stmt = Database::prepare($sql);
+
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetch(PDO::FETCH_BOTH);
+	}
+
+	public function findContato()
+	{
+		$sql = "SELECT tipo_contato.tp_contato, usuario_tpcontato.descricao 
+		FROM usuario_tpcontato 
+		INNER JOIN tipo_contato 
+		ON tipo_contato.id = usuario_tpcontato.fk_TIPO_CONTATO_id 
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpcontato.fk_USUARIO_id 
+		WHERE (usuario.id = 6);";
+
+		$stmt = Database::prepare($sql);
+
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetch(PDO::FETCH_BOTH);
+	}
+
+	public function findPlanejamento()
+	{
+		$sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+		FROM planejamento
+		INNER JOIN tipo_planejamento
+		ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = 6;";
 
 		$stmt = Database::prepare($sql);
 

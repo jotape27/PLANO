@@ -11,10 +11,9 @@ $indexEndereco = new Endereco();
 $indexPlano = new Planejamento();
 $indexProfissao = new Profissao();
 
-
-
-
 $dados = $indexUsuario->find($id);
+
+$tabela = $indexGasto->listaGasto();
 
 ?>
 
@@ -86,26 +85,53 @@ $dados = $indexUsuario->find($id);
         <div class="L1"><br>
 
             <h2>Fixo</h2>
-            <ul>
+            <table class="responsive-table centered highlight">
+                <thead>
+                    <tr>
+                        <th>Nome:</th>
+                        <th>Sobrenome:</th>
+                        <th>Email:</th>
+                        <th>CPF:</th>
+                        <th>Gênero:</th>
+                        <th>Data de Nascimento:</th>
+                        <th>Perfil:</th>
+                    </tr>
+                </thead>
                 <?php
 
-                //echo "<li>" . $dados['lazer'] . "</li>";
-
-                $listaGasto = null;
-
-                $listaGasto = $indexGasto->listaGasto();
-
-                // print_r($listaGasto);
-                // echo "<br>";
-                //var_dump($listaGasto); 
 
 
+                if (count($tabela) > 0) {
+                    foreach ($tabela as $linha) {
 
-                if (count($listaGasto) > 0) {
-                    foreach ($listaGasto as $linhaGasto) {
-                        echo $linhaGasto[1];
-                    }
-                }
+                        $data = date('d/m/Y', strtotime($linha['nascimento'])); 
+                        
+                        if ($contato['tp_contato'] = 'email') {
+                            $email = $contato['descricao'];
+                        }elseif ($contato['tp_contato'] = 'celular') {
+                            $celular = $contato['descricao'];
+                            
+                        }
+                        ?>
+                        <tr>
+                            <td><?php echo $linha['nome']; ?></td>
+                            <td><?php ?></td>
+                        </tr>
+
+                    <?php
+                    } //endforeach; 
+                } else { ?>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <?php
+                }; //endif;
+                
                 ?>
                 <div class="adcGasto">
                     <button class="adcLista" onclick="adcGasto()">
@@ -118,13 +144,13 @@ $dados = $indexUsuario->find($id);
                 </div>
 
 
-            </ul>
+                </ul>
         </div>
         <br>
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
-                <li><?php print_r($dados); ?></li>
+                <li>-</li>
             </ul>
         </div>
         <!-- Gastos com lazer, em laranja -->
