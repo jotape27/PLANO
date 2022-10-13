@@ -61,21 +61,21 @@ if ($genero == "f") {
                 <div class="gap">
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>Nome:<p>⠀⠀<?php echo $dados['nome'] ?></p></span>
+                            <span>Nome:<p>⠀<?php echo $dados['nome'] ?></p></span>
                         </div>
 
                         <div class="box-input perfil">
-                            <span>Sobrenome:<p>⠀⠀<?php echo $dados['sobrenome'] ?></p></span>
+                            <span>Sobrenome:<p>⠀<?php echo $dados['sobrenome'] ?></p></span>
                         </div>
                     </div>
 
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>celular:<p>⠀⠀<?php //echo $dados['celular'] 
-                                                ?>em andamento</p></span>
+                            <span>celular:<p>⠀<?php //echo $dados['celular'] 
+                                                ?>(27) 99908-3749</p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>email:<p>⠀⠀<?php echo $dados['email'] ?></p></span>
+                            <span>email:<p>⠀<?php //echo $dados['email'] ?>jplferreira27@gmail.com</p></span>
                         </div>
                     </div>
                     <?php
@@ -85,10 +85,10 @@ if ($genero == "f") {
                     ?>
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>data de nascimento:<p>⠀⠀<?php echo $data; ?></p></span>
+                            <span>data de nascimento:<p>⠀<?php echo $data; ?></p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>cpf:<p>⠀⠀<?php echo $dados['cpf'] ?></p></span>
+                            <span>cpf:<p>⠀<?php echo $dados['cpf'] ?></p></span>
                         </div>
 
 
@@ -105,11 +105,11 @@ if ($genero == "f") {
                     </div>
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>gÊnero:<p>⠀⠀<?php echo $genero ?></p></span>
+                            <span>gÊnero:<p>⠀<?php echo $genero ?></p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>renda:<p>⠀⠀<?php //echo $dados['renda'] 
-                                                ?>em andamento</p></span>
+                            <span>renda (R$):<p>⠀<?php //echo $dados['renda'] 
+                                                ?>6.000,00</p></span>
                         </div>
                     </div>
                     <div class="lado crud">
@@ -244,6 +244,7 @@ if ($genero == "f") {
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
 
     <?php
     include_once 'php/footer.php';

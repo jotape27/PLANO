@@ -79,12 +79,12 @@ header {
   opacity: 0;
 }
 
-.darkthemes .checkbox:checked~.label .ball {
+.darkthemes .checkbox:checked ~ .label .ball {
   transform: translateX(-24px);
   background-color: #fafafa;
 }
 
-.darkthemes .checkbox:checked~.label {
+.darkthemes .checkbox:checked ~ .label {
   background-color: #17181a;
 }
 
@@ -163,7 +163,7 @@ header {
     margin-top: 10em;
   }
 
-  fieldset.field,
+  .field,
   fieldset.field1 {
     background: transparent;
   }
@@ -204,6 +204,7 @@ fieldset.perfil {
   width: 50%;
   margin-right: 0em;
   margin-left: 0em;
+  scale: 1.1;
 }
 
 .img.imglogin .img-dark {
@@ -240,7 +241,6 @@ fieldset.perfil {
 }
 
 @media screen and (max-width: 600px) {
-
   .img img.imagem,
   .img img.imagem2 {
     display: flex;
@@ -331,12 +331,14 @@ fieldset a {
   letter-spacing: 0.3em;
   font-size: large;
   font-weight: 500;
-  background: linear-gradient(-90deg,
-      #03a9f6,
-      #f441a5,
-      #ffeb3b,
-      #00ff55,
-      #03a9fa);
+  background: linear-gradient(
+    -90deg,
+    #03a9f6,
+    #f441a5,
+    #ffeb3b,
+    #00ff55,
+    #03a9fa
+  );
   background-size: 400%;
   z-index: 5;
 }
@@ -526,7 +528,8 @@ div.lado.crud {
 
 input#date::-webkit-calendar-picker-indicator {
   cursor: pointer;
-  filter: invert(1) brightness(100%) sepia(100%) saturate(10000%) hue-rotate(180deg);
+  filter: invert(1) brightness(100%) sepia(100%) saturate(10000%)
+    hue-rotate(180deg);
 }
 
 .box-input span {
@@ -552,7 +555,7 @@ input#date::-webkit-calendar-picker-indicator {
   background-color: none;
 }
 
-.box-input select~span {
+.box-input select ~ span {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -582,16 +585,18 @@ input#date::-webkit-calendar-picker-indicator {
   background-color: transparent;
 }
 
-.box-input input:required:not(:placeholder-shown):invalid~.toogle,
-.box-input input:-webkit-autofill:required:not(:placeholder-shown):invalid~.toogle,
-.box-input textarea:required:not(:placeholder-shown):invalid~.toogle {
+.box-input input:required:not(:placeholder-shown):invalid ~ .toogle,
+.box-input
+  input:-webkit-autofill:required:not(:placeholder-shown):invalid
+  ~ .toogle,
+.box-input textarea:required:not(:placeholder-shown):invalid ~ .toogle {
   display: block;
   color: #c9081b;
   background-color: transparent;
 }
 
-.box-input input:focus~span,
-.box-input textarea:focus~span {
+.box-input input:focus ~ span,
+.box-input textarea:focus ~ span {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -602,10 +607,10 @@ input#date::-webkit-calendar-picker-indicator {
   border-right: 1px solid #fff;
 }
 
-.box-input input:required:valid~span,
-.box-input select:required:valid~span,
-.box-input textarea:required:valid~span,
-.box-input input::-webkit-autofill:valid~span {
+.box-input input:required:valid ~ span,
+.box-input select:required:valid ~ span,
+.box-input textarea:required:valid ~ span,
+.box-input input::-webkit-autofill:valid ~ span {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -616,7 +621,7 @@ input#date::-webkit-calendar-picker-indicator {
   border-right: 1px solid #00ffca;
 }
 
-.box-input input#date:valid~span {
+.box-input input#date:valid ~ span {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -627,10 +632,12 @@ input#date::-webkit-calendar-picker-indicator {
   border-right: 1px solid #00ffca;
 }
 
-.box-input input:required:not(:placeholder-shown):invalid~span,
-.box-input input:-webkit-autofill:required:not(:placeholder-shown):invalid~span,
-.box-input textarea:required:not(:placeholder-shown):invalid~span,
-.box-input input#date:invalid~span {
+.box-input input:required:not(:placeholder-shown):invalid ~ span,
+.box-input
+  input:-webkit-autofill:required:not(:placeholder-shown):invalid
+  ~ span,
+.box-input textarea:required:not(:placeholder-shown):invalid ~ span,
+.box-input input#date:invalid ~ span {
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -894,23 +901,23 @@ ul li.active a .icon {
   box-shadow: 0 10px 0 0 #17181a;
 }
 
-.navigation ul li:nth-child(1).active~.indicator {
+.navigation ul li:nth-child(1).active ~ .indicator {
   transform: translateX(calc(70px * 0));
 }
 
-.navigation ul li:nth-child(2).active~.indicator {
+.navigation ul li:nth-child(2).active ~ .indicator {
   transform: translateX(calc(70px * 1));
 }
 
-.navigation ul li:nth-child(3).active~.indicator {
+.navigation ul li:nth-child(3).active ~ .indicator {
   transform: translateX(calc(70px * 2));
 }
 
-.navigation ul li:nth-child(4).active~.indicator {
+.navigation ul li:nth-child(4).active ~ .indicator {
   transform: translateX(calc(70px * 3));
 }
 
-.navigation ul li:nth-child(5).active~.indicator {
+.navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(70px * 4));
 }
 
@@ -1224,8 +1231,8 @@ footer p.copyright {
   transition: 0.5s;
 }
 
-.input-box input:focus~span,
-.input-box textarea:focus~span {
+.input-box input:focus ~ span,
+.input-box textarea:focus ~ span {
   color: #fff;
   transform: translate(10px, -7px);
   font-size: 0.7em;
@@ -1236,8 +1243,8 @@ footer p.copyright {
   background-color: #17181a;
 }
 
-.input-box input#date~span,
-.input-box select~span {
+.input-box input#date ~ span,
+.input-box select ~ span {
   color: #00dfc4;
   transform: translate(10px, -7px);
   font-size: 0.7em;
@@ -1248,8 +1255,8 @@ footer p.copyright {
   background-color: #17181a;
 }
 
-.input-box input:required:valid~span,
-.input-box textarea:required:valid~span {
+.input-box input:required:valid ~ span,
+.input-box textarea:required:valid ~ span {
   color: #00dfc4;
   transform: translate(10px, -7px);
   font-size: 0.7em;
@@ -1269,7 +1276,7 @@ footer p.copyright {
   border: 1px solid #c9081b;
 }
 
-.input-box input:required:not(:placeholder-shown):invalid~span {
+.input-box input:required:not(:placeholder-shown):invalid ~ span {
   color: #c9081b;
   transform: translate(10px, -7px);
   font-size: 0.7em;
@@ -1298,7 +1305,8 @@ body.index h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  gap: 5em;
+  justify-self: center;
+  gap: 4em;
 }
 
 .listas div {
@@ -1306,7 +1314,7 @@ body.index h4 {
 }
 
 .L1 {
-  color: #a200ff;
+  color: #b234fc;
   font-size: large;
 }
 
@@ -1384,20 +1392,40 @@ body.adm button * .icon {
   color: #fff;
 }
 
-button.adcLista{
-  background-color: transparent;
-  font-size: xx-large;
-  cursor: pointer;
-}
-
-div.adcGasto{
+.addLista {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: large;
   display: flex;
-  align-items: baseline;
-  flex-direction: column;
-  z-index: 15;
-  width: 5vw;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  z-index: 100;
+  margin-top: 10px;
 }
 
-div.adcGasto input{
-  z-index: 15;
+.divAddLista {
+  display: flex;
+  flex-direction: row;
+  align-self: baseline;
+  justify-self: baseline;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.divAddLista input{
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ffffff40;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 0.85em;
 }

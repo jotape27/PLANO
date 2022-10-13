@@ -1,7 +1,7 @@
 var xValues = ["Fixos", "Variáveis", "Lazer", "Investimentos"];
 //var yPlanValues = [gfixo, invest, 15];
 var yPlanValues = [30, 40, 20, 10];
-var yRealValues = [20, 30, 25, 15];
+var yRealValues = [25, 30, 25, 15];
 var barColors = [
    "#a200ff",
    "#38a4fc",
@@ -30,7 +30,7 @@ new Chart("planejamento1", {
       labels: xValues,
       datasets: [{
          backgroundColor: barColors,
-         data: itemgraf
+         data: yPlanValues
       }]
    },
    options: {
