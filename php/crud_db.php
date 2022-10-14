@@ -79,7 +79,7 @@ abstract class CRUD extends Database
 
 	public function listaGasto()
 	{
-		$sql = "SELECT * FROM gasto 
+		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
@@ -93,7 +93,7 @@ abstract class CRUD extends Database
 
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		//print_r($stmt->fetch(PDO::FETCH_BOTH));
-		return $stmt->fetch(PDO::FETCH_BOTH);
+		return $stmt->fetch(PDO::FETCH_ASSOC);
 
 	}
 

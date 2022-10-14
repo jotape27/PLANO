@@ -101,14 +101,14 @@ $tabela = $indexGasto->listaGasto();
         <div class="L1"><br>
             <h2>Fixo</h2>
             <ul>
-                <li>Aluguel | 650,00</li>
+                <!--li>Aluguel | 650,00</li>
                 <li>Financiamento | 524,66</li>
                 <li>Condomínio | 300,00</li>
                 <li>Academia | 110,00</li>
                 <li>Mensalidade escolar | 256,00</li>
                 <li>Plano de saúde | 120,00</li>
                 <button class="addLista"><ion-icon name="add"></ion-icon></button>
-                <!--div-- class="divAddLista">
+                <--div-- class="divAddLista">
                     <div class="column">
                         <input type="text" value="Plano de saúde">
                         <input type="text" value="120,00">
@@ -118,7 +118,21 @@ $tabela = $indexGasto->listaGasto();
                             <ion-icon name="checkmark"></ion-icon>
                         </button>
                     </div>
-                </!--div-->
+                </--div-->
+                <?php
+                echo($tabela);
+                print_r($tabela);
+                if (count($tabela) > 0) {
+                    foreach ($tabela as $linha) {
+                        var_dump($linha);
+                        echo "<br><br><br>";
+                        //echo $linha['valor'];
+                    }
+                }
+
+
+                ?>
+                <li>-</li>
             </ul>
 
 
@@ -127,11 +141,11 @@ $tabela = $indexGasto->listaGasto();
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
-                <li>Água | 145,12</li>
+                <!--li>Água | 145,12</!--li>
                 <li>Energia | 341,29</li>
                 <li>Alimentação | 231,84</li>
-                <button class="addLista">+</button>
-                <!--li></li-->
+                <button-- class="addLista">+</button-->
+                <li>-</li>
             </ul>
         </div>
         <!-- Gastos com lazer, em laranja -->
@@ -139,12 +153,12 @@ $tabela = $indexGasto->listaGasto();
         <div class="L2"><br>
             <h2>Lazer</h2>
             <ul>
-                <li>Netflix | 45,90</li>
+                <!--li>Netflix | 45,90</!--li>
                 <li>HBO Max | 27,90</li>
                 <li>Lanches Ifood | 158,76</li>
                 <li>Corridas Uber/99 | 212,37</li>
-                <button class="addLista">+</button>
-                <!--li></li-->
+                <button-- class="addLista">+</button-->
+                <li>-</li>
             </ul>
         </div>
         <!-- Investimento, em verde agua -->
@@ -152,12 +166,12 @@ $tabela = $indexGasto->listaGasto();
         <div class="L3"><br>
             <h2>Investimento</h2>
             <ul>
-                <li>Ações | 520,64</li>
+                <!--li>Ações | 520,64</!--li>
                 <li>Fundo Imobiliários | 1.121,32</li>
                 <li>Previdência Privada | 120,16</li>
                 <li>Tesouro Direto | 250,24</li>
-                <button class="addLista">+</button>
-                <!--li>Ações | </li-->
+                <button-- class="addLista">+</button-->
+                <li>-</li>
             </ul>
         </div>
     </div>
