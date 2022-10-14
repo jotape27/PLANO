@@ -56,9 +56,8 @@ include_once 'php/tables/tabelas.php';
     $countRenda = $admProfissao->findCount();
     $Soma = $admProfissao->findSoma();
 
-    $contato = $admUser->findContato();
 
-    print_r($perfil);
+    // print_r($perfil);
 
     //$teste = $admGasto->listaGasto();
     ?>
@@ -78,6 +77,7 @@ include_once 'php/tables/tabelas.php';
                         <th>Nome:</th>
                         <th>Sobrenome:</th>
                         <th>Email:</th>
+                        <th>Celular:</th>
                         <th>CPF:</th>
                         <th>Gênero:</th>
                         <th>Data de Nascimento:</th>
@@ -85,8 +85,11 @@ include_once 'php/tables/tabelas.php';
                     </tr>
                 </thead>
                 <?php
+                
                 if (count($tabela) > 0) {
                     foreach ($tabela as $linha) {
+
+
                         $genero = $linha['genero'];
                         if ($genero == "f") {
                             $genero = "Feminino";
@@ -96,17 +99,21 @@ include_once 'php/tables/tabelas.php';
                             $genero = "Outros";
                         }
 
+                        //print_r($linha);
+                    
+                        // if ($contato['tp_contato'] = 'email') {
+                        //     $email = $contato['descricao'];
+                        // } elseif ($contato['tp_contato'] = 'celular') {
+                        //     $celular = $contato['descricao'];
+                        // }
 
-                        if ($contato['tp_contato'] = 'email') {
-                            $email = $contato['descricao'];
-                        } elseif ($contato['tp_contato'] = 'celular') {
-                            $celular = $contato['descricao'];
-                        }
+                       
                 ?>
                         <tr>
                             <td><?php echo $linha['nome']; ?></td>
                             <td><?php echo $linha['sobrenome']; ?></td>
-                            <td><?php echo $email; ?></td>
+                            <td><?php echo $linha['email']; ?></td>
+                            <td><?php echo $linha['celular']; ?></td>
                             <td><?php echo $linha['cpf']; ?></td>
                             <td><?php echo $genero; ?></td>
 

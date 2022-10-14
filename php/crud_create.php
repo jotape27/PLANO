@@ -18,13 +18,15 @@ if (isset($_POST['btn-cadastro'])) :
 
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $celular = $_POST['celular'];
     $cpf = $_POST['cpf'];
-    $nascimento = $_POST['nascimento'];
     $genero = $_POST['genero'];
+    $nascimento = $_POST['nascimento'];
     $senha = $_POST['valsenha'];
     $perfil = $_POST['perfil'];
+    
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $celular = $_POST['celular'];
+
     $emailvalidado = filter_var($email, FILTER_VALIDATE_EMAIL);
     /*criptografia via password_hash que gera uma hash aleatòria para cada senha (hashs diferentes mesmo para senha iguais)*/
     $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);

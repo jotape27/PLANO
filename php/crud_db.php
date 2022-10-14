@@ -43,8 +43,13 @@ abstract class CRUD extends Database
 	 ***************/
 	public function findAll()
 	{
-		$sql = "SELECT usuario.nome,usuario.sobrenome,usuario.cpf,usuario.genero,usuario.nascimento,usuario.senha,perfil.perfil 
-		FROM usuario INNER JOIN perfil ON perfil.id = usuario.fk_perfil_id ORDER BY usuario.id";
+		$sql = "SELECT usuario.nome,usuario.sobrenome,usuario_tpcontato.email,usuario_tpcontato.celular,
+		usuario.cpf,usuario.genero,usuario.nascimento,usuario.senha,perfil.perfil 
+		FROM usuario 
+		INNER JOIN perfil ON perfil.id = usuario.fk_perfil_id 
+		INNER JOIN usuario_tpcontato ON usuario.id = usuario_tpcontato.fk_usuario_id
+		
+		ORDER BY usuario.id;";
 		$stmt = Database::prepare($sql);
 		$stmt->execute();
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -115,22 +120,7 @@ abstract class CRUD extends Database
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
 
-	public function findContato()
-	{
-		$sql = "SELECT tipo_contato.tp_contato, usuario_tpcontato.descricao 
-		FROM usuario_tpcontato 
-		INNER JOIN tipo_contato 
-		ON tipo_contato.id = usuario_tpcontato.fk_TIPO_CONTATO_id 
-		INNER JOIN usuario 
-		ON usuario.id = usuario_tpcontato.fk_USUARIO_id 
-		WHERE (usuario.id = 6);";
-
-		$stmt = Database::prepare($sql);
-
-		$stmt->execute();
-		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
-		return $stmt->fetch(PDO::FETCH_BOTH);
-	}
+	
 
 	public function findPlanejamento()
 	{
@@ -150,17 +140,28 @@ abstract class CRUD extends Database
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
+	
+    public function findPerfil()
+    {
+        $sql = "SELECT perfil.perfil, usuario.nome FROM perfil 
+        INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0) 
+        ORDER BY usuario.id;";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 	/***************
 		Objetivo: Exclui um cliente pelo id
 		Parâmetro de entrada: $id - id do cliente
 		Parâmetro de saída: Retorna true em caso de sucesso ou false em caso de falha.
-	 ***************
+	 ***************/
 		public function delete($id)
 		{
 		$sql = "DELETE FROM $this->table WHERE id = :id";
 		$stmt = Database::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		return $stmt->execute();
-	}*/
+	}
 }

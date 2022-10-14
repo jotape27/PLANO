@@ -130,13 +130,12 @@ class Usuario extends CRUD
 
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil)";
-        $sql1 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (45,:email)";
-        $sql2 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (36,:celular)";
+        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES 
+        (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil) RETURNING id";
+        //$sql1 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (45,:email)";
 
         $stmt = Database::prepare($sql);
-        $stmt1 = Database::prepare($sql1);
-        $stmt2 = Database::prepare($sql2);
+        //$stmt1 = Database::prepare($sql1);
         //$stmt->bindParam(':id', $id);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':sobrenome', $this->sobrenome);
@@ -147,21 +146,28 @@ class Usuario extends CRUD
         $stmt->bindParam(':perfil', $this->perfil);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
-        $stmt1->bindParam(':email', $this->email);
-        $stmt2->bindParam(':celular', $this->celular);
+        //$stmt1->bindParam(':email', $this->email);
+        //$stmt1->bindParam(':celular', $this->celular);
 
-        return $stmt->execute();
-        return $stmt1->execute();
-        return $stmt2->execute();
+        $stmt->execute();
+        //return $stmt1->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findPerfil()
-    {
-        $sql = "SELECT perfil.perfil, usuario.nome FROM perfil INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0) ORDER BY usuario.id;";
+    public function insertContato($id){
+        $sql = "INSERT INTO $this->table1 (fk_usuario_id, email, celular) VALUES (:id,:email,:celular)";
         $stmt = Database::prepare($sql);
-        $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_BOTH);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':celular', $this->celular);
+
+        return $stmt->execute();
+    }
+
+    public function insertProfissao(){
+        
     }
 
     public function update($id)

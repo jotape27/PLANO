@@ -101,36 +101,17 @@ $tabela = $indexGasto->listaGasto();
         <div class="L1"><br>
             <h2>Fixo</h2>
             <ul>
-                <!--li>Aluguel | 650,00</li>
-                <li>Financiamento | 524,66</li>
-                <li>Condomínio | 300,00</li>
-                <li>Academia | 110,00</li>
-                <li>Mensalidade escolar | 256,00</li>
-                <li>Plano de saúde | 120,00</li>
-                <button class="addLista"><ion-icon name="add"></ion-icon></button>
-                <--div-- class="divAddLista">
-                    <div class="column">
-                        <input type="text" value="Plano de saúde">
-                        <input type="text" value="120,00">
-                    </div>
-                    <div class="row">
-                        <button class="addLista">
-                            <ion-icon name="checkmark"></ion-icon>
-                        </button>
-                    </div>
-                </--div-->
+                
                 <?php
-                //echo($tabela);
-                //print_r($tabela);
-                if (count($tabela) > 0) {
-                    foreach ($tabela as $linha) {
-                        //var_dump($linha);
-                        //echo "<br><br><br>";
-                        ?><li><?php  print_r($linha);?></li><?php
-                        echo "<br>";
-                    }
-                }
 
+                echo count($tabela) . "<br>";
+
+                //$gastos = (string)$tabela[0]['gasto'];
+                for ($i=0; $i <= count($tabela); $i++) { 
+                    echo $tabela['valor'];
+                    echo "<br>";
+                    //print_r($gastos1);
+                }
 
                 ?>
                 <li>-</li>
