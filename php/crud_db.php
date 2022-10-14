@@ -43,7 +43,8 @@ abstract class CRUD extends Database
 	 ***************/
 	public function findAll()
 	{
-		$sql = "SELECT * FROM $this->table WHERE id != 0";
+		$sql = "SELECT usuario.nome,usuario.sobrenome,usuario.cpf,usuario.genero,usuario.nascimento,usuario.senha,perfil.perfil 
+		FROM usuario INNER JOIN perfil ON perfil.id = usuario.fk_perfil_id ORDER BY usuario.id";
 		$stmt = Database::prepare($sql);
 		$stmt->execute();
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número

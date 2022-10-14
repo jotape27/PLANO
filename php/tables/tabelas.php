@@ -157,7 +157,7 @@ class Usuario extends CRUD
 
     public function findPerfil()
     {
-        $sql = "SELECT perfil FROM perfil INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0);";
+        $sql = "SELECT perfil.perfil, usuario.nome FROM perfil INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0) ORDER BY usuario.id;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
 

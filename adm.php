@@ -58,7 +58,7 @@ include_once 'php/tables/tabelas.php';
 
     $contato = $admUser->findContato();
 
-
+    print_r($perfil);
 
     //$teste = $admGasto->listaGasto();
     ?>
@@ -113,7 +113,7 @@ include_once 'php/tables/tabelas.php';
                             <?php $data = date('d/m/Y', strtotime($linha['nascimento'])); ?>
 
                             <td><?php echo $data; ?></td>
-                            <td><?php echo $perfil['perfil']; ?></td>
+                            <td><?php echo $linha['perfil']; ?></td>
                         </tr>
 
                     <?php

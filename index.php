@@ -120,13 +120,14 @@ $tabela = $indexGasto->listaGasto();
                     </div>
                 </--div-->
                 <?php
-                echo($tabela);
-                print_r($tabela);
+                //echo($tabela);
+                //print_r($tabela);
                 if (count($tabela) > 0) {
                     foreach ($tabela as $linha) {
-                        var_dump($linha);
-                        echo "<br><br><br>";
-                        //echo $linha['valor'];
+                        //var_dump($linha);
+                        //echo "<br><br><br>";
+                        ?><li><?php  print_r($linha);?></li><?php
+                        echo "<br>";
                     }
                 }
 
