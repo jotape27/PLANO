@@ -16,30 +16,29 @@ if (isset($_POST['btn-cadastro'])) :
     //pega os dados no cadastro e os transforma em variáveis
 
 
-    $nome = $_POST['nome']; /////////
-    $sobrenome = $_POST['sobrenome']; ///////////
-    $cpf = $_POST['cpf']; ///////////
+    $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
+    $cpf = $_POST['cpf'];
     $genero = $_POST['genero'];
-    $nascimento = $_POST['nascimento']; //////////
-    $senha = $_POST['valsenha']; ///////////
-    $perfil = $_POST['perfil']; ///////////
-
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); ////////////
-    $celular = $_POST['celular']; //////////
-
-    $emailvalidado = filter_var($email, FILTER_VALIDATE_EMAIL); ////////////
+    $nascimento = $_POST['nascimento'];
+    $senha = $_POST['valsenha'];
+    $perfil = $_POST['perfil'];
+    //----------------------------------------------------------------------------
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $celular = $_POST['celular'];
+    //----------------------------------------------------------------------------
+    $emailvalidado = filter_var($email, FILTER_VALIDATE_EMAIL);
     /*criptografia via password_hash que gera uma hash aleatòria para cada senha (hashs diferentes mesmo para senha iguais)*/
-    $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT); /////////
-
-    $cep = $_POST['cep']; ///////////
-    $endereco = $_POST['endereco']; ////////////
-    $numero = $_POST['numero']; /////////
-    $cidade = $_POST['cidade']; ////////////
-    $estado = $_POST['estado']; ///////////
-    $logradouro = $_POST['logradouro']; /////////
-
-    $profissao = $_POST['profissao']; ///////////////
-
+    $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
+    //----------------------------------------------------------------------------
+    $cep = $_POST['cep'];
+    $endereco = $_POST['endereco'];
+    $numero = $_POST['numero'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $logradouro = $_POST['logradouro'];
+    //----------------------------------------------------------------------------
+    $profissao = $_POST['profissao'];
     $renda = floatval(str_replace(",", ".", str_replace(".", "", $_POST['renda'])));
 
     //$gasto = $_POST['gasto'];
@@ -50,8 +49,7 @@ if (isset($_POST['btn-cadastro'])) :
     $profissoes = new Profissao();
     $planejamento = new Planejamento();
 
-
-
+    //----------------------------------------------------------------------------
     $usuario->setEmail($emailvalidado);
     $usuario->setCelular($celular);
     $usuario->setNome($nome);
@@ -61,17 +59,17 @@ if (isset($_POST['btn-cadastro'])) :
     $usuario->setGenero($genero);
     $usuario->setSenha($senhacriptografada);
     $usuario->setPerfil($perfil);
-
+    //----------------------------------------------------------------------------
     $enderecos->setCep($cep);
     $enderecos->setEndereco($endereco);
     $enderecos->setNumero($numero);
     $enderecos->setCidade($cidade);
     $enderecos->setUf($estado);
     $enderecos->setLogradouro($logradouro);
-
+    //----------------------------------------------------------------------------
     $profissoes->setprofissao($profissao);
     $profissoes->setrenda($renda);
-
+    //----------------------------------------------------------------------------
 
 
 
