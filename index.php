@@ -13,7 +13,8 @@ $indexProfissao = new Profissao();
 
 $dados = $indexUsuario->find($id);
 
-$tabela = $indexGasto->listaGasto();
+// $tabela = $indexGasto->listaGasto();
+$tabela = $indexGasto->findFix();
 
 ?>
 
@@ -33,7 +34,7 @@ $tabela = $indexGasto->listaGasto();
 </head>
 
 <body class="index">
-    <h4>Olá, <?php echo $dados['nome'] ?></h4>
+    <h4>Olá, <?php echo $dados['nome']; ?></h4>
     <!--a href="#modal-L1" id="a">modal</!--a>
     <div-- id="modal-L1" class="modal">
         <div class="modal-content">
@@ -55,9 +56,9 @@ $tabela = $indexGasto->listaGasto();
     echo "<input type='hidden' id='lazerid' name='lazername' value='" . $dados['lazer'] . "'>";
     echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] . "'>";
     ?>
-    <div class="preloader">
+    <!--div class="preloader">
         <div class="loader"></div>
-    </div>
+    </div-->
 
 
 
@@ -101,20 +102,24 @@ $tabela = $indexGasto->listaGasto();
         <div class="L1"><br>
             <h2>Fixo</h2>
             <ul>
-                
+
                 <?php
+                //$gastos = $tabela[0]['gasto'];
+                // for ($i = 0; $i <= count($tabela); $i++) {
+                //     echo "<li>" . $tabela['gasto'][$i] . "</li>";
+                //     echo "<br>";
+                //     //print_r($gastos1);
+                // }
 
-                echo count($tabela) . "<br>";
+                foreach ($tabela as $linha) {
+                    echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
 
-                //$gastos = (string)$tabela[0]['gasto'];
-                for ($i=0; $i <= count($tabela); $i++) { 
-                    echo $tabela['valor'];
-                    echo "<br>";
-                    //print_r($gastos1);
+                    //print_r($linha);
                 }
 
+
                 ?>
-                <li>-</li>
+
             </ul>
 
 
@@ -123,11 +128,13 @@ $tabela = $indexGasto->listaGasto();
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
+
+                <li>-</li>
                 <!--li>Água | 145,12</!--li>
                 <li>Energia | 341,29</li>
-                <li>Alimentação | 231,84</li>
-                <button-- class="addLista">+</button-->
-                <li>-</li>
+                <li>Alimentação | 231,84</li-->
+                <button class="addLista">+</button>
+
             </ul>
         </div>
         <!-- Gastos com lazer, em laranja -->

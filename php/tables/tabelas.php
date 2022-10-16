@@ -155,7 +155,8 @@ class Usuario extends CRUD
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function insertContato($id){
+    public function insertContato($id)
+    {
         $sql = "INSERT INTO $this->table1 (fk_usuario_id, email, celular) VALUES (:id,:email,:celular)";
         $stmt = Database::prepare($sql);
 
@@ -166,8 +167,8 @@ class Usuario extends CRUD
         return $stmt->execute();
     }
 
-    public function insertProfissao(){
-        
+    public function insertProfissao()
+    {
     }
 
     public function update($id)

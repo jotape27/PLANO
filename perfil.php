@@ -61,21 +61,20 @@ if ($genero == "f") {
                 <div class="gap">
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>Nome:<p>⠀<?php echo $dados['nome'] ?></p></span>
+                            <span>Nome:<p>⠀<?php echo $dados['nome']; ?></p></span>
                         </div>
 
                         <div class="box-input perfil">
-                            <span>Sobrenome:<p>⠀<?php echo $dados['sobrenome'] ?></p></span>
+                            <span>Sobrenome:<p>⠀<?php echo $dados['sobrenome']; ?></p></span>
                         </div>
                     </div>
 
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>celular:<p>⠀<?php //echo $dados['celular'] 
-                                                ?>(27) 99908-3749</p></span>
+                            <span>celular:<p>⠀<?php echo $dados['celular']; ?></p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>email:<p>⠀<?php //echo $dados['email'] ?>jplferreira27@gmail.com</p></span>
+                            <span>email:<p>⠀<?php echo $dados['email']; ?></p></span>
                         </div>
                     </div>
                     <?php
@@ -88,28 +87,15 @@ if ($genero == "f") {
                             <span>data de nascimento:<p>⠀<?php echo $data; ?></p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>cpf:<p>⠀<?php echo $dados['cpf'] ?></p></span>
+                            <span>cpf:<p>⠀<?php echo $dados['cpf']; ?></p></span>
                         </div>
-
-
-
-                        <div class="box-input" hidden>
-                            <input type="date" id="date" name="nascimento" value="" placeholder="⠀">
-                            <span>data DE NasCimento</span>
-                        </div>
-                        <div class="box-input" hidden>
-                            <input type="text" name="cpf" id="cpf" onkeyup="maskcpf()" maxlength="14" placeholder="⠀" required>
-                            <span>CPF</span>
-                        </div>
-
                     </div>
                     <div class="lado">
                         <div class="box-input perfil">
-                            <span>gÊnero:<p>⠀<?php echo $genero ?></p></span>
+                            <span>gÊnero:<p>⠀<?php echo $genero; ?></p></span>
                         </div>
                         <div class="box-input perfil">
-                            <span>renda (R$):<p>⠀<?php //echo $dados['renda'] 
-                                                ?>6.000,00</p></span>
+                            <span>renda (R$):<p>⠀<?php echo number_format($dados['renda'], 2, ",", "."); ?></p></span>
                         </div>
                     </div>
                     <div class="lado crud">
@@ -142,32 +128,31 @@ if ($genero == "f") {
                             <div class="lado">
                                 <div class="update perfil">
                                     <span>Nome</span>
-                                    <input type="text" name="nome" value="<?php echo $dados['nome'] ?>" placeholder="⠀" required>
+                                    <input type="text" name="nome" value="<?php echo $dados['nome']; ?>" placeholder="⠀" required>
                                 </div>
                                 <div class="update perfil">
                                     <span>Sobrenome</span>
-                                    <input type="text" name="sobrenome" value="<?php echo $dados['sobrenome'] ?>" placeholder="⠀" required>
+                                    <input type="text" name="sobrenome" value="<?php echo $dados['sobrenome']; ?>" placeholder="⠀" required>
                                 </div>
                             </div>
                             <div class="lado">
                                 <div class="update perfil">
                                     <span>Celular</span>
-                                    <input type="text" name="celular2" value="<?php //echo $dados['celular'] 
-                                                                                ?>em andamento" onkeydown="masktel2()" id="celular2" placeholder="⠀" maxlength="15" required>
+                                    <input type="text" name="celular2" value="<?php echo $dados['celular']; ?>" onkeydown="masktel2()" id="celular2" placeholder="⠀" maxlength="15" required>
                                 </div>
                                 <div class="update perfil">
                                     <span>Email</span>
-                                    <input type="email" name="email" value="<?php echo $dados['email'] ?>" placeholder="⠀" required>
+                                    <input type="email" name="email" value="<?php echo $dados['email']; ?>" placeholder="⠀" required>
                                 </div>
                             </div>
                             <div class="lado">
                                 <div class="update perfil">
                                     <span>Data de Nascimento</span>
-                                    <input type="date" id="date" name="nascimento" value="<?php echo $dados['nascimento'] ?>" placeholder="⠀">
+                                    <input type="date" id="date" name="nascimento" value="<?php echo $dados['nascimento']; ?>" placeholder="⠀">
                                 </div>
                                 <div class="update perfil">
                                     <span>CPF</span>
-                                    <input type="text" name="cpf" id="cpf2" value="<?php echo $dados['cpf'] ?>" onkeydown="maskcpf2()" maxlength="14" placeholder="⠀" required>
+                                    <input type="text" name="cpf" id="cpf2" value="<?php echo $dados['cpf']; ?>" onkeydown="maskcpf2()" maxlength="14" placeholder="⠀" required>
                                 </div>
                             </div>
                             <div class="lado">
@@ -244,15 +229,22 @@ if ($genero == "f") {
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
+
 
     <?php
     include_once 'php/footer.php';
     ?>
 
+
+
     <script>
+        $(document).ready(function() {
+            $('.carousel').carousel();
+        });
+
         M.AutoInit();
     </script>
+
 </body>
 
 </html>

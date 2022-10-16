@@ -30,7 +30,19 @@ abstract class CRUD extends Database
 	 ***************/
 	public function find($id)
 	{
-		$sql = "SELECT * FROM $this->table WHERE id = :id";
+		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
+		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
+		edrc.UF, edrc.cidade, edrc.cep, lg.tp_logradouro, edrc.desc_logradouro, edrc.num, 
+		pfs.descricao,us_pfs.renda
+		FROM usuario us
+		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
+		INNER JOIN perfil ON us.fk_perfil_id = perfil.id
+		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
+		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
+		INNER JOIN logradouro lg ON lg.id = edrc.fk_logradouro_id
+		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
+		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 
+		WHERE us.id = :id;";
 		$stmt = Database::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
@@ -43,13 +55,19 @@ abstract class CRUD extends Database
 	 ***************/
 	public function findAll()
 	{
-		$sql = "SELECT usuario.nome,usuario.sobrenome,usuario_tpcontato.email,usuario_tpcontato.celular,
-		usuario.cpf,usuario.genero,usuario.nascimento,usuario.senha,perfil.perfil 
-		FROM usuario 
-		INNER JOIN perfil ON perfil.id = usuario.fk_perfil_id 
-		INNER JOIN usuario_tpcontato ON usuario.id = usuario_tpcontato.fk_usuario_id
-		
-		ORDER BY usuario.id;";
+		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
+		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
+		edrc.UF, edrc.cidade, edrc.cep, lg.tp_logradouro, edrc.desc_logradouro, edrc.num, 
+		pfs.descricao,us_pfs.renda
+		FROM usuario us
+		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
+		INNER JOIN perfil ON us.fk_perfil_id = perfil.id
+		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
+		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
+		INNER JOIN logradouro lg ON lg.id = edrc.fk_logradouro_id
+		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
+		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 		
+		ORDER BY us.id;";
 		$stmt = Database::prepare($sql);
 		$stmt->execute();
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -83,27 +101,7 @@ abstract class CRUD extends Database
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
 
-	public function listaGasto()
-	{
-		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
-		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
-		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
-		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE (usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = 6 
-		AND usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111);";
-
-		$stmt = Database::prepare($sql);
-
-		$stmt->execute();
-
-		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
-		//print_r($stmt->fetch(PDO::FETCH_BOTH));
-		return $stmt->fetch(PDO::FETCH_ASSOC);
-
-	}
-
-	public function rendaProfissao()
+	public function findRendaProfissao()
 	{
 		$sql = "SELECT usuario_profissao.renda, profissao.descricao 
 		FROM usuario_PROFISSAO 
@@ -119,8 +117,6 @@ abstract class CRUD extends Database
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
-
-	
 
 	public function findPlanejamento()
 	{
@@ -140,26 +136,83 @@ abstract class CRUD extends Database
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
-	
-    public function findPerfil()
-    {
-        $sql = "SELECT perfil.perfil, usuario.nome FROM perfil 
+
+	public function findPerfil()
+	{
+		$sql = "SELECT perfil.perfil, usuario.nome FROM perfil 
         INNER JOIN usuario ON (perfil.id = usuario.fk_perfil_id) AND (usuario.id != 0) 
         ORDER BY usuario.id;";
-        $stmt = Database::prepare($sql);
-        $stmt->execute();
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function findFix()
+	{
+		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111;";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetchAll(PDO::FETCH_BOTH);
+	}
+
+	public function findVar()
+	{
+		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222;";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetchAll(PDO::FETCH_BOTH);
+	}
+
+	public function findInvest()
+	{
+		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333;";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetchAll(PDO::FETCH_BOTH);
+	}
+
+	public function findLazer()
+	{
+		$sql = "SELECT gasto.valor, gasto.gasto FROM gasto 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444;";
+		$stmt = Database::prepare($sql);
+		$stmt->execute();
+		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+		return $stmt->fetchAll(PDO::FETCH_BOTH);
+	}
+
 
 	/***************
 		Objetivo: Exclui um cliente pelo id
 		Parâmetro de entrada: $id - id do cliente
 		Parâmetro de saída: Retorna true em caso de sucesso ou false em caso de falha.
 	 ***************/
-		public function delete($id)
-		{
-		$sql = "DELETE FROM $this->table WHERE id = :id";
+	public function delete($id)
+	{
+		$sql = "DELETE FROM  WHERE id = :id";
 		$stmt = Database::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		return $stmt->execute();
