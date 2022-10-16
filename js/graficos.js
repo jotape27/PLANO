@@ -30,13 +30,24 @@ new Chart("planejamento1", {
       labels: xValues,
       datasets: [{
          backgroundColor: barColors,
+         borderWidth: 2,
+         scaleStepWidth: 1,
          data: yPlanValues
       }]
    },
    options: {
+      legend: {
+         labels: {
+            fontColor: "#fff",
+            fontSize: 12
+         }
+      },
       title: {
          display: true,
-         text: "Planejamento"
+         text: "Planejamento",
+         fontColor: "#fff",
+         fontSize: 15
+
       }
    }
 });
@@ -48,13 +59,23 @@ new Chart("realidade1", {
       labels: xValues,
       datasets: [{
          backgroundColor: barColors,
+         borderWidth: 2,
+         scaleStepWidth: 1,
          data: yRealValues
       }]
    },
    options: {
+      legend: {
+         labels: {
+            fontColor: "#fff",
+            fontSize: 12
+         }
+      },
       title: {
          display: true,
          text: "Realidade",
+         fontColor: "#fff",
+         fontSize: 15
       }
    }
 });

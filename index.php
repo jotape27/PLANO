@@ -14,7 +14,10 @@ $indexProfissao = new Profissao();
 $dados = $indexUsuario->find($id);
 
 // $tabela = $indexGasto->listaGasto();
-$tabela = $indexGasto->findFix();
+$fixo = $indexGasto->findFix();
+$variavel = $indexGasto->findVar();
+$invest = $indexGasto->findInvest();
+$lazer = $indexGasto->findLazer();
 
 ?>
 
@@ -102,24 +105,16 @@ $tabela = $indexGasto->findFix();
         <div class="L1"><br>
             <h2>Fixo</h2>
             <ul>
-
                 <?php
-                //$gastos = $tabela[0]['gasto'];
-                // for ($i = 0; $i <= count($tabela); $i++) {
-                //     echo "<li>" . $tabela['gasto'][$i] . "</li>";
-                //     echo "<br>";
-                //     //print_r($gastos1);
-                // }
-
-                foreach ($tabela as $linha) {
-                    echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
-
-                    //print_r($linha);
+                if (count($fixo)) {
+                    foreach ($fixo as $linha) {
+                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                    }
+                } else {
+                    echo "<li>-</li>";
                 }
-
-
                 ?>
-
+                <button class="addLista">+</button>
             </ul>
 
 
@@ -129,10 +124,15 @@ $tabela = $indexGasto->findFix();
             <h2>Variável</h2>
             <ul>
 
-                <li>-</li>
-                <!--li>Água | 145,12</!--li>
-                <li>Energia | 341,29</li>
-                <li>Alimentação | 231,84</li-->
+                <?php
+                if (count($variavel)) {
+                    foreach ($variavel as $linha) {
+                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                    }
+                } else {
+                    echo "<li>-</li>";
+                }
+                ?>
                 <button class="addLista">+</button>
 
             </ul>
@@ -142,12 +142,17 @@ $tabela = $indexGasto->findFix();
         <div class="L2"><br>
             <h2>Lazer</h2>
             <ul>
-                <!--li>Netflix | 45,90</!--li>
-                <li>HBO Max | 27,90</li>
-                <li>Lanches Ifood | 158,76</li>
-                <li>Corridas Uber/99 | 212,37</li>
-                <button-- class="addLista">+</button-->
-                <li>-</li>
+                <?php
+                if (count($lazer)) {
+                    foreach ($tabela as $linha) {
+                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                    }
+                } else {
+                    echo "<li>-</li>";
+                }
+                ?>
+                <button class="addLista">+</button>
+
             </ul>
         </div>
         <!-- Investimento, em verde agua -->
@@ -155,12 +160,17 @@ $tabela = $indexGasto->findFix();
         <div class="L3"><br>
             <h2>Investimento</h2>
             <ul>
-                <!--li>Ações | 520,64</!--li>
-                <li>Fundo Imobiliários | 1.121,32</li>
-                <li>Previdência Privada | 120,16</li>
-                <li>Tesouro Direto | 250,24</li>
-                <button-- class="addLista">+</button-->
-                <li>-</li>
+                <?php
+                if (count($invest)) {
+                    foreach ($invest as $linha) {
+                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                    }
+                } else {
+                    echo "<li>-</li>";
+                }
+                ?>
+                <button class="addLista">+</button>
+
             </ul>
         </div>
     </div>

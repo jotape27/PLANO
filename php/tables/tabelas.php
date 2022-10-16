@@ -527,4 +527,60 @@ class Gasto extends CRUD
 
         return $stmt->execute();
     }
+
+    public function findFix()
+    {
+        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111;";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function findVar()
+    {
+        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222;";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function findInvest()
+    {
+        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333;";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function findLazer()
+    {
+        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
+		INNER JOIN usuario 
+		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444;";
+        $stmt = Database::prepare($sql);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
 }
