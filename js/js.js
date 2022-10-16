@@ -244,3 +244,28 @@ function closeEndereco() {
         fechar[i].style.display = "none";
     }
 }
+
+function openPlan() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("part3");
+    abrir = document.getElementsByClassName("part4");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "none";
+        fechar[i].style.display = "flex";
+    }
+}
+
+function closePlan() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("part3");
+    abrir = document.getElementsByClassName("part4");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "flex";
+        fechar[i].style.display = "none";
+    }
+}
+
+
+
+
+

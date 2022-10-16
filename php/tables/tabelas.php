@@ -152,7 +152,7 @@ class Usuario extends CRUD
         $stmt->execute();
         //return $stmt1->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_BOTH);
     }
 
     public function insertContato($id)
@@ -212,8 +212,9 @@ class Endereco extends CRUD
 {
 
     protected $table = 'endereco';
+    protected $table1 = 'usuario_endereco';
 
-    private $id;
+    private $id_endereco;
     private $cep;
     private $endereco;
     private $numero;
@@ -224,13 +225,13 @@ class Endereco extends CRUD
 
 
     /********Início dos métodos sets e gets*********/
-    public function setID($id)
+    public function setID($id_endereco)
     {
-        $this->id = $id;
+        $this->id_endereco = $id_endereco;
     }
     public function getID()
     {
-        return $this->id;
+        return $this->id_endereco;
     }
     public function setCep($cep)
     {
@@ -290,7 +291,7 @@ class Endereco extends CRUD
     /***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,fk_logradouro_id) VALUES (:cep,:endereco,:numero,:cidade,:uf,:logradouro)";
+        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,fk_logradouro_id) VALUES (:cep,:endereco,:numero,:cidade,:uf,:logradouro) RETURNING id;";
         $stmt = Database::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->endereco);
@@ -300,8 +301,22 @@ class Endereco extends CRUD
         $stmt->bindParam(':logradouro', $this->logradouro);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_BOTH);
+    }
+
+    public function insertEndereco($id_endereco, $id)
+    {
+        $sql = "INSERT INTO $this->table1 (fk_usuario_id,fk_endereco_id) VALUES (:id_user,:id_endereco);";
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id_user', $id);
+        $stmt->bindParam(':id_endereco', $id_endereco);
+
         return $stmt->execute();
     }
+
 
     /***************
         Objetivo: Atuliza um cliente pelo id
@@ -310,7 +325,7 @@ class Endereco extends CRUD
      ***************/
     public function update($id)
     {
-        $sql = "UPDATE $this->table SET cep = :cep, endereco = :endereco, numero = :numero, cidade = :cidade, uf = :uf, fk_logradouro_id = :logradouro WHERE id = :id ";
+        $sql = "UPDATE $this->table SET cep = :cep, endereco = :endereco, numero = :numero, cidade = :cidade, uf = :uf, fk_logradouro_id = :logradouro WHERE id = :id;";
         $stmt = Database::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->endereco);
@@ -337,22 +352,9 @@ class Profissao extends CRUD
 
 
     /********Início dos métodos sets e gets*********/
-    public function setID($id)
-    {
-        $this->id = $id;
-    }
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function setIDprofissao($id_profissao)
-    {
-        $this->id_profissao = $id_profissao;
-    }
-    public function getIDprofissao()
-    {
-        return $this->id_profissao;
-    }
+
+
+
     public function setprofissao($profissao)
     {
         $this->profissao = $profissao;
@@ -372,18 +374,21 @@ class Profissao extends CRUD
     }
 
     /********Fim dos métodos sets e gets*********/
-
+    public function insert()
+    {
+    }
 
     /***************
         Objetivo: Método que insere um cliente
         Parâmetro de saída: Retorna true em caso de sucesso ou false em caso de falha.
      ***************/
-    public function insert()
+    public function insertProfissao($id)
     {
-        $sql = "INSERT INTO $this->table (fk_profissao_id,renda) VALUES (:profissao,:renda)";
+        $sql = "INSERT INTO $this->table (fk_usuario_id,fk_profissao_id,renda) VALUES (:usuario,:profissao,:renda)";
 
         $stmt = Database::prepare($sql);
 
+        $stmt->bindParam(':usuario', $id);
         $stmt->bindParam(':profissao', $this->profissao);
         $stmt->bindParam(':renda', $this->renda);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);

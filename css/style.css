@@ -1343,6 +1343,7 @@ p.desc {
   text-transform: uppercase;
   position: absolute;
   letter-spacing: 0.1em;
+  transform: translateY(1.5px);
 }
 
 table {

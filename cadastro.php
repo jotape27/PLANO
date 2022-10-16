@@ -357,18 +357,6 @@
                                 <span>profissão</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
-                                <span>renda</span>
-                                <p class="desc">todos os tipos de renda somados</p>
-                            </div>
-                        </div>
-                        <div class="lado">
-                            <div class="input-box">
-                                <input type="text" id="dinheiro2" name="gasto" onkeyup="maskMoeda2()" maxlength="14" placeholder="⠀" required>
-                                <span>Gasto</span>
-                                <p class="desc">todos os tipos de gastos somados</p>
-                            </div>
-                            <div class="input-box">
                                 <select name="perfil">
                                     <option value="" hidden disabled selected>Você se considera um...</option>
                                     <option value="11">Gastador</option>
@@ -379,16 +367,79 @@
                             </div>
                         </div>
                         <div class="lado">
+                            <!--div class="input-box">
+<input type="text" id="dinheiro2" name="gasto" onkeyup="maskMoeda2()" maxlength="14" placeholder="⠀" required>
+<span>Gasto</span>
+<p class="desc">todos os tipos de gastos somados</p>
+</div-->
+                            <div class="input-box subject">
+                                <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
+                                <span>renda</span>
+                                <p class="desc">todos os tipos de renda mensal somados</p>
+                            </div>
+                        </div>
+                        <div class="lado">
                             <div class="botao" onclick="openEndereco()">
+                                <button type="button">VoLtar</button>
+                            </div>
+                            <div class="botao" onclick="closePlan()">
+                                <button type="button">continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="part4" hidden>
+                    <div class="gap">
+                        <div class="lado">
+                            <div class="input-box subject">
+                                <div class="range-slider">
+                                    <input type="range" name="fixo" id="fixo" value="20" max="100" min="0" class="slider">
+                                    <div class="slider-thumb">
+                                        <div class="tooltip"></div>
+                                    </div>
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lado">
+                            <div class="input-box subject">
+                                <div class="range-slider">
+                                    <input type="range" name="variavel" id="variavel" value="20" max="100" min="0">
+                                    <div class="slider-thumb">
+                                        <div class="tooltip"></div>
+                                    </div>
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lado">
+                            <div class="input-box subject">
+                                <div class="range-slider">
+                                    <input type="range" name="lazer" id="lazer" value="20" max="100" min="0">
+                                    <div class="slider-thumb">
+                                        <div class="tooltip"></div>
+                                    </div>
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lado">
+                            <div class="input-box subject">
+                                <div class="range-slider">
+                                    <input type="range" name="invest" id="invest" value="20" max="100" min="0">
+                                    <div class="slider-thumb">
+                                        <div class="tooltip"></div>
+                                    </div>
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lado">
+                            <div class="botao" onclick="openPlan()">
                                 <button type="button">VoLtar</button>
                             </div>
                             <div class="botao">
                                 <button type="submit" name="btn-cadastro">Cadastrar</button>
-                            </div>
-                        </div>
-                        <div class="lado">
-                            <div class="input-box">
-                                <span></span>
                             </div>
                         </div>
                     </div>
