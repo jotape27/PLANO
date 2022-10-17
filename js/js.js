@@ -108,6 +108,54 @@ function maskMoeda2() {
     }
 }
 
+function maskMoeda3() {
+    var elemento = document.getElementById('dinheiro3');
+
+    elemento.value = parseInt(elemento.value.replace(/[\D]+/g, ''));
+    elemento.value = elemento.value + '';
+    elemento.value = elemento.value.replace(/([0-9]{2})$/g, ",$1");
+
+    if (elemento.value.length > 6) {
+        elemento.value = elemento.value.replace(/([0-9]{3}),([0-9]{2})/g, ".$1,$2");
+    }
+
+    if (elemento.value.length > 10) {
+        elemento.value = elemento.value.replace(/([0-9]{3}).([0-9]{3})/g, ".$1.$2");
+    }
+}
+
+function maskMoeda4() {
+    var elemento = document.getElementById('dinheiro4');
+
+    elemento.value = parseInt(elemento.value.replace(/[\D]+/g, ''));
+    elemento.value = elemento.value + '';
+    elemento.value = elemento.value.replace(/([0-9]{2})$/g, ",$1");
+
+    if (elemento.value.length > 6) {
+        elemento.value = elemento.value.replace(/([0-9]{3}),([0-9]{2})/g, ".$1,$2");
+    }
+
+    if (elemento.value.length > 10) {
+        elemento.value = elemento.value.replace(/([0-9]{3}).([0-9]{3})/g, ".$1.$2");
+    }
+}
+
+function maskMoeda5() {
+    var elemento = document.getElementById('dinheiro5');
+
+    elemento.value = parseInt(elemento.value.replace(/[\D]+/g, ''));
+    elemento.value = elemento.value + '';
+    elemento.value = elemento.value.replace(/([0-9]{2})$/g, ",$1");
+
+    if (elemento.value.length > 6) {
+        elemento.value = elemento.value.replace(/([0-9]{3}),([0-9]{2})/g, ".$1,$2");
+    }
+
+    if (elemento.value.length > 10) {
+        elemento.value = elemento.value.replace(/([0-9]{3}).([0-9]{3})/g, ".$1.$2");
+    }
+}
+
 function maskcpf3() {
     var cpf3 = document.getElementById('cpf3');
 
@@ -202,9 +250,6 @@ function validatePassword() {
     }
 }
 
-
-
-
 function openCadastro() {
     var i, abrir, fechar;
     fechar = document.getElementsByClassName("part1");
@@ -265,7 +310,84 @@ function closePlan() {
     }
 }
 
+//---------------------------------------------------------------------------------------------------------------------
 
+function openFixo() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addFixo");
+    abrir = document.getElementsByClassName("adcFixo");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "flex";
+        fechar[i].style.display = "none";
+    }
+}
 
+function closeFixo() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addFixo");
+    abrir = document.getElementsByClassName("adcFixo");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "none";
+        fechar[i].style.display = "flex";
+    }
+}
 
+function openVariavel() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addVariavel");
+    abrir = document.getElementsByClassName("adcVariavel");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "flex";
+        fechar[i].style.display = "none";
+    }
+}
 
+function closeVariavel() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addVariavel");
+    abrir = document.getElementsByClassName("adcVariavel");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "none";
+        fechar[i].style.display = "flex";
+    }
+}
+
+function openLazer() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addLazer");
+    abrir = document.getElementsByClassName("adcLazer");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "flex";
+        fechar[i].style.display = "none";
+    }
+}
+
+function closeLazer() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addLazer");
+    abrir = document.getElementsByClassName("adcLazer");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "none";
+        fechar[i].style.display = "flex";
+    }
+}
+
+function openInvestimento() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addInvestimento");
+    abrir = document.getElementsByClassName("adcInvestimento");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "flex";
+        fechar[i].style.display = "none";
+    }
+}
+
+function closeInvestimento() {
+    var i, abrir, fechar;
+    fechar = document.getElementsByClassName("addInvestimento");
+    abrir = document.getElementsByClassName("adcInvestimento");
+    for (i = 0; i < abrir.length; i++) {
+        abrir[i].style.display = "none";
+        fechar[i].style.display = "flex";
+    }
+}

@@ -41,9 +41,7 @@ if (isset($_POST['btn-cadastro'])) :
     $profissao = $_POST['profissao'];
     $renda = floatval(str_replace(",", ".", str_replace(".", "", $_POST['renda'])));
 
-    //$gasto = $_POST['gasto'];
 
-    $gastos = new Gasto();
     $usuario = new Usuario();
     $enderecos = new Endereco();
     $profissoes = new Profissao();
@@ -91,7 +89,86 @@ if (isset($_POST['btn-cadastro'])) :
     $profissoes->insertProfissao($id);
 
 
+    header("Location: ../");
+endif;
+
+if (isset($_POST['addFixo'])) :
+    $gastos = new Gasto();
+
+    $tipo = 111;
+
+    $id_user = $id;
+    $data = date('Y-m-d');
+    $gasto = $_POST['gasto'];
+    $valor = $_POST['valor'];
+
+    $gastos->setId($id_user);
+    $gastos->setDate($data);
+    $gastos->setGasto($gasto);
+    $gastos->setValor($valor);
+
+    $gastos->insert();
 
 endif;
 
+if (isset($_POST['addVariavel'])) :
+    $gastos = new Gasto();
+
+    $tipo = 222;
+
+    $id_user = $id;
+    $data = date('Y-m-d');
+    $gasto = $_POST['gasto'];
+    $valor = $_POST['valor'];
+
+    $gastos->setId($id_user);
+    $gastos->setDate($data);
+    $gastos->setGasto($gasto);
+    $gastos->setValor($valor);
+
+    $ids_gasto = $gastos->insert();
+    $id_gasto = $ids_gasto['id'];
+
+    if (count($ids_gasto)) {
+    }
+
+endif;
+
+if (isset($_POST['addLazer'])) :
+    $gastos = new Gasto();
+
+    $tipo = 444;
+
+    $id_user = $id;
+    $data = date('Y-m-d');
+    $gasto = $_POST['gasto'];
+    $valor = $_POST['valor'];
+
+    $gastos->setId($id_user);
+    $gastos->setDate($data);
+    $gastos->setGasto($gasto);
+    $gastos->setValor($valor);
+
+    $gastos->insert();
+
+endif;
+
+if (isset($_POST['addInvestimento'])) :
+    $gastos = new Gasto();
+
+    $tipo = 333;
+
+    $id_user = $id;
+    $data = date('Y-m-d');
+    $gasto = $_POST['gasto'];
+    $valor = $_POST['valor'];
+
+    $gastos->setId($id_user);
+    $gastos->setDate($data);
+    $gastos->setGasto($gasto);
+    $gastos->setValor($valor);
+
+    $gastos->insert();
+
+endif;
 ?>

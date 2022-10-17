@@ -114,7 +114,27 @@ $lazer = $indexGasto->findLazer();
                     echo "<li>-</li>";
                 }
                 ?>
-                <button class="addLista">+</button>
+
+                <button class="addLista addFixo" id="addFixo" onclick="openFixo()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+
+                <div class="adcGasto adcFixo" id="adcFixo" hidden>
+                    <form action="" method="post">
+                        <div class="lado">
+                            <input type="text" name="gasto" placeholder="Gasto:">
+                            <button type="reset" class="addLista subir" onclick="closeFixo()">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="lado">
+                            <input type="text" name="valor" onkeyup="maskMoeda2()" id="dinheiro2" maxlength="14" placeholder="Valor (R$):">
+                            <button type="submit" class="addLista subir" name="addFixo">
+                                <ion-icon name="checkmark-done"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </ul>
 
 
@@ -132,8 +152,29 @@ $lazer = $indexGasto->findLazer();
                 } else {
                     echo "<li>-</li>";
                 }
+
                 ?>
-                <button class="addLista">+</button>
+
+                <button class="addLista addVariavel" id="addVariavel" onclick="openVariavel()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+
+                <div class="adcGasto adcVariavel" id="adcVariavel" hidden>
+                    <form action="" method="post">
+                        <div class="lado">
+                            <input type="text" name="gasto" placeholder="Gasto:">
+                            <button type="reset" class="addLista subir" onclick="closeVariavel()">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="lado">
+                            <input type="text" name="valor" onkeyup="maskMoeda3()" id="dinheiro3" maxlength="14" placeholder="Valor (R$):">
+                            <button type="submit" class="addLista subir" name="addVariavel">
+                                <ion-icon name="checkmark-done"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
             </ul>
         </div>
@@ -151,8 +192,26 @@ $lazer = $indexGasto->findLazer();
                     echo "<li>-</li>";
                 }
                 ?>
-                <button class="addLista">+</button>
 
+                <button class="addLista addLazer" id="addLazer" onclick="openLazer()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+                <div class="adcGasto adcLazer" id="adcLazer" hidden>
+                    <form action="" method="post">
+                        <div class="lado">
+                            <input type="text" name="gasto" placeholder="Gasto:">
+                            <button type="reset" class="addLista subir" onclick="closeLazer()">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="lado">
+                            <input type="text" name="valor" onkeyup="maskMoeda4()" id="dinheiro4" maxlength="14" placeholder="Valor (R$):">
+                            <button type="submit" class="addLista subir" name="addLazer">
+                                <ion-icon name="checkmark-done"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </ul>
         </div>
         <!-- Investimento, em verde agua -->
@@ -169,8 +228,26 @@ $lazer = $indexGasto->findLazer();
                     echo "<li>-</li>";
                 }
                 ?>
-                <button class="addLista">+</button>
 
+                <button class="addLista addInvestimento" id="addInvestimento" onclick="openInvestimento()">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+                <div class="adcGasto adcInvestimento" id="adcInvestimento" hidden>
+                    <form action="" method="post">
+                        <div class="lado">
+                            <input type="text" name="gasto" placeholder="Gasto:">
+                            <button type="reset" class="addLista subir" onclick="closeInvestimento()">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="lado">
+                            <input type="text" name="valor" onkeyup="maskMoeda5()" id="dinheiro5" maxlength="14" placeholder="Valor (R$):">
+                            <button type="submit" class="addLista subir" name="addFixo">
+                                <ion-icon name="checkmark-done"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </ul>
         </div>
     </div>

@@ -482,11 +482,24 @@ class Gasto extends CRUD
 {
 
     protected $table = 'gasto';
+    protected $table1 = 'usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento';
+    protected $column = 'data';
 
-    private $id;
+    private $id_user;
+    private $data;
     private $valor;
+    private $gasto;
 
 
+
+    public function setId($id_user)
+    {
+        $this->id_user = $id_user;
+    }
+    public function getId($id_user)
+    {
+        return $this->id_user;
+    }
     public function setValor($valor)
     {
         $this->valor = $valor;
@@ -495,26 +508,38 @@ class Gasto extends CRUD
     {
         return $this->valor;
     }
-    public function setID($id)
+    public function setDate($data)
     {
-        $this->id = $id;
+        $this->data = $data;
     }
-    public function getID()
+    public function getDate()
     {
-        return $this->id;
+        return $this->data;
+    }
+    public function setGasto($gasto)
+    {
+        $this->gasto = $gasto;
+    }
+    public function getGasto()
+    {
+        return $this->gasto;
     }
 
 
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (valor, id) VALUES (:valor,:id)";
+        $sql = "INSERT INTO $this->table (valor, :gasto, $this->column ) VALUES (:valor,:gasto,:data,) RETURNING id";
         $stmt = Database::prepare($sql);
 
+        //$stmt->bindParam(':id_user', $this->id_user);
         $stmt->bindParam(':valor', $this->valor);
-        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindParam(':gasto', $this->gasto);
+        $stmt->bindParam(':data', $this->data);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
-        return $stmt->execute();
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_BOTH);
     }
 
     /***************

@@ -51,7 +51,6 @@ include_once 'php/tables/tabelas.php';
 
     $tabela = $admUser->findAll();
     $count = $admUser->findCount();
-    $perfil = $admUser->findPerfil();
 
     $countRenda = $admProfissao->findCount();
     $Soma = $admProfissao->findSoma();
