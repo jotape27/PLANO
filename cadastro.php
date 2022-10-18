@@ -36,7 +36,7 @@
         <fieldset class="field1">
             <div class="login">
                 <h1 class="cadastro">Cadastro</h1>
-                <div class="part1">
+                <div class="part1" hidden>
                     <div class="gap">
                         <div class="lado">
                             <div class="input-box">
@@ -388,51 +388,80 @@
                         </div>
                     </div>
                 </div>
-                <div class="part4" hidden>
+                <div class="part4">
                     <div class="gap">
+                        <h1 class="h1slide">Quantos porcentos da sua renda será destinada à:</h1>
                         <div class="lado">
-                            <div class="input-box subject">
-                                <div class="range-slider">
-                                    <input type="range" name="fixo" id="fixo" value="20" max="100" min="0" class="slider">
-                                    <div class="slider-thumb">
-                                        <div class="tooltip"></div>
+                            <div class="range">
+
+                                <div class="sliderValue">
+                                    <span id="spanSlide1">50</span>
+                                </div>
+                                <div class="fieldSlide">
+                                    <div class="value left">0</div>
+                                    <div class="input-slide">
+                                        <span>Gastos Fixos</span>
                                     </div>
-                                    <div class="progress"></div>
+                                    <input type="range" min="3" max="100" name="fixo" value="50" steps="1" id="slideFixo">
+                                    <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
-                            <div class="input-box subject">
-                                <div class="range-slider">
-                                    <input type="range" name="variavel" id="variavel" value="20" max="100" min="0">
-                                    <div class="slider-thumb">
-                                        <div class="tooltip"></div>
+
+                            <div class="range">
+
+                                <div class="sliderValue">
+                                    <span id="spanSlide2">50</span>
+                                </div>
+                                <div class="fieldSlide">
+                                    <div class="value left">0</div>
+                                    <div class="input-slide">
+                                        <span>Gastos Variáveis</span>
                                     </div>
-                                    <div class="progress"></div>
+                                    <input type="range" min="3" max="100" name="variavel" value="50" steps="1" id="slideVariavel">
+                                    <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
-                            <div class="input-box subject">
-                                <div class="range-slider">
-                                    <input type="range" name="lazer" id="lazer" value="20" max="100" min="0">
-                                    <div class="slider-thumb">
-                                        <div class="tooltip"></div>
+
+                            <div class="range">
+
+                                <div class="sliderValue">
+                                    <span id="spanSlide3">50</span>
+                                </div>
+
+                                <div class="fieldSlide">
+                                    <div class="value left">0</div>
+                                    <div class="input-slide">
+                                        <span>Gastos de Lazer</span>
                                     </div>
-                                    <div class="progress"></div>
+                                    <input type="range" min="3" max="100" name="lazer" value="50" steps="1" id="slideLazer">
+                                    <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
-                            <div class="input-box subject">
-                                <div class="range-slider">
-                                    <input type="range" name="invest" id="invest" value="20" max="100" min="0">
-                                    <div class="slider-thumb">
-                                        <div class="tooltip"></div>
+
+                            <div class="range">
+
+                                <div class="sliderValue">
+                                    <span id="spanSlide4">50</span>
+                                </div>
+                                <div class="fieldSlide">
+                                    <div class="value left">0</div>
+                                    <div class="input-slide">
+                                        <span>Investimentos</span>
                                     </div>
-                                    <div class="progress"></div>
+                                    <input type="range" min="3" max="100" name="investimento" value="50" steps="1" id="slideInvestimento">
+                                    <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
                             <div class="botao" onclick="openPlan()">
@@ -451,7 +480,6 @@
     </form>
 
     <?php include_once 'php/footer.php'; ?>
-
 
     <script src="js/graficos.js"></script>
     <script src="js/cidades.js"></script>

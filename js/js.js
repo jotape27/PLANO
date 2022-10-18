@@ -14,6 +14,9 @@ loader.classList.toogle('complete');
 }*/
 
 
+
+
+
 function maskcpf() {
     var cpf = document.getElementById('cpf');
 

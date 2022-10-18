@@ -120,7 +120,7 @@ $lazer = $indexGasto->findLazer();
                 </button>
 
                 <div class="adcGasto adcFixo" id="adcFixo" hidden>
-                    <form action="" method="post">
+                    <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
                             <button type="reset" class="addLista subir" onclick="closeFixo()">
@@ -160,7 +160,7 @@ $lazer = $indexGasto->findLazer();
                 </button>
 
                 <div class="adcGasto adcVariavel" id="adcVariavel" hidden>
-                    <form action="" method="post">
+                    <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
                             <button type="reset" class="addLista subir" onclick="closeVariavel()">
@@ -185,7 +185,7 @@ $lazer = $indexGasto->findLazer();
             <ul>
                 <?php
                 if (count($lazer)) {
-                    foreach ($tabela as $linha) {
+                    foreach ($lazer as $linha) {
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
                 } else {
@@ -197,7 +197,7 @@ $lazer = $indexGasto->findLazer();
                     <ion-icon name="add"></ion-icon>
                 </button>
                 <div class="adcGasto adcLazer" id="adcLazer" hidden>
-                    <form action="" method="post">
+                    <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
                             <button type="reset" class="addLista subir" onclick="closeLazer()">
@@ -233,7 +233,7 @@ $lazer = $indexGasto->findLazer();
                     <ion-icon name="add"></ion-icon>
                 </button>
                 <div class="adcGasto adcInvestimento" id="adcInvestimento" hidden>
-                    <form action="" method="post">
+                    <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
                             <button type="reset" class="addLista subir" onclick="closeInvestimento()">
@@ -242,7 +242,7 @@ $lazer = $indexGasto->findLazer();
                         </div>
                         <div class="lado">
                             <input type="text" name="valor" onkeyup="maskMoeda5()" id="dinheiro5" maxlength="14" placeholder="Valor (R$):">
-                            <button type="submit" class="addLista subir" name="addFixo">
+                            <button type="submit" class="addLista subir" name="addInvestimento">
                                 <ion-icon name="checkmark-done"></ion-icon>
                             </button>
                         </div>

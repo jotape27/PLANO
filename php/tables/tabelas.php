@@ -483,10 +483,11 @@ class Gasto extends CRUD
 
     protected $table = 'gasto';
     protected $table1 = 'usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento';
-    protected $column = 'data';
+    protected $datas = 'data';
 
     private $id_user;
     private $data;
+    private $tipo;
     private $valor;
     private $gasto;
 
@@ -524,14 +525,22 @@ class Gasto extends CRUD
     {
         return $this->gasto;
     }
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
 
 
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (valor, :gasto, $this->column ) VALUES (:valor,:gasto,:data,) RETURNING id";
+        $sql = "INSERT INTO $this->table (valor, gasto, $this->datas) VALUES (:valor,:gasto,:$this->datas) RETURNING id";
         $stmt = Database::prepare($sql);
 
-        //$stmt->bindParam(':id_user', $this->id_user);
+        //
         $stmt->bindParam(':valor', $this->valor);
         $stmt->bindParam(':gasto', $this->gasto);
         $stmt->bindParam(':data', $this->data);
@@ -540,6 +549,18 @@ class Gasto extends CRUD
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_BOTH);
+    }
+
+    public function insertGasto($tipo, $id_gasto)
+    {
+        $sql = "INSERT INTO $this->table1 VAlUES (:tipo,:id_user,:gasto)";
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':tipo', $tipo);
+        $stmt->bindParam(':id_user', $this->id_user);
+        $stmt->bindParam(':gasto', $id_gasto);
+
+        return $stmt->execute();
     }
 
     /***************
