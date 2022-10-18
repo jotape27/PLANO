@@ -14,10 +14,12 @@ $indexProfissao = new Profissao();
 $dados = $indexUsuario->find($id);
 
 // $tabela = $indexGasto->listaGasto();
-$fixo = $indexGasto->findFix();
-$variavel = $indexGasto->findVar();
-$invest = $indexGasto->findInvest();
-$lazer = $indexGasto->findLazer();
+
+
+$fixo = $indexGasto->findFix($id);
+$variavel = $indexGasto->findVar($id);
+$invest = $indexGasto->findInvest($id);
+$lazer = $indexGasto->findLazer($id);
 
 ?>
 
@@ -38,21 +40,7 @@ $lazer = $indexGasto->findLazer();
 
 <body class="index">
     <h4>Olá, <?php echo $dados['nome']; ?></h4>
-    <!--a href="#modal-L1" id="a">modal</!--a>
-    <div-- id="modal-L1" class="modal">
-        <div class="modal-content">
-            <h3>Atenção!</h3>
-            <p>Deseja excluir esse cliente?</p>
-        </div>
-        <div class="modal-footer">
-            <form action="" method="POST">
-                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                <button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-            </form>
 
-        </div>
-    </div-->
     <?php
     $dados['lazer'] = 21;
     $dados['investimento'] = 35;
@@ -106,7 +94,7 @@ $lazer = $indexGasto->findLazer();
             <h2>Fixo</h2>
             <ul>
                 <?php
-                if (count($fixo)) {
+                if (count($fixo) > 0) {
                     foreach ($fixo as $linha) {
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
@@ -145,7 +133,7 @@ $lazer = $indexGasto->findLazer();
             <ul>
 
                 <?php
-                if (count($variavel)) {
+                if (count($variavel) > 0) {
                     foreach ($variavel as $linha) {
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
@@ -184,7 +172,7 @@ $lazer = $indexGasto->findLazer();
             <h2>Lazer</h2>
             <ul>
                 <?php
-                if (count($lazer)) {
+                if (count($lazer) > 0) {
                     foreach ($lazer as $linha) {
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
@@ -220,7 +208,7 @@ $lazer = $indexGasto->findLazer();
             <h2>Investimento</h2>
             <ul>
                 <?php
-                if (count($invest)) {
+                if (count($invest) > 0) {
                     foreach ($invest as $linha) {
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }

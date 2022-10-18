@@ -420,9 +420,17 @@ class Planejamento extends CRUD
 
     protected $table = 'planejamento';
 
+    protected $datas = 'data';
 
-    private $planejamento;
+
+
+    private $dataplan;
     private $id;
+
+    private $fixo;
+    private $variavel;
+    private $lazer;
+    private $investimento;
 
 
 
@@ -435,13 +443,49 @@ class Planejamento extends CRUD
     {
         return $this->id;
     }
-    public function setPlanejamento($planejamento)
+    public function setDate($dataplan)
     {
-        $this->planejamento = $planejamento;
+        $this->dataplan = $dataplan;
     }
-    public function getPlanejamento()
+    public function getDate()
     {
-        return $this->planejamento;
+        return $this->dataplan;
+    }
+
+    public function setFixo($fixo)
+    {
+        $this->fixo = $fixo;
+    }
+    public function getFixo()
+    {
+        return $this->fixo;
+    }
+
+    public function setVariavel($variavel)
+    {
+        $this->variavel = $variavel;
+    }
+    public function getVariavel()
+    {
+        return $this->variavel;
+    }
+
+    public function setLazer($lazer)
+    {
+        $this->lazer = $lazer;
+    }
+    public function getLazer()
+    {
+        return $this->lazer;
+    }
+
+    public function setInvestimento($investimento)
+    {
+        $this->investimento = $investimento;
+    }
+    public function getInvestimento()
+    {
+        return $this->investimento;
     }
 
 
@@ -454,15 +498,34 @@ class Planejamento extends CRUD
      ***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (porcentagem) VALUES (:planejamento)";
+        $sql = "INSERT INTO $this->table (porcentagem, fk_tipo_planejamento_id, $this->datas) 
+        VALUES (:fixo,889,:data), 
+                (:variavel,546,:data),
+                (:lazer,341,:data),
+                (:investimento,264,:data) RETURNING id";
+
         $stmt = Database::prepare($sql);
-        $stmt->bindParam(':planejamento', $this->planejamento);
+
+        //
+        $stmt->bindParam(':fixo', $this->lazer);
+        $stmt->bindParam(':variavel', $this->variavel);
+        $stmt->bindParam(':lazer', $this->lazer);
+        $stmt->bindParam(':investimento', $this->investimento);
+
+        $stmt->bindParam(':data', $this->dataplan);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
-        return $stmt->execute();
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_BOTH);
     }
 
-    /***************
+    /**************
+        889 	fixo
+        546 	variável
+        341 	lazer
+        264	    investimento
+
         Objetivo: Atuliza um cliente pelo id
         Parâmetro de entrada: $id - id do cliente
         Parâmetro de saída: Retorna true em caso de sucesso ou false em caso de falha.
@@ -579,56 +642,60 @@ class Gasto extends CRUD
         return $stmt->execute();
     }
 
-    public function findFix()
+    public function findFix($id)
     {
         $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111;";
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111
+        AND usuario.id = $id;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
         return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
-    public function findVar()
+    public function findVar($id)
     {
         $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222;";
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222
+        AND usuario.id = $id;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
         return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
-    public function findInvest()
+    public function findInvest($id)
     {
         $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333;";
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333
+        AND usuario.id = $id;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
         return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
-    public function findLazer()
+    public function findLazer($id)
     {
         $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
 		INNER JOIN usuario 
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444;";
+		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444
+        AND usuario.id = $id;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número

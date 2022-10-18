@@ -41,11 +41,16 @@ if (isset($_POST['btn-cadastro'])) :
     $profissao = $_POST['profissao'];
     $renda = floatval(str_replace(",", ".", str_replace(".", "", $_POST['renda'])));
 
+    //----------------------------------------------------------------------------
+    $fixo = $_POST['fixo'];
+    $variavel = $_POST['variavel'];
+    $lazer = $_POST['lazer'];
+    $investimento = $_POST['investimento'];
 
+    //----------------------------------------------------------------------------
     $usuario = new Usuario();
     $enderecos = new Endereco();
     $profissoes = new Profissao();
-    $planejamento = new Planejamento();
 
     //----------------------------------------------------------------------------
     $usuario->setEmail($emailvalidado);
@@ -78,6 +83,8 @@ if (isset($_POST['btn-cadastro'])) :
     $id = $insertUser['id'];
     $id_endereco = $insertEndereco['id'];
 
+
+
     if (count($insertUser)) {
         if ($usuario->insertContato($id)) {
         }
@@ -88,6 +95,19 @@ if (isset($_POST['btn-cadastro'])) :
     }
     $profissoes->insertProfissao($id);
 
+
+    $planejamento = new Planejamento();
+
+    $dataplan = date('Y-m-d');
+
+
+    $planejamento->setFixo($lazer);
+    $planejamento->setVariavel($variavel);
+    $planejamento->setLazer($lazer);
+    $planejamento->setInvestimento($investimento);
+    $planejamento->setDate($dataplan);
+
+    $ids_plan = $planejamento->insert();
 
     header("Location: ../");
 endif;
