@@ -53,4 +53,3 @@ inputSlider4.oninput = (() => {
 inputSlider4.onblur = (() => {
     slideValue4.classList.remove("show");
 });
-

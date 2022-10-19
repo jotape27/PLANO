@@ -21,8 +21,32 @@ $variavel = $indexGasto->findVar($id);
 $invest = $indexGasto->findInvest($id);
 $lazer = $indexGasto->findLazer($id);
 
-?>
 
+$sumf = $indexGasto->sumfindFix($id);
+$sumv = $indexGasto->sumfindVar($id);
+$sumi = $indexGasto->sumfindInvest($id);
+$suml = $indexGasto->sumfindLazer($id);
+
+foreach ($sumf as $sumfixo) {
+    $somafixo = $sumfixo['sum'];
+}
+foreach ($sumv as $sumvariavel) {
+    $somavariavel = $sumvariavel['sum'];
+}
+foreach ($sumi as $suminvest) {
+    $somainvest = $suminvest['sum'];
+}
+foreach ($suml as $sumlazer) {
+    $somalazer = $sumlazer['sum'];
+}
+
+$total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
+
+echo $total;
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -132,10 +156,11 @@ $lazer = $indexGasto->findLazer($id);
             <h2>Variável</h2>
             <ul>
 
+
                 <?php
                 if (count($variavel) > 0) {
                     foreach ($variavel as $linha) {
-                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                        echo "<li class='valorvariavel'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
                 } else {
                     echo "<li>-</li>";
@@ -143,7 +168,7 @@ $lazer = $indexGasto->findLazer($id);
 
                 ?>
 
-                <button class="addLista addVariavel" id="addVariavel" onclick="openVariavel()">
+                <button class="addLista addVariavel" id="addVariavel" onclick='openVariavel()'>
                     <ion-icon name="add"></ion-icon>
                 </button>
 
