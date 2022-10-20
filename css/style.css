@@ -654,6 +654,8 @@ input#date::-webkit-calendar-picker-indicator {
 
 .preloader.complete {
   z-index: 0;
+  visibility: hidden;
+  display: none;
 }
 
 .preloader::before {
