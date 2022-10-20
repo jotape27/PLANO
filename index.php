@@ -42,10 +42,6 @@ foreach ($suml as $sumlazer) {
 
 $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
-echo $total;
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -66,14 +62,21 @@ echo $total;
     <h4>Olá, <?php echo $dados['nome']; ?></h4>
 
     <?php
-    $dados['lazer'] = 21;
-    $dados['investimento'] = 35;
-    echo "<input type='hidden' id='lazerid' name='lazername' value='" . $dados['lazer'] . "'>";
-    echo "<input type='hidden' id='investeid' name='investename' value='" . $dados['investimento'] . "'>";
+
+    $centfixo = number_format(($somafixo / $total) * 100, 2, '.', ',');
+    $centvariavel = number_format(($somavariavel / $total) * 100, 2, '.', ',');
+    $centlazer = number_format(($somalazer / $total) * 100, 2, '.', ',');
+    $centinvestimento = number_format(($somainvest / $total) * 100, 2, '.', ',');
+
+    echo "<input type='hidden' id='centfixo' name='investename' value='" . $centfixo . "'>";
+    echo "<input type='hidden' id='centvariavel' name='investename' value='" . $centvariavel . "'>";
+    echo "<input type='hidden' id='centlazer' name='investename' value='" . $centlazer . "'>";
+    echo "<input type='hidden' id='centinvestimento' name='investename' value='" . $centinvestimento . "'>";
+
     ?>
-    <!--div class="preloader">
+    <div class="preloader">
         <div class="loader"></div>
-    </div-->
+    </div>
 
 
 
