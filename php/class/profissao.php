@@ -12,7 +12,6 @@ class Profissao extends CRUD
     private $id_profissao;
 
 
-
     /********Início dos métodos sets e gets*********/
 
 

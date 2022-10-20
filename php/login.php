@@ -3,7 +3,11 @@
 
 require_once 'conexao.php';
 include_once 'crud_db.php';
-include_once 'tables/tabelas.php';
+include_once 'class/endereco.php';
+include_once 'class/gasto.php';
+include_once 'class/planejamento.php';
+include_once 'class/profissao.php';
+include_once 'class/usuario.php';
 
 //PDO
 session_start();

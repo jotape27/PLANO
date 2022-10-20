@@ -2,7 +2,11 @@
 include_once 'php/protecao.php';
 require_once 'php/conexao.php';
 include_once 'php/crud_db.php';
-include_once 'php/tables/tabelas.php';
+include_once 'php/class/endereco.php';
+include_once 'php/class/gasto.php';
+include_once 'php/class/planejamento.php';
+include_once 'php/class/profissao.php';
+include_once 'php/class/usuario.php';
 
 $id = $_SESSION['id'];
 $indexUsuario = new Usuario();
