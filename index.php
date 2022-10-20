@@ -67,15 +67,44 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
     <?php
 
-    $centfixo = number_format(($somafixo / $total) * 100, 2, '.', ',');
-    $centvariavel = number_format(($somavariavel / $total) * 100, 2, '.', ',');
-    $centlazer = number_format(($somalazer / $total) * 100, 2, '.', ',');
-    $centinvestimento = number_format(($somainvest / $total) * 100, 2, '.', ',');
+    if ($somafixo != 0) {
+        if ($somavariavel != 0) {
+            if ($somainvest != 0) {
+                if ($somalazer != 0) {
 
-    echo "<input type='hidden' id='centfixo' name='investename' value='" . $centfixo . "'>";
-    echo "<input type='hidden' id='centvariavel' name='investename' value='" . $centvariavel . "'>";
-    echo "<input type='hidden' id='centlazer' name='investename' value='" . $centlazer . "'>";
-    echo "<input type='hidden' id='centinvestimento' name='investename' value='" . $centinvestimento . "'>";
+                    $centfixo = number_format(($somafixo / $total) * 100, 2, '.', ',');
+                    $centvariavel = number_format(($somavariavel / $total) * 100, 2, '.', ',');
+                    $centlazer = number_format(($somalazer / $total) * 100, 2, '.', ',');
+                    $centinvestimento = number_format(($somainvest / $total) * 100, 2, '.', ',');
+
+                    echo "<input type='hidden' id='centfixo' name='investename' value='" . $centfixo . "'>";
+                    echo "<input type='hidden' id='centvariavel' name='investename' value='" . $centvariavel . "'>";
+                    echo "<input type='hidden' id='centlazer' name='investename' value='" . $centlazer . "'>";
+                    echo "<input type='hidden' id='centinvestimento' name='investename' value='" . $centinvestimento . "'>";
+                } else {
+                    echo "<input type='hidden' id='centfixo' name='investename' value='0'>";
+                    echo "<input type='hidden' id='centvariavel' name='investename' value='0'>";
+                    echo "<input type='hidden' id='centlazer' name='investename' value='0'>";
+                    echo "<input type='hidden' id='centinvestimento' name='investename' value='0'>";
+                }
+            } else {
+                echo "<input type='hidden' id='centfixo' name='investename' value='0'>";
+                echo "<input type='hidden' id='centvariavel' name='investename' value='0'>";
+                echo "<input type='hidden' id='centlazer' name='investename' value='0'>";
+                echo "<input type='hidden' id='centinvestimento' name='investename' value='0'>";
+            }
+        } else {
+            echo "<input type='hidden' id='centfixo' name='investename' value='0'>";
+            echo "<input type='hidden' id='centvariavel' name='investename' value='0'>";
+            echo "<input type='hidden' id='centlazer' name='investename' value='0'>";
+            echo "<input type='hidden' id='centinvestimento' name='investename' value='0'>";
+        }
+    } else {
+        echo "<input type='hidden' id='centfixo' name='investename' value='0'>";
+        echo "<input type='hidden' id='centvariavel' name='investename' value='0'>";
+        echo "<input type='hidden' id='centlazer' name='investename' value='0'>";
+        echo "<input type='hidden' id='centinvestimento' name='investename' value='0'>";
+    }
 
     ?>
     <div class="preloader">

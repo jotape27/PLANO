@@ -36,7 +36,7 @@
         <fieldset class="field1">
             <div class="login">
                 <h1 class="cadastro">Cadastro</h1>
-                <div class="part1" hidden>
+                <div class="part1">
                     <div class="gap">
                         <div class="lado">
                             <div class="input-box">
@@ -388,7 +388,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="part4">
+                <div class="part4" hidden>
                     <div class="gap">
                         <h1 class="h1slide">Quantos porcentos da sua renda será destinada à:</h1>
                         <div class="lado">
