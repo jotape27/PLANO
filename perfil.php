@@ -138,7 +138,7 @@ if ($genero == "f") {
                             <div class="lado">
                                 <div class="update perfil">
                                     <span>Celular</span>
-                                    <input type="text" name="celular2" value="<?php echo $dados['celular']; ?>" onkeydown="masktel2()" id="celular2" placeholder="⠀" maxlength="15" required>
+                                    <input type="text" name="celular" value="<?php echo $dados['celular']; ?>" onkeydown="masktel2()" id="celular2" placeholder="⠀" maxlength="15" required>
                                 </div>
                                 <div class="update perfil">
                                     <span>Email</span>

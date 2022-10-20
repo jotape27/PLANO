@@ -12,7 +12,7 @@ session_start();
 if (isset($_POST['btn-login'])) :
     //pega os dados no cadastro e os transforma em variáveis
 
-    $cpf = $_POST['cpf'];
+    $cpf = $_POST['cpfs'];
     $senha = $_POST['senha'];
 
     $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);

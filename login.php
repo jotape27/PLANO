@@ -15,6 +15,8 @@
   <div class="preloader">
     <div class="loader"></div>
   </div>
+
+  
   <!--div class="darkthemes">
 <input type="checkbox" class="checkbox" id="chk">
 <label class="label" for="chk">
@@ -41,7 +43,7 @@
           <div class="gap">
 
             <div class="input-box">
-              <input type="text" id="cpf3" name="cpf" onkeydown="maskcpf3()" maxlength="14" placeholder="⠀" required>
+              <input onkeypress="mascara(this, cpf)" maxlength="14" placeholder="000.000.000-00" type="text" required name="cpfs"/>
               <span>cpf</span>
               <p class="desc">digite apenas números</p>
             </div>

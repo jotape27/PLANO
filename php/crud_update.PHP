@@ -16,18 +16,28 @@ if (isset($_POST['btn-update'])) :
     $cpf = $_POST['cpf'];
     $nascimento = $_POST['nascimento'];
     $genero = $_POST['genero'];
+    $email = $_POST['email'];
+    $celular = $_POST['celular'];
+
 
     $id = $_SESSION['id'];
-    $update = new Usuario();
+    $updateUser = new Usuario();
 
-    $update->setNome($nome);
-    $update->setSobrenome($sobrenome);
-    $update->setCpf($cpf);
-    $update->setNascimento($nascimento);
-    $update->setGenero($genero);
+    $updateUser->setNome($nome);
+    $updateUser->setSobrenome($sobrenome);
+    $updateUser->setCpf($cpf);
+    $updateUser->setNascimento($nascimento);
+    $updateUser->setGenero($genero);
+    $updateUser->setEmail($email);
+    $updateUser->setCelular($celular);
 
-    if ($update->update($id)) {
+
+    if ($updateUser->update($id)) {
     }
+    if ($updateUser->updateContato($id)) {
+    }
+
+
 
 endif;
 header('Location: ../perfil.php');
