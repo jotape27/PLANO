@@ -626,11 +626,6 @@ class Gasto extends CRUD
         return $stmt->execute();
     }
 
-    /***************
-    Objetivo: Atuliza um cliente pelo id
-    Parâmetro de entrada: $id - id do cliente
-    Parâmetro de saída: Retorna true em caso de sucesso ou false em caso de falha.
-     ***************/
     public function update($id)
     {
         $sql = "UPDATE $this->table SET valor = :valor WHERE id = :id ";
