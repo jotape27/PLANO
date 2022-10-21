@@ -3,10 +3,14 @@
 $namepage = 'perfil';
 //Conexão
 // INSERIR O NOSSO CONECT!!!
-include_once 'php/protecao.php';
 require_once 'php/conexao.php';
 include_once 'php/crud_db.php';
-include_once 'php/tables/tabelas.php';
+include_once 'php/protecao.php';
+include_once 'php/class/endereco.php';
+include_once 'php/class/gasto.php';
+include_once 'php/class/planejamento.php';
+include_once 'php/class/profissao.php';
+include_once 'php/class/usuario.php';
 
 $id = $_SESSION['id'];
 $perfil = new Usuario();
@@ -152,7 +156,7 @@ if ($genero == "f") {
                                 </div>
                                 <div class="update perfil">
                                     <span>CPF</span>
-                                    <input type="text" name="cpf" id="cpf2" value="<?php echo $dados['cpf']; ?>" onkeydown="maskcpf2()" maxlength="14" placeholder="⠀" required>
+                                    <input type="text" name="cpf" id="cpf2" value="<?php echo $dados['cpf']; ?>" onkeydown="maskcpf2()" maxlength="14" placeholder="⠀" readonly required>
                                 </div>
                             </div>
                             <div class="lado">
