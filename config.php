@@ -35,7 +35,7 @@ $dados = $config->find($id);
     $namepage = 'config';
     include_once 'php/header.php'; ?>
 
-    <!--H1 class="embreve">COMING SOON</H1-->
+    <H1 class="embreve">COMING SOON</H1>
 
 
 
