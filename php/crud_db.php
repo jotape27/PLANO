@@ -32,14 +32,13 @@ abstract class CRUD extends Database
 	{
 		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
 		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
-		edrc.UF, edrc.cidade, edrc.cep, lg.tp_logradouro, edrc.desc_logradouro, edrc.num, 
+		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num, 
 		pfs.descricao,us_pfs.renda
 		FROM usuario us
 		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
 		INNER JOIN perfil ON us.fk_perfil_id = perfil.id
 		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
 		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
-		INNER JOIN logradouro lg ON lg.id = edrc.fk_logradouro_id
 		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
 		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 
 		WHERE us.id = :id;";
@@ -57,14 +56,13 @@ abstract class CRUD extends Database
 	{
 		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
 		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
-		edrc.UF, edrc.cidade, edrc.cep, lg.tp_logradouro, edrc.desc_logradouro, edrc.num, 
+		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num, 
 		pfs.descricao,us_pfs.renda
 		FROM usuario us
 		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
 		INNER JOIN perfil ON us.fk_perfil_id = perfil.id
 		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
 		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
-		INNER JOIN logradouro lg ON lg.id = edrc.fk_logradouro_id
 		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
 		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 	
 		WHERE us.id != 0 	
@@ -131,7 +129,7 @@ abstract class CRUD extends Database
 	 ***************/
 	public function delete($id)
 	{
-		$sql = "DELETE FROM  WHERE id = :id";
+		$sql = "DELETE FROM $this->table WHERE id = :id";
 		$stmt = Database::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		return $stmt->execute();

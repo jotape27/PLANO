@@ -50,7 +50,7 @@
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <input type="text" name="celular" onkeydown="masktel()" id="celular" placeholder="⠀" maxlength="15" required>
+                                <input type="text" name="celular" onkeydown="mascara(this, telefone)" id="celular" placeholder="⠀" maxlength="15" required>
                                 <span>celular</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
@@ -65,7 +65,7 @@
                                 <span>data DE NasCimento</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" name="cpf" id="cpf" onkeydown="maskcpf()" maxlength="14" placeholder="⠀" required>
+                                <input type="text" name="cpfs" onkeydown="mascara(this, cpf)" maxlength="14" placeholder="⠀" required>
                                 <span>CPF</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
@@ -123,7 +123,12 @@
                     <div class="gap">
                         <div class="lado">
                             <div class="input-box">
-                                <select id="estado" name="estado" required>
+                                <input name="ceps" type="text" id="ceps" oninput="mascara(this, cep)" placeholder="⠀" maxlength="9" value="" size="10" onblur="pesquisacep(this.value);" required />
+                                <span>cep</span>
+                                <p class="desc">digite apenas números</p>
+                            </div>
+                            <div class="input-box">
+                                <!--select id="estado" name="estado" required>
                                     <option value='' hidden disabled selected>Selecione...</option>
                                     <option value='AC'>Acre</option>
                                     <option value='AL'>Alagoas</option>
@@ -153,54 +158,34 @@
                                     <option value='SE'>Sergipe</option>
                                     <option value='TO'>Tocantins</option>
 
-                                </select>
+                                </select-->
+                                <input name="estado" type="text" id="uf" size="2" placeholder="⠀" required />
                                 <span>estado</span>
                             </div>
-                            <div class="input-box">
-                                <select name="cidade" id="cidade" required>
-                                    <option value='' hidden disabled selected>Selecione um estado antes</option>
-                                </select>
-                                <span>cidade</span>
-                            </div>
+
+                            
+                            
+                            
+
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <select name="logradouro" required>
-                                    <option value="" hidden disabled selected>Selecione...</option>
-                                    <option value="111">Avenida</option>
-                                    <option value="222">Beco</option>
-                                    <option value="333">Chácara</option>
-                                    <option value="444">Condomínio</option>
-                                    <option value="555">Distrito</option>
-                                    <option value="666">Escadaria</option>
-                                    <option value="777">Estação</option>
-                                    <option value="888">Estrada</option>
-                                    <option value="999">Favela</option>
-                                    <option value="122">Fazenda</option>
-                                    <option value="133">Ladeira</option>
-                                    <option value="144">Morro</option>
-                                    <option value="155">Parque</option>
-                                    <option value="166">Residencial</option>
-                                    <option value="177">Rodovia</option>
-                                    <option value="188">Rua</option>
-                                    <option value="199">Trevo</option>
-                                    <option value="200">Vale</option>
-                                    <option value="211">Via</option>
-                                    <option value="233">Viaduto</option>
-                                    <option value="244">Viela</option>
-                                    <option value="255">Vila</option>
-                                </select>
-                                <span>logradouro</span>
+                                <!--select name="cidade" id="cidade" required>
+                                    <option value='' hidden disabled selected>Selecione um estado antes</option>
+                                </select-->
+                                <input name="cidade" type="text" id="cidade" size="40" placeholder="⠀" required/>
+                                <span>cidade</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" name="endereco" id="endereco" placeholder="⠀" required>
+                                <!--input type="text" name="endereco" id="endereco" placeholder="⠀" required-->
+                                <input type="text" name="endereco" id="rua" size="60" placeholder="⠀" required/>
                                 <span>endereço</span>
                             </div>
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <input type="text" id="cep" name="cep" onkeydown="maskcep()" maxlength="9" placeholder="⠀" required>
-                                <span>cep</span>
+                                <input name="bairro" type="text" id="bairro" size="40" placeholder="⠀" required/>
+                                <span>bairro</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
                             <div class="input-box">
@@ -388,6 +373,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="part4" hidden>
                     <div class="gap">
                         <h1 class="h1slide">Quantos porcentos da sua renda será destinada à:</h1>
@@ -483,7 +469,7 @@
 
     <script src="js/graficos.js"></script>
     <script src="js/cidades.js"></script>
-    <script src="js/profissao.js"></script>
+    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>

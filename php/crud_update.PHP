@@ -17,7 +17,7 @@ if (isset($_POST['btn-update'])) :
 
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $cpf = $_POST['cpf'];
+    $cpf = $_POST['cpfs'];
     $nascimento = $_POST['nascimento'];
     $genero = $_POST['genero'];
     $email = $_POST['email'];

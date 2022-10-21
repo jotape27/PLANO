@@ -142,7 +142,7 @@ if ($genero == "f") {
                             <div class="lado">
                                 <div class="update perfil">
                                     <span>Celular</span>
-                                    <input type="text" name="celular" value="<?php echo $dados['celular']; ?>" onkeydown="masktel2()" id="celular2" placeholder="⠀" maxlength="15" required>
+                                    <input type="text" name="celular" value="<?php echo $dados['celular']; ?>" onkeydown="mascara(this, telefone)" placeholder="⠀" maxlength="15" required>
                                 </div>
                                 <div class="update perfil">
                                     <span>Email</span>
@@ -156,7 +156,7 @@ if ($genero == "f") {
                                 </div>
                                 <div class="update perfil">
                                     <span>CPF</span>
-                                    <input type="text" name="cpf" id="cpf2" value="<?php echo $dados['cpf']; ?>" onkeydown="maskcpf2()" maxlength="14" placeholder="⠀" readonly required>
+                                    <input type="text" name="cpfs" id="cpf2" value="<?php echo $dados['cpf']; ?>" onkeydown="mascara(this, cpf)" maxlength="14" placeholder="⠀" readonly required>
                                 </div>
                             </div>
                             <div class="lado">

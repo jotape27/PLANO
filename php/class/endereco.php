@@ -12,7 +12,7 @@ class Endereco extends CRUD
     private $numero;
     private $cidade;
     private $uf;
-    private $logradouro;
+    private $bairro;
 
 
 
@@ -65,13 +65,13 @@ class Endereco extends CRUD
     {
         return $this->uf;
     }
-    public function setLogradouro($logradouro)
+    public function setBairro($bairro)
     {
-        $this->logradouro = $logradouro;
+        $this->bairro = $bairro;
     }
-    public function getLogradouro()
+    public function getBairro()
     {
-        return $this->logradouro;
+        return $this->bairro;
     }
 
     /********Fim dos métodos sets e gets*********/
@@ -83,14 +83,14 @@ class Endereco extends CRUD
     /***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,fk_logradouro_id) VALUES (:cep,:endereco,:numero,:cidade,:uf,:logradouro) RETURNING id;";
+        $sql = "INSERT INTO $this->table (cep,desc_logradouro,num,cidade,uf,bairro) VALUES (:cep,:endereco,:numero,:cidade,:uf,:bairro) RETURNING id;";
         $stmt = Database::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->endereco);
         $stmt->bindParam(':numero', $this->numero);
         $stmt->bindParam(':cidade', $this->cidade);
         $stmt->bindParam(':uf', $this->uf);
-        $stmt->bindParam(':logradouro', $this->logradouro);
+        $stmt->bindParam(':bairro', $this->bairro);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
         $stmt->execute();

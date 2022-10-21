@@ -13,73 +13,56 @@ const loader = document.getElementsByClassName("preloader");
 loader.classList.toogle('complete');
 }*/
 
+function numberToReal(numero) {
+  var numero = numero.toFixed(2).split('.');
+  numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+  return numero.join(',');
+}
+
+function leech(v){
+  v=v.replace(/o/gi,"0")
+  v=v.replace(/i/gi,"1")
+  v=v.replace(/z/gi,"2")
+  v=v.replace(/e/gi,"3")
+  v=v.replace(/a/gi,"4")
+  v=v.replace(/s/gi,"5")
+  v=v.replace(/t/gi,"7")
+  return v
+}
+function soNumeros(v){
+  return v.replace(/\D/g,"")
+}
+
 function mascara(o, f) {
-    v_obj = o;
-    v_fun = f;
-    setTimeout("execmascara()", 1);
-  }
-
-  function execmascara() {
-    v_obj.value = v_fun(v_obj.value);
-  }
-
-  function cpf(v) {
-    v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
-    v = v.replace(/(\d{3})(\d)/, "$1.$2"); //Coloca um ponto entre o terceiro e o quarto dígitos
-    v = v.replace(/(\d{3})(\d)/, "$1.$2"); //Coloca um ponto entre o terceiro e o quarto dígitos
-    //de novo (para o segundo bloco de números)
-    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); //Coloca um hífen entre o terceiro e o quarto dígitos
-    return v;
-  }
-
-function masktel() {
-  var tel = document.getElementById("celular");
-
-  if (tel.value.length == 0) {
-    tel.value = "(" + tel.value;
-  } else if (tel.value.length == 3) {
-    tel.value += ") ";
-  } else if (tel.value.length == 10) {
-    tel.value += "-";
-  }
+  v_obj = o;
+  v_fun = f;
+  setTimeout("execmascara()", 1);
 }
 
-function maskcpf2() {
-  var cpf2 = document.getElementById("cpf2");
-
-  if (cpf2.value.length == 3 || cpf2.value.length == 7) {
-    cpf2.value += ".";
-  } else if (cpf2.value.length == 11) {
-    cpf2.value += "-";
-  }
+function execmascara() {
+  v_obj.value = v_fun(v_obj.value);
 }
 
-function masktel2() {
-  var tel2 = document.getElementById("celular2");
-
-  if (tel2.value.length == 0) {
-    tel2.value = "(" + tel2.value;
-  } else if (tel2.value.length == 3) {
-    tel2.value += ") ";
-  } else if (tel2.value.length == 10) {
-    tel2.value += "-";
-  }
+function cpf(v) {
+  v = v.replace(/\D/g,""); //Remove tudo o que não é dígito
+  v = v.replace(/(\d{3})(\d)/, "$1.$2"); //Coloca um ponto entre o terceiro e o quarto dígitos
+  v = v.replace(/(\d{3})(\d)/, "$1.$2"); //Coloca um ponto entre o terceiro e o quarto dígitos
+  //de novo (para o segundo bloco de números)
+  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); //Coloca um hífen entre o terceiro e o quarto dígitos
+  return v;
 }
 
-function maskcep() {
-  var cep = document.getElementById("cep");
-
-  if (cep.value.length == 5) {
-    cep.value += "-";
-  }
+function telefone(v){
+  v=v.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+  v=v.replace(/^(\d\d)(\d)/g,"($1) $2") //Coloca parênteses em volta dos dois primeiros dígitos
+  v=v.replace(/(\d{5})(\d)/,"$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+  return v
 }
 
-function maskcep2() {
-  var cep2 = document.getElementById("cep2");
-
-  if (cep2.value.length == 5) {
-    cep2.value += "-";
-  }
+function cep(v){
+  v=v.replace(/D/g,"")                //Remove tudo o que não é dígito
+  v=v.replace(/^(\d{5})(\d)/,"$1-$2") //Esse é tão fácil que não merece explicações
+  return v
 }
 
 function maskMoeda() {
@@ -162,15 +145,10 @@ function maskMoeda5() {
   }
 }
 
-function maskcpf3() {
-  var cpf3 = document.getElementById("cpf3");
 
-  if (cpf3.value.length == 3 || cpf3.value.length == 7) {
-    cpf3.value += ".";
-  } else if (cpf3.value.length == 11) {
-    cpf3.value += "-";
-  }
-}
+
+
+
 
 function porcent(novoValor) {
   document.getElementById("exibePorcent").innerHTML = novoValor;

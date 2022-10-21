@@ -22,7 +22,7 @@ if (isset($_POST['btn-cadastro'])) :
 
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $cpf = $_POST['cpf'];
+    $cpf = $_POST['cpfs'];
     $genero = $_POST['genero'];
     $nascimento = $_POST['nascimento'];
     $senha = $_POST['valsenha'];
@@ -35,12 +35,12 @@ if (isset($_POST['btn-cadastro'])) :
     /*criptografia via password_hash que gera uma hash aleatòria para cada senha (hashs diferentes mesmo para senha iguais)*/
     $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
     //----------------------------------------------------------------------------
-    $cep = $_POST['cep'];
+    $cep = $_POST['ceps'];
     $endereco = $_POST['endereco'];
     $numero = $_POST['numero'];
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
-    $logradouro = $_POST['logradouro'];
+    $bairro = $_POST['bairro'];
     //----------------------------------------------------------------------------
     $profissao = $_POST['profissao'];
     $renda = floatval(str_replace(",", ".", str_replace(".", "", $_POST['renda'])));
@@ -72,7 +72,7 @@ if (isset($_POST['btn-cadastro'])) :
     $enderecos->setNumero($numero);
     $enderecos->setCidade($cidade);
     $enderecos->setUf($estado);
-    $enderecos->setLogradouro($logradouro);
+    $enderecos->setBairro($bairro);
     //----------------------------------------------------------------------------
     $profissoes->setprofissao($profissao);
     $profissoes->setrenda($renda);
