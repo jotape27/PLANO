@@ -223,16 +223,17 @@ if ($genero == "f") {
         </div>
     </div>
 
-    <script src="js/js.js"></script>
     <script src="js/graficos.js"></script>
+    <script src="js/mascaras.js"></script>
+    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="js/materialize.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>.
+    <script src="js/materialize.min.js"></script>
 
 
     <?php

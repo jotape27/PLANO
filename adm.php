@@ -88,7 +88,7 @@ include_once 'php/class/usuario.php';
                     </tr>
                 </thead>
                 <?php
-                
+
                 if (count($tabela) > 0) {
                     foreach ($tabela as $linha) {
 
@@ -103,14 +103,14 @@ include_once 'php/class/usuario.php';
                         }
 
                         //print_r($linha);
-                    
+
                         // if ($contato['tp_contato'] = 'email') {
                         //     $email = $contato['descricao'];
                         // } elseif ($contato['tp_contato'] = 'celular') {
                         //     $celular = $contato['descricao'];
                         // }
 
-                       
+
                 ?>
                         <tr>
                             <td><?php echo $linha['nome']; ?></td>
@@ -174,14 +174,17 @@ include_once 'php/class/usuario.php';
 
 
 
-    <script src="js/js.js"></script>
+    <script src="js/graficos.js"></script>
+    <script src="js/mascaras.js"></script>
+    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>.
+    <script src="js/materialize.min.js"></script>
 </body>
 
 </html>

@@ -41,8 +41,9 @@ $dados = $config->find($id);
 
     <?php include_once 'php/footer.php'; ?>
 
-    <script src="js/js.js"></script>
     <script src="js/graficos.js"></script>
+    <script src="js/mascaras.js"></script>
+    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>

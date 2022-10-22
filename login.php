@@ -16,7 +16,7 @@
     <div class="loader"></div>
   </div>
 
-  
+
   <!--div class="darkthemes">
 <input type="checkbox" class="checkbox" id="chk">
 <label class="label" for="chk">
@@ -43,7 +43,7 @@
           <div class="gap">
 
             <div class="input-box">
-              <input onkeypress="mascara(this, cpf)" maxlength="14" placeholder=" " type="text" required name="cpfs"/>
+              <input oninput="mascara(this, cpf)" maxlength="14" placeholder=" " type="text" required name="cpfs" />
               <span>cpf</span>
               <p class="desc">digite apenas números</p>
             </div>
@@ -91,16 +91,16 @@
     <?php include_once 'php/footer.php'; ?>
   </div>
 
+  <script src="js/graficos.js"></script>
+  <script src="js/mascaras.js"></script>
+  <script src="js/api_busca_cep.js"></script>
+  <script src="js/selecionador.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="js/load.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="js/load.js"></script>
-  <script src="js/js.js"></script>
-  <script src="js/graficos.js"></script>
-  <script src="js/selecionador.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -159,13 +159,13 @@
                                     <option value='TO'>Tocantins</option>
 
                                 </select-->
-                                <input name="estado" type="text" id="uf" size="2" placeholder="⠀" required />
+                                <input name="estado" type="text" id="uf" size="2" placeholder="⠀" maxlength="2" required />
                                 <span>estado</span>
                             </div>
 
-                            
-                            
-                            
+
+
+
 
                         </div>
                         <div class="lado">
@@ -173,18 +173,18 @@
                                 <!--select name="cidade" id="cidade" required>
                                     <option value='' hidden disabled selected>Selecione um estado antes</option>
                                 </select-->
-                                <input name="cidade" type="text" id="cidade" size="40" placeholder="⠀" required/>
+                                <input name="cidade" type="text" id="cidade" size="40" placeholder="⠀" required />
                                 <span>cidade</span>
                             </div>
                             <div class="input-box">
                                 <!--input type="text" name="endereco" id="endereco" placeholder="⠀" required-->
-                                <input type="text" name="endereco" id="rua" size="60" placeholder="⠀" required/>
+                                <input type="text" name="endereco" id="rua" size="60" placeholder="⠀" required />
                                 <span>endereço</span>
                             </div>
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <input name="bairro" type="text" id="bairro" size="40" placeholder="⠀" required/>
+                                <input name="bairro" type="text" id="bairro" size="40" placeholder="⠀" required />
                                 <span>bairro</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
@@ -358,7 +358,7 @@
 <p class="desc">todos os tipos de gastos somados</p>
 </div-->
                             <div class="input-box subject">
-                                <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
+                                <input type="text" id="dinheiro" name="renda" onkeypress="numberToReal(numero)" maxlength="14" placeholder="⠀" required>
                                 <span>renda</span>
                                 <p class="desc">todos os tipos de renda mensal somados</p>
                             </div>
@@ -388,7 +388,7 @@
                                     <div class="input-slide">
                                         <span>Gastos Fixos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="fixo" value="50" steps="1" id="slideFixo">
+                                    <input type="range" min="3" max="100" name="fixo" value="10" steps="1" id="slideFixo">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -406,7 +406,7 @@
                                     <div class="input-slide">
                                         <span>Gastos Variáveis</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="variavel" value="50" steps="1" id="slideVariavel">
+                                    <input type="range" min="3" max="100" name="variavel" value="10" steps="1" id="slideVariavel">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -425,7 +425,7 @@
                                     <div class="input-slide">
                                         <span>Gastos de Lazer</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="lazer" value="50" steps="1" id="slideLazer">
+                                    <input type="range" min="3" max="100" name="lazer" value="10" steps="1" id="slideLazer">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -443,7 +443,7 @@
                                     <div class="input-slide">
                                         <span>Investimentos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="investimento" value="50" steps="1" id="slideInvestimento">
+                                    <input type="range" min="3" max="100" name="investimento" value="10" steps="1" id="slideInvestimento">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -468,7 +468,7 @@
     <?php include_once 'php/footer.php'; ?>
 
     <script src="js/graficos.js"></script>
-    <script src="js/cidades.js"></script>
+    <script src="js/mascaras.js"></script>
     <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
