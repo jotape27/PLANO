@@ -67,6 +67,15 @@
         <p class="link">Caso não possua uma conta, crie uma <a href="Cadastro.php">aqui</a></p>
         <?php
         session_start();
+        if (isset($_SESSION['repetido'])) {
+        ?>
+          <div class="error email">
+            <span>CPF já cadastrado, por favor faça o seu login</span>
+          </div>
+
+        <?php
+        }
+
         if (isset($_SESSION['erro'])) {
         ?>
           <div class="error email">

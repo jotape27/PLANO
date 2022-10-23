@@ -27,7 +27,6 @@ if (isset($_POST['btn-login'])) :
     $usuario->setSenha($senhacriptografada);
     $dados = $usuario->login();
     if ($dados) {
-        print_r($dados);
         if (password_verify($senha, $dados['senha'])) {
             if (!isset($_SESSION)) {
                 session_start();

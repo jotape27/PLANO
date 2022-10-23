@@ -189,6 +189,16 @@ class Usuario extends CRUD
         return $stmt->fetch();
         // //endif;
         // echo $stmt['id'];
-        echo $sql;
+    }
+
+    public function verifyCPF()
+    {
+        $sql = "SELECT cpf FROM $this->table WHERE cpf = :cpf/* and senha = :senha*/";
+        $stmt = Database::prepare($sql);
+        $stmt->bindParam(":cpf", $this->cpf);
+        //$stmt->bindParam(":senha", $this->senha);
+        //if(password_verify($this->senha, $dados['senha'])):
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
