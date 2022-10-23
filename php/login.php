@@ -1,7 +1,7 @@
 <?php
 //conexao com o banco de dados
 
-require_once 'conexao.php';
+require_once 'database/conexao.php';
 include_once 'crud_db.php';
 include_once 'class/endereco.php';
 include_once 'class/gasto.php';

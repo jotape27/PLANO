@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 
-require_once 'php/conexao.php';
+require_once 'php/database/conexao.php';
 include_once 'php/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
@@ -127,7 +127,7 @@ include_once 'php/class/usuario.php';
                         </tr>
 
                     <?php
-                    } //endforeach; 
+                    } //endforeach;
                 } else { ?>
                     <tr>
                         <td>-</td>

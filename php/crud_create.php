@@ -1,7 +1,7 @@
 
 <?php
 //conexao com o banco de dados
-require_once 'conexao.php';
+require_once 'database/conexao.php';
 include_once 'crud_db.php';
 include_once 'class/endereco.php';
 include_once 'class/gasto.php';
@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (isset($_POST['btn-cadastro'])) :
-    //pega os dados no cadastro e os transforma em variáveis  
+    //pega os dados no cadastro e os transforma em variáveis
 
 
     $nome = $_POST['nome'];
