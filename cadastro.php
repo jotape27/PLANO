@@ -65,7 +65,7 @@
                                 <span>data DE NasCimento</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" name="cpfs" onkeydown="mascara(this, cpf)" maxlength="14" placeholder="⠀" required>
+                                <input type="text" name="cpfs" onblur="mascara(this, cpf)" id="cpfs" onkeypress="CPF()" maxlength="14" placeholder="⠀" required>
                                 <span>CPF</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
@@ -467,6 +467,8 @@
 
     <?php include_once 'php/footer.php'; ?>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/cpf.js"></script>
     <script src="js/graficos.js"></script>
     <script src="js/mascaras.js"></script>
     <script src="js/api_busca_cep.js"></script>
