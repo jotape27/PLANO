@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Usuario
+ */
 class Usuario extends CRUD
 {
 
@@ -15,9 +18,9 @@ class Usuario extends CRUD
     private $nascimento;
     private $genero;
     private $senha;
+    //private $foto;
 
     private $perfil;
-
 
 
     /********Início dos métodos sets e gets*********/
@@ -105,8 +108,8 @@ class Usuario extends CRUD
 
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES 
-        (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil) RETURNING id";
+        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id/*,foto*/) VALUES
+        (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil/*,:foto*/) RETURNING id";
         //$sql1 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (45,:email)";
 
         $stmt = Database::prepare($sql);
@@ -119,6 +122,7 @@ class Usuario extends CRUD
         $stmt->bindParam(':genero', $this->genero);
         $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':perfil', $this->perfil);
+        //$stmt->bindParam(':foto', $this->foto);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
         //$stmt1->bindParam(':email', $this->email);
@@ -186,6 +190,7 @@ class Usuario extends CRUD
         //$stmt->bindParam(":senha", $this->senha);
         //if(password_verify($this->senha, $dados['senha'])):
         $stmt->execute();
+
         return $stmt->fetch();
         // //endif;
         // echo $stmt['id'];

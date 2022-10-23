@@ -62,6 +62,16 @@ if ($genero == "f") {
     <fieldset class="field1 perfil">
         <div class="login">
             <div>
+                <?php
+                if (!$dados['foto']) {
+                ?><img class="ft_perfil" src='data:image/png;base64,<?php echo $dados['foto']; ?>'>
+                <?php
+                } else {
+                ?>
+                    <!--img class="ft_perfil" src='data:image/png;base64,<?php echo $dados['foto']; ?>'-->
+                <?php
+                }
+                ?>
                 <div class="gap">
                     <div class="lado">
                         <div class="box-input perfil">

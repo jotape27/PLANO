@@ -32,6 +32,7 @@ $dados = $config->find($id);
     </div>
 
     <?php
+
     $namepage = 'config';
     include_once 'php/header.php'; ?>
 
