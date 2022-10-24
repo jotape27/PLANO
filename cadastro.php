@@ -65,8 +65,8 @@
                                 <span>data DE NasCimento</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" name="cpfs" onblur="mascara(this, cpf)" id="cpfs" onkeypress="CPF()" maxlength="14" placeholder="⠀" required>
-                                <span>CPF</span>
+                                <input type="text" name="cpfs" onkeypress="mascara(this, cpf)" id="cpfs" maxlength="14" placeholder="⠀" required>
+                                <span>CPF</span><!--onkeypress="CPF()"-->
                                 <p class="desc">digite apenas números</p>
                             </div>
                         </div>
@@ -186,7 +186,6 @@
                             <div class="input-box">
                                 <input name="bairro" type="text" id="bairro" size="40" placeholder="⠀" required />
                                 <span>bairro</span>
-                                <p class="desc">digite apenas números</p>
                             </div>
                             <div class="input-box">
                                 <input type="number" name="numero" id="num" placeholder="⠀" required>
@@ -338,7 +337,6 @@
                                     <option value="1246">Web Designer</option>
                                     <option value="1247">Zootécnico(a)</option>
                                 </select>
-                                <!--input type="text" id="dinh" name="renda" onkeydown="maskcep()" maxlength="9" placeholder="⠀" required-->
                                 <span>profissão</span>
                             </div>
                             <div class="input-box">
@@ -358,7 +356,7 @@
 <p class="desc">todos os tipos de gastos somados</p>
 </div-->
                             <div class="input-box subject">
-                                <input type="text" id="dinheiro" name="renda" onkeypress="numberToReal(numero)" maxlength="14" placeholder="⠀" required>
+                                <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
                                 <span>renda</span>
                                 <p class="desc">todos os tipos de renda mensal somados</p>
                             </div>
