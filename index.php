@@ -143,10 +143,9 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                     echo "<li>-</li>";
                 }
                 ?>
-
-                <button class="addLista addFixo" id="addFixo" onclick="openFixo()">
+                <div class="addLista" style="background-color: white;" onclick="openFixo()">
                     <ion-icon name="add"></ion-icon>
-                </button>
+                </div>
 
                 <div class="adcGasto adcFixo" id="adcFixo" hidden>
                     <form action="php/crud_create.php" method="post">

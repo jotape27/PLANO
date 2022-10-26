@@ -40,7 +40,9 @@ endif;
             <li class="list <?php echo $config; ?>">
                 <a href="config.php">
                     <span class="icon">
-                        <ion-icon name="settings"></ion-icon>
+                        <!--ion-icon name="settings"></ion-icon-->
+                        <ion-icon name="calendar"></ion-icon>
+                        <!--ion-icon name="pie-chart"></ion-icon-->
                     </span>
                     <span class="text">Configurações</span>
                 </a>
