@@ -40,7 +40,7 @@
                     <div class="gap">
                         <div class="lado">
                             <div class="input-box">
-                                <input type="text" name="nome" placeholder="⠀" required>
+                                <input type="text" name="nome" placeholder="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" required>
                                 <span>Nome</span>
                             </div>
                             <div class="input-box">

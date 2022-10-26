@@ -93,6 +93,8 @@ function validatePassword() {
     }
 }
 
+//--------------------------------------------------------------------------------------------------------------------
+
 function openCadastro() {
     var i, abrir, fechar;
     fechar = document.getElementsByClassName("part1");
