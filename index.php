@@ -25,7 +25,6 @@ $variavel = $indexGasto->findVar($id);
 $invest = $indexGasto->findInvest($id);
 $lazer = $indexGasto->findLazer($id);
 
-
 $sumf = $indexGasto->sumfindFix($id);
 $sumv = $indexGasto->sumfindVar($id);
 $sumi = $indexGasto->sumfindInvest($id);
@@ -140,39 +139,40 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
                 } else {
+
                     echo "<li>-</li>";
                 }
                 ?>
-                <div class="addLista" style="background-color: white;" onclick="openFixo()">
+                <!--div class="addLista" onclick="openFixo()">
                     <ion-icon name="add"></ion-icon>
-                </div>
+                </div-->
+                <input type="hidden" class="addLista" onclick="closeFixo()" value="+">
 
-                <div class="adcGasto adcFixo" id="adcFixo" hidden>
+
+                <div class="adcGasto adcFixo" id="adcFixo">
                     <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
-                            <button type="reset" class="addLista subir" onclick="closeFixo()">
+                            <input type="reset" class="addLista subir" onclick="closeFixo()" value="✕">
+                            <!--button type="reset" class="addLista subir" onclick="closeFixo()">
                                 <ion-icon name="close-outline"></ion-icon>
-                            </button>
+                            </button-->
                         </div>
                         <div class="lado">
                             <input type="text" name="valor" onkeyup="maskMoeda2()" id="dinheiro2" maxlength="14" placeholder="Valor (R$):">
-                            <button type="submit" class="addLista subir" name="addFixo">
+                            <input type="submit" class="addLista subir" onclick="closeFixo()" value="✓">
+                            <!--button type="submit" class="addLista subir" name="addFixo">
                                 <ion-icon name="checkmark-done"></ion-icon>
-                            </button>
+                            </button-->
                         </div>
                     </form>
                 </div>
             </ul>
-
-
         </div>
         <br>
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
-
-
                 <?php
                 if (count($variavel) > 0) {
                     foreach ($variavel as $linha) {
@@ -183,7 +183,6 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 }
 
                 ?>
-
                 <button class="addLista addVariavel" id="addVariavel" onclick='openVariavel()'>
                     <ion-icon name="add"></ion-icon>
                 </button>

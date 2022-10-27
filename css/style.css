@@ -1405,7 +1405,7 @@ body.adm button * .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
+  text-align: center;
   color: #000;
   cursor: pointer;
   z-index: 100;

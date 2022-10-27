@@ -75,7 +75,7 @@
                             <div class="input-box">
                                 <input type="password" id="senha" placeholder="⠀" onkeyup="return validatePassword()" minlength=" 8" required>
                                 <span>Senha</span>
-                                <button type="button" class="toogle-show">
+                                <div class="toogle-show">
                                     <div class="show" onclick="show()">
                                         <ion-icon name="eye"></ion-icon>
                                     </div>
@@ -85,12 +85,12 @@
                                     <div class="alert" hidden>
                                         <ion-icon name="alert-outline"></ion-icon>
                                     </div>
-                                </button>
+                                </div>
                             </div>
                             <div class="input-box">
                                 <input type="password" id="valsenha" name="valsenha" onkeyup="return validatePassword()" placeholder="⠀" minlength="8" required>
                                 <span>confirmar Senha</span>
-                                <button type="button" class="toogle-show">
+                                <div class="toogle-show">
                                     <div class="valshow" onclick="valshow()">
                                         <ion-icon name="eye"></ion-icon>
                                     </div>
@@ -100,7 +100,7 @@
                                     <div class="alert" hidden>
                                         <ion-icon name="alert-outline"></ion-icon>
                                     </div>
-                                </button>
+                                </div>
                             </div>
                         </div>
                         <div class="lado">
@@ -129,45 +129,9 @@
                                 <p class="desc">digite apenas números</p>
                             </div>
                             <div class="input-box">
-                                <!--select id="estado" name="estado" required>
-                                    <option value='' hidden disabled selected>Selecione...</option>
-                                    <option value='AC'>Acre</option>
-                                    <option value='AL'>Alagoas</option>
-                                    <option value='AP'>Amapá</option>
-                                    <option value='AM'>Amazonas</option>
-                                    <option value='BA'>Bahia</option>
-                                    <option value='CE'>Ceará</option>
-                                    <option value='DF'>Distrito Federal</option>
-                                    <option value='ES'>Espírito Santo</option>
-                                    <option value='GO'>Goiás</option>
-                                    <option value='MA'>Maranhão</option>
-                                    <option value='MT'>Mato Grosso</option>
-                                    <option value='MS'>Mato Grosso do Sul</option>
-                                    <option value='MG'>Minas Gerais</option>
-                                    <option value='PA'>Pará</option>
-                                    <option value='PB'>Paraíba</option>
-                                    <option value='PR'>Paraná</option>
-                                    <option value='PE'>Pernambuco</option>
-                                    <option value='PI'>Piauí</option>
-                                    <option value='RJ'>Rio de Janeiro</option>
-                                    <option value='RN'>Rio Grande do Norte</option>
-                                    <option value='RS'>Rio Grande do Sul</option>
-                                    <option value='RO'>Rondônia</option>
-                                    <option value='RR'>Roraima</option>
-                                    <option value='SC'>Santa Catarina</option>
-                                    <option value='SP'>São Paulo</option>
-                                    <option value='SE'>Sergipe</option>
-                                    <option value='TO'>Tocantins</option>
-
-                                </select-->
                                 <input name="estado" type="text" id="uf" size="2" placeholder="⠀" maxlength="2" required />
                                 <span>estado</span>
                             </div>
-
-
-
-
-
                         </div>
                         <div class="lado">
                             <div class="input-box">
@@ -387,16 +351,13 @@
                                     <div class="input-slide">
                                         <span>Gastos Fixos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="fixo" value="10" steps="1" id="slideFixo">
+                                    <input type="range" min="3" max="100" name="fixo" value="25" steps="1" id="slideFixo">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="lado">
-
                             <div class="range">
-
                                 <div class="sliderValue">
                                     <span id="spanSlide2">50</span>
                                 </div>
@@ -405,16 +366,13 @@
                                     <div class="input-slide">
                                         <span>Gastos Variáveis</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="variavel" value="10" steps="1" id="slideVariavel">
+                                    <input type="range" min="3" max="100" name="variavel" value="25" steps="1" id="slideVariavel">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="lado">
-
                             <div class="range">
-
                                 <div class="sliderValue">
                                     <span id="spanSlide3">50</span>
                                 </div>
@@ -424,7 +382,7 @@
                                     <div class="input-slide">
                                         <span>Gastos de Lazer</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="lazer" value="10" steps="1" id="slideLazer">
+                                    <input type="range" min="3" max="100" name="lazer" value="25" steps="1" id="slideLazer">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -442,7 +400,7 @@
                                     <div class="input-slide">
                                         <span>Investimentos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="investimento" value="10" steps="1" id="slideInvestimento">
+                                    <input type="range" min="3" max="100" name="investimento" value="25" steps="1" id="slideInvestimento">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -453,7 +411,7 @@
                                 <button type="button">VoLtar</button>
                             </div>
                             <div class="botao">
-                                <button type="submit" name="btn-cadastro">Cadastrar</button>
+                                <input type="submit" name="btn-cadastro" value="Cadastrar">
                             </div>
                         </div>
                     </div>
