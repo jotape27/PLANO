@@ -31,7 +31,7 @@ abstract class CRUD extends Database
 	public function find($id)
 	{
 		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
-		us.cpf,us.genero,us.nascimento,us.senha,us.foto,perfil.perfil, 
+		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
 		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num, 
 		pfs.descricao,us_pfs.renda
 		FROM usuario us

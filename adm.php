@@ -13,7 +13,7 @@ if (!isset($_SESSION['id'])) {
 
 
 require_once 'php/database/conexao.php';
-include_once 'php/crud_db.php';
+include_once 'php/database/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
 include_once 'php/class/planejamento.php';
@@ -127,7 +127,7 @@ include_once 'php/class/usuario.php';
                         </tr>
 
                     <?php
-                    } //endforeach;
+                    } //endforeach; 
                 } else { ?>
                     <tr>
                         <td>-</td>
@@ -174,17 +174,14 @@ include_once 'php/class/usuario.php';
 
 
 
-    <script src="js/graficos.js"></script>
-    <script src="js/mascaras.js"></script>
-    <script src="js/api_busca_cep.js"></script>
+    <script src="js/js.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>.
-    <script src="js/materialize.min.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

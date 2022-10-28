@@ -41,40 +41,32 @@
                 <h1>Login</h1>
                 <div>
                     <div class="gap">
+
                         <div class="input-box">
-                            <input oninput="mascara(this, cpf)" maxlength="14" placeholder=" " type="text" required name="cpfs" />
+                            <input onkeypress="mascara(this, cpf)" maxlength="14" placeholder=" " type="text" required name="cpfs" />
                             <span>cpf</span>
                             <p class="desc">digite apenas números</p>
                         </div>
                         <div class="input-box">
                             <input type="password" name="senha" id="senha" placeholder="⠀" required>
                             <span>Senha</span>
-                            <div class="toogle-show">
+                            <button type="button" class="toogle-show">
                                 <div class="show" onclick="show()">
                                     <ion-icon name="eye"></ion-icon>
                                 </div>
                                 <div class="hide" onclick="hide()">
                                     <ion-icon name="eye-off-sharp"></ion-icon>
                                 </div>
-                            </div>
+                            </button>
                         </div>
                         <div class="botao">
-                            <input type="submit" class="entrar" name="btn-login" value="logar">
+                            <button type="submit" class="entrar" name="btn-login">logar</button>
                         </div>
                     </div>
                 </div>
                 <p class="link">Caso não possua uma conta, crie uma <a href="Cadastro.php">aqui</a></p>
                 <?php
                 session_start();
-                if (isset($_SESSION['repetido'])) {
-                ?>
-                    <div class="error email">
-                        <span>CPF já cadastrado, por favor faça o seu login</span>
-                    </div>
-
-                <?php
-                }
-
                 if (isset($_SESSION['erro'])) {
                 ?>
                     <div class="error email">
@@ -99,16 +91,17 @@
         <?php include_once 'php/footer.php'; ?>
     </div>
 
-    <script src="js/graficos.js"></script>
-    <script src="js/mascaras.js"></script>
-    <script src="js/api_busca_cep.js"></script>
-    <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="js/load.js"></script>
+    <script src="js/js.js"></script>
+    <script src="js/graficos.js"></script>
+    <script src="js/mascaras.js"></script>
+    <script src="js/selecionador.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

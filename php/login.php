@@ -2,7 +2,7 @@
 //conexao com o banco de dados
 
 require_once 'database/conexao.php';
-include_once 'crud_db.php';
+include_once 'database/crud_db.php';
 include_once 'class/endereco.php';
 include_once 'class/gasto.php';
 include_once 'class/planejamento.php';
@@ -27,6 +27,7 @@ if (isset($_POST['btn-login'])) :
     $usuario->setSenha($senhacriptografada);
     $dados = $usuario->login();
     if ($dados) {
+        print_r($dados);
         if (password_verify($senha, $dados['senha'])) {
             if (!isset($_SESSION)) {
                 session_start();

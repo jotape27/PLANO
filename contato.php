@@ -1,7 +1,7 @@
 <?php
 
 require_once 'php/database/conexao.php';
-include_once 'php/crud_db.php';
+include_once 'php/database/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
 include_once 'php/class/planejamento.php';
@@ -11,22 +11,20 @@ include_once 'php/class/usuario.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $contato = new Usuario();
+    $dados = $contato->find($id);
+    $title = ' | ' . $dados['nome'];
+}
+
 if (isset($_SESSION['admin'])) {
     if ($_SESSION['admin'] == true) {
         header('Location: adm.php');
     }
 }
 
-
-
-if (!isset($id) or !isset($dados['nome'])) {
-    $title = '';
-} else {
-    $id = $_SESSION['id'];
-    $contato = new Usuario();
-    $dados = $contato->find($id);
-    $title = ' | ' . $dados['nome'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +81,7 @@ if (!isset($id) or !isset($dados['nome'])) {
                     </div>
                     <div class="lado">
                         <div class="input-box">
-                            <input type="text" name="celular" placeholder="⠀" required>
+                            <input type="text" name="celular" placeholder="⠀" oninput="mascara(this, telefone)" required>
                             <span>celular</span>
                         </div>
                         <div class="input-box">
@@ -108,7 +106,7 @@ if (!isset($id) or !isset($dados['nome'])) {
                         </div>
                     </div>
                     <div class="botao">
-                        <a href="perfil.html"><button type="button" class="entrar">Enviar</button></a>
+                        <a href="mailto:jplferreira27@gmail.com"><button type="button" class="entrar">Enviar</button></a>
                     </div>
                 </div>
             </div>
@@ -120,10 +118,10 @@ if (!isset($id) or !isset($dados['nome'])) {
 
 
 
+    <script src="js/js.js"></script>
     <script src="js/graficos.js"></script>
-    <script src="js/mascaras.js"></script>
-    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
+    <script src="js/mascaras.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

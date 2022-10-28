@@ -32,10 +32,11 @@
         <img src="img/plano-light.png" class="img-light" hidden>
         <img class="imagem2" src="img/Spreadsheets-cuate.svg">
     </div>
-    <form onsubmit="return validatePassword()" method="POST" action="php/crud_create.php">
+    <form method="POST" action="php/crud_create.php" onsubmit="return validatePassword()">
         <fieldset class="field1">
             <div class="login">
                 <h1 class="cadastro">Cadastro</h1>
+
                 <div class="part1">
                     <div class="gap">
                         <div class="lado">
@@ -50,7 +51,7 @@
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <input type="text" name="celular" onkeydown="mascara(this, telefone)" id="celular" placeholder="⠀" maxlength="15" required>
+                                <input type="text" name="celular" oninput="mascara(this, telefone)" id="celular" placeholder="⠀" maxlength="15" required>
                                 <span>celular</span>
                                 <p class="desc">digite apenas números</p>
                             </div>
@@ -65,9 +66,8 @@
                                 <span>data DE NasCimento</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" name="cpfs" onkeypress="mascara(this, cpf)" id="cpfs" maxlength="14" placeholder="⠀" required>
+                                <input type="text" name="cpfs" oninput="mascara(this, cpf)" maxlength="14" placeholder="⠀" required>
                                 <span>CPF</span>
-                                <!--onkeypress="CPF()"-->
                                 <p class="desc">digite apenas números</p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <div class="input-box">
                                 <input type="password" id="senha" placeholder="⠀" onkeyup="return validatePassword()" minlength=" 8" required>
                                 <span>Senha</span>
-                                <div class="toogle-show">
+                                <button type="button" class="toogle-show">
                                     <div class="show" onclick="show()">
                                         <ion-icon name="eye"></ion-icon>
                                     </div>
@@ -85,12 +85,12 @@
                                     <div class="alert" hidden>
                                         <ion-icon name="alert-outline"></ion-icon>
                                     </div>
-                                </div>
+                                </button>
                             </div>
                             <div class="input-box">
                                 <input type="password" id="valsenha" name="valsenha" onkeyup="return validatePassword()" placeholder="⠀" minlength="8" required>
                                 <span>confirmar Senha</span>
-                                <div class="toogle-show">
+                                <button type="button" class="toogle-show">
                                     <div class="valshow" onclick="valshow()">
                                         <ion-icon name="eye"></ion-icon>
                                     </div>
@@ -100,7 +100,7 @@
                                     <div class="alert" hidden>
                                         <ion-icon name="alert-outline"></ion-icon>
                                     </div>
-                                </div>
+                                </button>
                             </div>
                         </div>
                         <div class="lado">
@@ -120,6 +120,7 @@
                     </div>
                     <br>
                 </div>
+
                 <div class="part2" hidden>
                     <div class="gap">
                         <div class="lado">
@@ -129,20 +130,16 @@
                                 <p class="desc">digite apenas números</p>
                             </div>
                             <div class="input-box">
-                                <input name="estado" type="text" id="uf" size="2" placeholder="⠀" maxlength="2" required />
+                                <input name="estado" type="text" id="uf" size="2" placeholder="⠀" required />
                                 <span>estado</span>
                             </div>
                         </div>
                         <div class="lado">
                             <div class="input-box">
-                                <!--select name="cidade" id="cidade" required>
-                                    <option value='' hidden disabled selected>Selecione um estado antes</option>
-                                </select-->
                                 <input name="cidade" type="text" id="cidade" size="40" placeholder="⠀" required />
                                 <span>cidade</span>
                             </div>
                             <div class="input-box">
-                                <!--input type="text" name="endereco" id="endereco" placeholder="⠀" required-->
                                 <input type="text" name="endereco" id="rua" size="60" placeholder="⠀" required />
                                 <span>endereço</span>
                             </div>
@@ -151,6 +148,7 @@
                             <div class="input-box">
                                 <input name="bairro" type="text" id="bairro" size="40" placeholder="⠀" required />
                                 <span>bairro</span>
+                                <p class="desc">digite apenas números</p>
                             </div>
                             <div class="input-box">
                                 <input type="number" name="numero" id="num" placeholder="⠀" required>
@@ -167,6 +165,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="part3" hidden>
                     <div class="gap">
                         <div class="lado">
@@ -315,11 +314,6 @@
                             </div>
                         </div>
                         <div class="lado">
-                            <!--div class="input-box">
-<input type="text" id="dinheiro2" name="gasto" onkeyup="maskMoeda2()" maxlength="14" placeholder="⠀" required>
-<span>Gasto</span>
-<p class="desc">todos os tipos de gastos somados</p>
-</div-->
                             <div class="input-box subject">
                                 <input type="text" id="dinheiro" name="renda" onkeyup="maskMoeda()" maxlength="14" placeholder="⠀" required>
                                 <span>renda</span>
@@ -351,13 +345,16 @@
                                     <div class="input-slide">
                                         <span>Gastos Fixos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="fixo" value="25" steps="1" id="slideFixo">
+                                    <input type="range" min="3" max="100" name="fixo" value="50" steps="1" id="slideFixo">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
+
                             <div class="range">
+
                                 <div class="sliderValue">
                                     <span id="spanSlide2">50</span>
                                 </div>
@@ -366,13 +363,16 @@
                                     <div class="input-slide">
                                         <span>Gastos Variáveis</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="variavel" value="25" steps="1" id="slideVariavel">
+                                    <input type="range" min="3" max="100" name="variavel" value="50" steps="1" id="slideVariavel">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="lado">
+
                             <div class="range">
+
                                 <div class="sliderValue">
                                     <span id="spanSlide3">50</span>
                                 </div>
@@ -382,7 +382,7 @@
                                     <div class="input-slide">
                                         <span>Gastos de Lazer</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="lazer" value="25" steps="1" id="slideLazer">
+                                    <input type="range" min="3" max="100" name="lazer" value="50" steps="1" id="slideLazer">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -400,7 +400,7 @@
                                     <div class="input-slide">
                                         <span>Investimentos</span>
                                     </div>
-                                    <input type="range" min="3" max="100" name="investimento" value="25" steps="1" id="slideInvestimento">
+                                    <input type="range" min="3" max="100" name="investimento" value="50" steps="1" id="slideInvestimento">
                                     <div class="value right">100</div>
                                 </div>
                             </div>
@@ -411,7 +411,7 @@
                                 <button type="button">VoLtar</button>
                             </div>
                             <div class="botao">
-                                <input type="submit" name="btn-cadastro" value="Cadastrar">
+                                <button type="submit" name="btn-cadastro">Cadastrar</button>
                             </div>
                         </div>
                     </div>
@@ -424,9 +424,8 @@
 
     <?php include_once 'php/footer.php'; ?>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/cpf.js"></script>
     <script src="js/graficos.js"></script>
+    <script src="js/cidades.js"></script>
     <script src="js/mascaras.js"></script>
     <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>

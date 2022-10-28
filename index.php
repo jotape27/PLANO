@@ -1,7 +1,7 @@
 <?php
 include_once 'php/protecao.php';
 require_once 'php/database/conexao.php';
-include_once 'php/crud_db.php';
+include_once 'php/database/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
 include_once 'php/class/planejamento.php';
@@ -24,6 +24,7 @@ $fixo = $indexGasto->findFix($id);
 $variavel = $indexGasto->findVar($id);
 $invest = $indexGasto->findInvest($id);
 $lazer = $indexGasto->findLazer($id);
+
 
 $sumf = $indexGasto->sumfindFix($id);
 $sumv = $indexGasto->sumfindVar($id);
@@ -139,40 +140,40 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
                     }
                 } else {
-
                     echo "<li>-</li>";
                 }
                 ?>
-                <!--div class="addLista" onclick="openFixo()">
+
+                <button class="addLista addFixo" id="addFixo" onclick="openFixo()">
                     <ion-icon name="add"></ion-icon>
-                </div-->
-                <input type="hidden" class="addLista" onclick="closeFixo()" value="+">
+                </button>
 
-
-                <div class="adcGasto adcFixo" id="adcFixo">
+                <div class="adcGasto adcFixo" id="adcFixo" hidden>
                     <form action="php/crud_create.php" method="post">
                         <div class="lado">
                             <input type="text" name="gasto" placeholder="Gasto:">
-                            <input type="reset" class="addLista subir" onclick="closeFixo()" value="✕">
-                            <!--button type="reset" class="addLista subir" onclick="closeFixo()">
+                            <button type="reset" class="addLista subir" onclick="closeFixo()">
                                 <ion-icon name="close-outline"></ion-icon>
-                            </button-->
+                            </button>
                         </div>
                         <div class="lado">
                             <input type="text" name="valor" onkeyup="maskMoeda2()" id="dinheiro2" maxlength="14" placeholder="Valor (R$):">
-                            <input type="submit" class="addLista subir" onclick="closeFixo()" value="✓">
-                            <!--button type="submit" class="addLista subir" name="addFixo">
+                            <button type="submit" class="addLista subir" name="addFixo">
                                 <ion-icon name="checkmark-done"></ion-icon>
-                            </button-->
+                            </button>
                         </div>
                     </form>
                 </div>
             </ul>
+
+
         </div>
         <br>
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
+
+
                 <?php
                 if (count($variavel) > 0) {
                     foreach ($variavel as $linha) {
@@ -183,6 +184,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 }
 
                 ?>
+
                 <button class="addLista addVariavel" id="addVariavel" onclick='openVariavel()'>
                     <ion-icon name="add"></ion-icon>
                 </button>
@@ -280,17 +282,18 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         </div>
     </div>
 
+    <script src="js/js.js"></script>
     <script src="js/graficos.js"></script>
     <script src="js/mascaras.js"></script>
-    <script src="js/api_busca_cep.js"></script>
     <script src="js/selecionador.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="js/load.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="js/materialize.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="js/materialize.min.js"></script>
+
     <script>
         M.AutoInit();
     </script>

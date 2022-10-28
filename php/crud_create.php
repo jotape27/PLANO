@@ -2,7 +2,7 @@
 <?php
 //conexao com o banco de dados
 require_once 'database/conexao.php';
-include_once 'crud_db.php';
+include_once 'database/crud_db.php';
 include_once 'class/endereco.php';
 include_once 'class/gasto.php';
 include_once 'class/planejamento.php';
@@ -56,77 +56,65 @@ if (isset($_POST['btn-cadastro'])) :
     $enderecos = new Endereco();
     $profissoes = new Profissao();
 
+    //----------------------------------------------------------------------------
+    $usuario->setEmail($emailvalidado);
+    $usuario->setCelular($celular);
+    $usuario->setNome($nome);
+    $usuario->setSobrenome($sobrenome);
     $usuario->setCpf($cpf);
-    $dados = $usuario->verifyCPF();
-    if ($dados) {
-        if ($cpf != $dados['cpf']) {
-
-            //----------------------------------------------------------------------------
-            $usuario->setEmail($emailvalidado);
-            $usuario->setCelular($celular);
-            $usuario->setNome($nome);
-            $usuario->setSobrenome($sobrenome);
-
-            $usuario->setNascimento($nascimento);
-            $usuario->setGenero($genero);
-            $usuario->setSenha($senhacriptografada);
-            $usuario->setPerfil($perfil);
-            //----------------------------------------------------------------------------
-            $enderecos->setCep($cep);
-            $enderecos->setEndereco($endereco);
-            $enderecos->setNumero($numero);
-            $enderecos->setCidade($cidade);
-            $enderecos->setUf($estado);
-            $enderecos->setBairro($bairro);
-            //----------------------------------------------------------------------------
-            $profissoes->setprofissao($profissao);
-            $profissoes->setrenda($renda);
-            //----------------------------------------------------------------------------
+    $usuario->setNascimento($nascimento);
+    $usuario->setGenero($genero);
+    $usuario->setSenha($senhacriptografada);
+    $usuario->setPerfil($perfil);
+    //----------------------------------------------------------------------------
+    $enderecos->setCep($cep);
+    $enderecos->setEndereco($endereco);
+    $enderecos->setNumero($numero);
+    $enderecos->setCidade($cidade);
+    $enderecos->setUf($estado);
+    $enderecos->setBairro($bairro);
+    //----------------------------------------------------------------------------
+    $profissoes->setprofissao($profissao);
+    $profissoes->setrenda($renda);
+    //----------------------------------------------------------------------------
 
 
 
-            $insertUser = $usuario->insert();
-            $insertEndereco = $enderecos->insert();
+    $insertUser = $usuario->insert();
+    $insertEndereco = $enderecos->insert();
 
 
-            $id = $insertUser['id'];
-            $id_endereco = $insertEndereco['id'];
+    $id = $insertUser['id'];
+    $id_endereco = $insertEndereco['id'];
 
 
 
-            if (count($insertUser)) {
-                if ($usuario->insertContato($id)) {
-                }
-            }
-            if (count($insertEndereco)) {
-                if ($enderecos->insertEndereco($id_endereco, $id)) {
-                }
-            }
-            $profissoes->insertProfissao($id);
-
-
-            $planejamento = new Planejamento();
-
-            $dataplan = date('Y-m-d');
-
-
-            $planejamento->setFixo($lazer);
-            $planejamento->setVariavel($variavel);
-            $planejamento->setLazer($lazer);
-            $planejamento->setInvestimento($investimento);
-            $planejamento->setDate($dataplan);
-
-            $ids_plan = $planejamento->insert();
-
-            header("Location: ../");
-        } else {
-            $_SESSION['repetido'] = true;
-            header("Location: ../");
+    if (count($insertUser)) {
+        if ($usuario->insertContato($id)) {
         }
     }
+    if (count($insertEndereco)) {
+        if ($enderecos->insertEndereco($id_endereco, $id)) {
+        }
+    }
+    $profissoes->insertProfissao($id);
+
+
+    $planejamento = new Planejamento();
+
+    $dataplan = date('Y-m-d');
+
+
+    $planejamento->setFixo($lazer);
+    $planejamento->setVariavel($variavel);
+    $planejamento->setLazer($lazer);
+    $planejamento->setInvestimento($investimento);
+    $planejamento->setDate($dataplan);
+
+    $ids_plan = $planejamento->insert();
+
+    header("Location: ../");
 endif;
-
-
 
 if (isset($_POST['addFixo'])) :
     $gastos = new Gasto();

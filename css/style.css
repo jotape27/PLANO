@@ -1393,8 +1393,6 @@ body.adm button * .icon {
   text-transform: capitalize;
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------------------*/
-
 .addLista {
   min-width: 30px;
   min-height: 30px;
@@ -1405,7 +1403,7 @@ body.adm button * .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  font-weight: 900;
   color: #000;
   cursor: pointer;
   z-index: 100;
