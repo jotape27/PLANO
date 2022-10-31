@@ -14,14 +14,19 @@ var invest = document.getElementById("centinvestimento").value;
 
 
 
-var yPlanValues = [25, 40, 15, 20];
+var planofixo = document.getElementById("planofixo").value;
+var planovariavel = document.getElementById("planovariavel").value;
+var planolazer = document.getElementById("planolazer").value;
+var planoinvest = document.getElementById("planoinvestimento").value;
+
+var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 
 var yRealValues = [fixo, variavel, lazer, invest];
 
 
 
 new Chart("planejamento1", {
-   type: "pie",
+   type: "doughnut",
    data: {
       labels: xValues,
       datasets: [{
@@ -29,7 +34,8 @@ new Chart("planejamento1", {
          borderWidth: 2,
          scaleStepWidth: 1,
          data: yPlanValues
-      }]
+      }],
+      hoverOffset: 4
    },
    options: {
       legend: {

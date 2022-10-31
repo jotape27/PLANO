@@ -83,8 +83,8 @@ class Planejamento extends CRUD
      ***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (porcentagem, fk_tipo_planejamento_id, $this->datas) 
-        VALUES (:fixo,889,:data), 
+        $sql = "INSERT INTO $this->table (porcentagem, fk_tipo_planejamento_id, $this->datas)
+        VALUES (:fixo,889,:data),
                 (:variavel,546,:data),
                 (:lazer,341,:data),
                 (:investimento,264,:data) RETURNING id";
@@ -103,6 +103,91 @@ class Planejamento extends CRUD
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_BOTH);
+    }
+
+    public function findPlanfix($id)
+    {
+        $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+        FROM planejamento
+        INNER JOIN tipo_planejamento
+        ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
+        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+        ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
+        INNER JOIN usuario
+        ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+        WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = :id
+        AND tipo_planejamento.id = 889;";
+
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function findPlanvar($id)
+    {
+        $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+        FROM planejamento
+        INNER JOIN tipo_planejamento
+        ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
+        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+        ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
+        INNER JOIN usuario
+        ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+        WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = :id
+        AND tipo_planejamento.id = 546;";
+
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function findPlanlazer($id)
+    {
+        $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+        FROM planejamento
+        INNER JOIN tipo_planejamento
+        ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
+        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+        ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
+        INNER JOIN usuario
+        ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+        WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = :id
+        AND tipo_planejamento.id = 341;";
+
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+
+    public function findPlaninvest($id)
+    {
+        $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+        FROM planejamento
+        INNER JOIN tipo_planejamento
+        ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
+        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
+        ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
+        INNER JOIN usuario
+        ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
+        WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = :id
+        AND tipo_planejamento.id = 264;";
+
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
     /**************

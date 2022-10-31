@@ -2,7 +2,7 @@
 <?php
 //conexao com o banco de dados
 require_once 'database/conexao.php';
-include_once 'database/crud_db.php';
+include_once 'crud_db.php';
 include_once 'class/endereco.php';
 include_once 'class/gasto.php';
 include_once 'class/planejamento.php';

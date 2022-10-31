@@ -1,7 +1,7 @@
 <?php
 
 require_once 'php/database/conexao.php';
-include_once 'php/database/crud_db.php';
+include_once 'php/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
 include_once 'php/class/planejamento.php';

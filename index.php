@@ -1,7 +1,7 @@
 <?php
 include_once 'php/protecao.php';
 require_once 'php/database/conexao.php';
-include_once 'php/database/crud_db.php';
+include_once 'php/crud_db.php';
 include_once 'php/class/endereco.php';
 include_once 'php/class/gasto.php';
 include_once 'php/class/planejamento.php';
@@ -25,11 +25,31 @@ $variavel = $indexGasto->findVar($id);
 $invest = $indexGasto->findInvest($id);
 $lazer = $indexGasto->findLazer($id);
 
+$planfix = $indexPlano->findPlanfix($id);
+$planvar = $indexPlano->findPlanvar($id);
+$planinvest = $indexPlano->findPlaninvest($id);
+$planlazer = $indexPlano->findPlanlazer($id);
 
 $sumf = $indexGasto->sumfindFix($id);
 $sumv = $indexGasto->sumfindVar($id);
 $sumi = $indexGasto->sumfindInvest($id);
 $suml = $indexGasto->sumfindLazer($id);
+
+
+foreach ($planfix as $planejamentofixo) {
+    $planofix = $planejamentofixo['porcentagem'];
+}
+foreach ($planvar as $planejamentovar) {
+    $planovar = $planejamentovar['porcentagem'];
+}
+foreach ($planinvest as $planejamentoinvest) {
+    $planoinvest = $planejamentoinvest['porcentagem'];
+
+
+}
+foreach ($planlazer as $planejamentolazer) {
+    $planolaz = $planejamentolazer['porcentagem'];
+}
 
 foreach ($sumf as $sumfixo) {
     $somafixo = $sumfixo['sum'];
@@ -45,6 +65,7 @@ foreach ($suml as $sumlazer) {
 }
 
 $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
+$totalplano = $planofix + $planovar + $planolaz + $planoinvest;
 
 ?>
 
@@ -70,10 +91,10 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
     if ($somafixo != 0 and $somavariavel != 0 and $somainvest != 0 and $somalazer != 0) {
 
 
-        $centfixo = number_format(($somafixo / $total) * 100, 2, '.', ',');
-        $centvariavel = number_format(($somavariavel / $total) * 100, 2, '.', ',');
-        $centlazer = number_format(($somalazer / $total) * 100, 2, '.', ',');
-        $centinvestimento = number_format(($somainvest / $total) * 100, 2, '.', ',');
+        $centfixo = number_format(($somafixo / $total) * 100, 0, '.', ',');
+        $centvariavel = number_format(($somavariavel / $total) * 100, 0, '.', ',');
+        $centlazer = number_format(($somalazer / $total) * 100, 0, '.', ',');
+        $centinvestimento = number_format(($somainvest / $total) * 100, 0, '.', ',');
 
         echo "<input type='hidden' id='centfixo' name='investename' value='" . $centfixo . "'>";
         echo "<input type='hidden' id='centvariavel' name='investename' value='" . $centvariavel . "'>";
@@ -86,6 +107,16 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         echo "<input type='hidden' id='centlazer' name='investename' value='0'>";
         echo "<input type='hidden' id='centinvestimento' name='investename' value='0'>";
     }
+
+    // $planofixo = number_format(($planofix / $totalplano) * 100, 2, '.', ',');
+    // $planovariavel = number_format(($planovar / $totalplano) * 100, 2, '.', ',');
+    // $planolazer = number_format(($planolaz / $totalplano) * 100, 2, '.', ',');
+    // $planoinvestimento = number_format(($planoinvest / $totalplano) * 100, 2, '.', ',');
+
+    echo "<input type='hidden' id='planofixo' name='investename' value='" . $planofix . "'>";
+    echo "<input type='hidden' id='planovariavel' name='investename' value='" . $planovar . "'>";
+    echo "<input type='hidden' id='planolazer' name='investename' value='" . $planolaz . "'>";
+    echo "<input type='hidden' id='planoinvestimento' name='investename' value='" . $planoinvest . "'>";
 
     ?>
     <div class="preloader">

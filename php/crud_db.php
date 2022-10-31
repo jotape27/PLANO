@@ -31,8 +31,8 @@ abstract class CRUD extends Database
 	public function find($id)
 	{
 		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
-		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
-		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num, 
+		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil,
+		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num,
 		pfs.descricao,us_pfs.renda
 		FROM usuario us
 		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
@@ -40,7 +40,7 @@ abstract class CRUD extends Database
 		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
 		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
 		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
-		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 
+		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id
 		WHERE us.id = :id;";
 		$stmt = Database::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -55,8 +55,8 @@ abstract class CRUD extends Database
 	public function findAll()
 	{
 		$sql = "SELECT us.id,us.nome,us.sobrenome,us_cnt.email,us_cnt.celular,
-		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil, 
-		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num, 
+		us.cpf,us.genero,us.nascimento,us.senha,perfil.perfil,
+		edrc.UF, edrc.cidade, edrc.cep, edrc.bairro, edrc.desc_logradouro, edrc.num,
 		pfs.descricao,us_pfs.renda
 		FROM usuario us
 		INNER JOIN usuario_tpcontato us_cnt ON us_cnt.fk_usuario_id = us.id
@@ -64,8 +64,8 @@ abstract class CRUD extends Database
 		INNER JOIN usuario_endereco us_edrc ON us_edrc.fk_USUARIO_id = us.id
 		INNER JOIN endereco edrc ON us_edrc.fk_endereco_id = edrc.id
 		INNER JOIN usuario_profissao us_pfs ON us_pfs.fk_usuario_id = us.id
-		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id 	
-		WHERE us.id != 0 	
+		INNER JOIN profissao pfs ON us_pfs.fk_profissao_id = pfs.id
+		WHERE us.id != 0
 		ORDER BY us.id;";
 		$stmt = Database::prepare($sql);
 		$stmt->execute();
@@ -99,26 +99,6 @@ abstract class CRUD extends Database
 		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 		return $stmt->fetch(PDO::FETCH_BOTH);
 	}
-
-	public function findPlanejamento()
-	{
-		$sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
-		FROM planejamento
-		INNER JOIN tipo_planejamento
-		ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
-		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
-		ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
-		INNER JOIN usuario 
-		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = 6;";
-
-		$stmt = Database::prepare($sql);
-
-		$stmt->execute();
-		//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
-		return $stmt->fetch(PDO::FETCH_BOTH);
-	}
-
 
 
 
