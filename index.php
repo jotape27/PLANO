@@ -25,10 +25,10 @@ $variavel = $indexGasto->findVar($id);
 $invest = $indexGasto->findInvest($id);
 $lazer = $indexGasto->findLazer($id);
 
-$planfix = $indexPlano->findPlanfix($id);
-$planvar = $indexPlano->findPlanvar($id);
-$planinvest = $indexPlano->findPlaninvest($id);
-$planlazer = $indexPlano->findPlanlazer($id);
+// $planfix = $indexPlano->findPlanfix($id);
+// $planvar = $indexPlano->findPlanvar($id);
+// $planinvest = $indexPlano->findPlaninvest($id);
+// $planlazer = $indexPlano->findPlanlazer($id);
 
 $sumf = $indexGasto->sumfindFix($id);
 $sumv = $indexGasto->sumfindVar($id);
@@ -36,20 +36,18 @@ $sumi = $indexGasto->sumfindInvest($id);
 $suml = $indexGasto->sumfindLazer($id);
 
 
-foreach ($planfix as $planejamentofixo) {
-    $planofix = $planejamentofixo['porcentagem'];
-}
-foreach ($planvar as $planejamentovar) {
-    $planovar = $planejamentovar['porcentagem'];
-}
-foreach ($planinvest as $planejamentoinvest) {
-    $planoinvest = $planejamentoinvest['porcentagem'];
-
-
-}
-foreach ($planlazer as $planejamentolazer) {
-    $planolaz = $planejamentolazer['porcentagem'];
-}
+// foreach ($planfix as $planejamentofixo) {
+//     $planofix = $planejamentofixo['porcentagem'];
+// }
+// foreach ($planvar as $planejamentovar) {
+//     $planovar = $planejamentovar['porcentagem'];
+// }
+// foreach ($planinvest as $planejamentoinvest) {
+//     $planoinvest = $planejamentoinvest['porcentagem'];
+// }
+// foreach ($planlazer as $planejamentolazer) {
+//     $planolaz = $planejamentolazer['porcentagem'];
+// }
 
 foreach ($sumf as $sumfixo) {
     $somafixo = $sumfixo['sum'];
@@ -65,7 +63,7 @@ foreach ($suml as $sumlazer) {
 }
 
 $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
-$totalplano = $planofix + $planovar + $planolaz + $planoinvest;
+// $totalplano = $planofix + $planovar + $planolaz + $planoinvest;
 
 ?>
 
@@ -113,10 +111,10 @@ $totalplano = $planofix + $planovar + $planolaz + $planoinvest;
     // $planolazer = number_format(($planolaz / $totalplano) * 100, 2, '.', ',');
     // $planoinvestimento = number_format(($planoinvest / $totalplano) * 100, 2, '.', ',');
 
-    echo "<input type='hidden' id='planofixo' name='investename' value='" . $planofix . "'>";
-    echo "<input type='hidden' id='planovariavel' name='investename' value='" . $planovar . "'>";
-    echo "<input type='hidden' id='planolazer' name='investename' value='" . $planolaz . "'>";
-    echo "<input type='hidden' id='planoinvestimento' name='investename' value='" . $planoinvest . "'>";
+    // echo "<input type='hidden' id='planofixo' name='investename' value='" . $planofix . "'>";
+    // echo "<input type='hidden' id='planovariavel' name='investename' value='" . $planovar . "'>";
+    // echo "<input type='hidden' id='planolazer' name='investename' value='" . $planolaz . "'>";
+    // echo "<input type='hidden' id='planoinvestimento' name='investename' value='" . $planoinvest . "'>";
 
     ?>
     <div class="preloader">

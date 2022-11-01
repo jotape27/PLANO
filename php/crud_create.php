@@ -113,6 +113,12 @@ if (isset($_POST['btn-cadastro'])) :
 
     $ids_plan = $planejamento->insert();
 
+
+
+
+
+
+
     header("Location: ../");
 endif;
 

@@ -83,11 +83,8 @@ class Planejamento extends CRUD
      ***************/
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (porcentagem, fk_tipo_planejamento_id, $this->datas)
-        VALUES (:fixo,889,:data),
-                (:variavel,546,:data),
-                (:lazer,341,:data),
-                (:investimento,264,:data) RETURNING id";
+        $sql = "INSERT INTO $this->table ($this->datas,porcentagem_fixo,porcentagem_variavel,porcentagem_lazer,porcentagem_investimento)
+        VALUES (:datas,:fixo,:variavel,:lazer,:investimento) RETURNING id";
 
         $stmt = Database::prepare($sql);
 
@@ -97,7 +94,7 @@ class Planejamento extends CRUD
         $stmt->bindParam(':lazer', $this->lazer);
         $stmt->bindParam(':investimento', $this->investimento);
 
-        $stmt->bindParam(':data', $this->dataplan);
+        $stmt->bindParam(':datas', $this->dataplan);
         //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
         //echo $this->idade;
         $stmt->execute();
@@ -126,7 +123,8 @@ class Planejamento extends CRUD
         return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
-    public function findPlanvar($id)
+
+    /*public function findPlanvar($id)
     {
         $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
         FROM planejamento
