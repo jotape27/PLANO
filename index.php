@@ -36,18 +36,16 @@ $sumi = $indexGasto->sumfindInvest($id);
 $suml = $indexGasto->sumfindLazer($id);
 
 
-// foreach ($planfix as $planejamentofixo) {
-//     $planofix = $planejamentofixo['porcentagem'];
-// }
-// foreach ($planvar as $planejamentovar) {
-//     $planovar = $planejamentovar['porcentagem'];
-// }
-// foreach ($planinvest as $planejamentoinvest) {
-//     $planoinvest = $planejamentoinvest['porcentagem'];
-// }
-// foreach ($planlazer as $planejamentolazer) {
-//     $planolaz = $planejamentolazer['porcentagem'];
-// }
+$planejamento = $indexPlano->findPlano($id);
+
+foreach ($planejamento as $plano) {
+    $planfixo = $plano['porcentagem_fixo'];
+    $planvariavel = $plano['porcentagem_variavel'];
+    $planlazer = $plano['porcentagem_lazer'];
+    $planinvestimento = $plano['porcentagem_investimento'];
+}
+
+
 
 foreach ($sumf as $sumfixo) {
     $somafixo = $sumfixo['sum'];
@@ -111,10 +109,10 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
     // $planolazer = number_format(($planolaz / $totalplano) * 100, 2, '.', ',');
     // $planoinvestimento = number_format(($planoinvest / $totalplano) * 100, 2, '.', ',');
 
-    // echo "<input type='hidden' id='planofixo' name='investename' value='" . $planofix . "'>";
-    // echo "<input type='hidden' id='planovariavel' name='investename' value='" . $planovar . "'>";
-    // echo "<input type='hidden' id='planolazer' name='investename' value='" . $planolaz . "'>";
-    // echo "<input type='hidden' id='planoinvestimento' name='investename' value='" . $planoinvest . "'>";
+    echo "<input type='hidden' id='planofixo' name='investename' value='" . $planfixo . "'>";
+    echo "<input type='hidden' id='planovariavel' name='investename' value='" . $planvariavel . "'>";
+    echo "<input type='hidden' id='planolazer' name='investename' value='" . $planlazer . "'>";
+    echo "<input type='hidden' id='planoinvestimento' name='investename' value='" . $planinvestimento . "'>";
 
     ?>
     <div class="preloader">

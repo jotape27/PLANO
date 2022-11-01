@@ -89,11 +89,11 @@ if (isset($_POST['btn-cadastro'])) :
 
 
 
-    if (count($insertUser)) {
+    if (count($insertUser) > 0) {
         if ($usuario->insertContato($id)) {
         }
     }
-    if (count($insertEndereco)) {
+    if (count($insertEndereco) > 0) {
         if ($enderecos->insertEndereco($id_endereco, $id)) {
         }
     }
@@ -113,9 +113,13 @@ if (isset($_POST['btn-cadastro'])) :
 
     $ids_plan = $planejamento->insert();
 
+    $id_plano = $ids_plan['id'];
 
 
-
+    if (count($ids_plan) > 0) {
+        if ($planejamento->insertPlano($id, $id_plano)) {
+        }
+    }
 
 
 

@@ -4,7 +4,7 @@ class Planejamento extends CRUD
 {
 
     protected $table = 'planejamento';
-
+    protected $table1 = 'usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento';
     protected $datas = 'data';
 
 
@@ -102,18 +102,26 @@ class Planejamento extends CRUD
         return $stmt->fetch(PDO::FETCH_BOTH);
     }
 
-    public function findPlanfix($id)
+    public function insertPlano($id, $id_plano)
     {
-        $sql = "SELECT planejamento.porcentagem, tipo_planejamento.tp_planejamento
+        $sql = "INSERT INTO $this->table1 VALUES (DEFAULT,:id,NULL,:idplano);";
+
+        $stmt = Database::prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':idplano', $id_plano);
+        //$stmt->bindParam(':idade', $this->idade, PDO::PARAM_INT);
+        //echo $this->idade;
+        return $stmt->execute();
+    }
+
+    public function findPlano($id)
+    {
+        $sql = "SELECT planejamento.porcentagem_fixo,planejamento.porcentagem_variavel,planejamento.porcentagem_lazer,planejamento.porcentagem_investimento
         FROM planejamento
-        INNER JOIN tipo_planejamento
-        ON planejamento.fk_tipo_planejamento_id = tipo_planejamento.id
-        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
-        ON usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_PLANEJAMENTO_id = planejamento.id
-        INNER JOIN usuario
-        ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
-        WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id = :id
-        AND tipo_planejamento.id = 889;";
+        INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento tudo
+        ON tudo.fk_PLANEJAMENTO_id = planejamento.id
+        WHERE tudo.fk_usuario_id = :id";
 
         $stmt = Database::prepare($sql);
 
