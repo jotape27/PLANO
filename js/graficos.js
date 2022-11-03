@@ -49,10 +49,9 @@ new Chart(ctx, {
         },
         title: {
             display: true,
-            text: "Planejamento",
+            text: "Realidade (%)",
             fontColor: "#fff",
             fontSize: 15
-
         }
     }
 });
@@ -100,7 +99,7 @@ new Chart(ctx1, {
         },
         title: {
             display: true,
-            text: "Planejamento",
+            text: "Planejamento (%)",
             fontColor: "#fff",
             fontSize: 15
 
