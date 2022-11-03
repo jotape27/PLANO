@@ -30,7 +30,7 @@ endif;
     <div class="navigation">
         <ul>
             <li class="list <?php echo $index; ?>">
-                <a href="index.php">
+                <a href="../PLANO/">
                     <span class="icon">
                         <ion-icon name="home"></ion-icon>
                     </span>

@@ -35,7 +35,7 @@ if (isset($_POST['btn-login'])) :
             $_SESSION['id'] = $dados['id'];
             if ($_SESSION['id'] != 0) {
 
-                header("Location: ../index.php");
+                header("Location: ../");
             } else {
                 $_SESSION['admin'] = true;
                 header("Location: ../adm.php");

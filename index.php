@@ -84,7 +84,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
     <?php
 
-    if ($somafixo != 0 and $somavariavel != 0 and $somainvest != 0 and $somalazer != 0) {
+    if ($somafixo != 0 or $somavariavel != 0 or $somainvest != 0 or $somalazer != 0) {
 
 
         $centfixo = number_format(($somafixo / $total) * 100, 0, '.', ',');
@@ -142,10 +142,10 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
     <!-- div onde estará os dois gráficos -->
     <div class="div_graficos">
         <!-- espaço gráfico 1 -->
-        <canvas id="planejamento1"></canvas>
+        <canvas id="planejamento"></canvas>
 
         <!-- espaço gráfico 2 -->
-        <canvas id="realidade1"></canvas>
+        <canvas id="realidade"></canvas>
 
 
     </div>
@@ -164,7 +164,17 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 <?php
                 if (count($fixo) > 0) {
                     foreach ($fixo as $linha) {
-                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                ?>
+                        <form action="php/crud_delete.php" method="post">
+                            <?php
+                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
+                            <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button></li>
+                        </form>
+                <?php
+
+
                     }
                 } else {
                     echo "<li>-</li>";
@@ -172,7 +182,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 ?>
 
                 <button class="addLista addFixo" id="addFixo" onclick="openFixo()">
-                    <ion-icon name="add"></ion-icon>
+                    <ion-icon name="add-outline"></ion-icon>
                 </button>
 
                 <div class="adcGasto adcFixo" id="adcFixo" hidden>
@@ -199,17 +209,22 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <div class="L4"><br>
             <h2>Variável</h2>
             <ul>
-
-
                 <?php
                 if (count($variavel) > 0) {
                     foreach ($variavel as $linha) {
-                        echo "<li class='valorvariavel'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                ?>
+                        <form action="php/crud_delete.php" method="post">
+                            <?php
+                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
+                            <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button></li>
+                        </form>
+                <?php
                     }
                 } else {
                     echo "<li>-</li>";
                 }
-
                 ?>
 
                 <button class="addLista addVariavel" id="addVariavel" onclick='openVariavel()'>
@@ -243,7 +258,16 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 <?php
                 if (count($lazer) > 0) {
                     foreach ($lazer as $linha) {
-                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                ?>
+                        <form action="php/crud_delete.php" method="post">
+                            <?php
+                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
+                            <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                            </li>
+                        </form>
+                <?php
                     }
                 } else {
                     echo "<li>-</li>";
@@ -279,7 +303,16 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 <?php
                 if (count($invest) > 0) {
                     foreach ($invest as $linha) {
-                        echo "<li>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".") . "</li>";
+                ?>
+                        <form action="php/crud_delete.php" method="post">
+                            <?php
+                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
+                            <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button></li>
+                        </form>
+                <?php
+
                     }
                 } else {
                     echo "<li>-</li>";

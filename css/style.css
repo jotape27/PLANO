@@ -1305,9 +1305,11 @@ body.index h4 {
 .listas {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     justify-self: center;
-    gap: 4em;
+    gap: 3em;
+    margin-left: -1em;
+
 }
 
 .listas div {
@@ -1441,6 +1443,30 @@ body.adm button * .icon {
 
 .addLista.subir {
     margin-top: 0px;
+}
+
+li.li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.deletagasto {
+    font-weight: 500;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    border-radius: 50%;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    z-index: 50;
 }
 
 /*---------------------------------------------------------------------------*/

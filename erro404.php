@@ -30,7 +30,7 @@
         <img src="img/404.png">
         <label>página não encontrada</label>
         <div class="botao">
-            <a href="index.php"><button type="button" class="entrar">voltar ao inicio</button></a>
+            <a href="../PLANO/"><button type="button" class="entrar">voltar ao inicio</button></a>
         </div>
     </div>
 

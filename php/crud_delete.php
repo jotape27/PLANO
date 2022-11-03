@@ -23,3 +23,14 @@ if (isset($_POST['btn-deletar'])) :
         include 'logout.php';
     }
 endif;
+
+if (isset($_POST['deletagasto'])) :
+
+    $id_gasto = $_POST['deletagasto'];
+
+    $gasto = new Gasto();
+
+    if ($gasto->deletaGasto($id_gasto)) {
+        header('Location: ../');
+    }
+endif;

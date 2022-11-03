@@ -98,10 +98,10 @@ class Gasto extends CRUD
 
     public function findFix($id)
     {
-        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+        $sql = "SELECT gasto.* FROM $this->table
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111
         AND usuario.id = $id;";
@@ -112,10 +112,10 @@ class Gasto extends CRUD
     }
     public function sumfindFix($id)
     {
-        $sql = "SELECT sum(gasto.valor) FROM gasto 
+        $sql = "SELECT sum(gasto.valor) FROM gasto
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111
         AND usuario.id = $id;";
@@ -127,10 +127,10 @@ class Gasto extends CRUD
 
     public function findVar($id)
     {
-        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+        $sql = "SELECT gasto.* FROM $this->table
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222
         AND usuario.id = $id;";
@@ -141,10 +141,10 @@ class Gasto extends CRUD
     }
     public function sumfindVar($id)
     {
-        $sql = "SELECT sum(gasto.valor) FROM gasto 
+        $sql = "SELECT sum(gasto.valor) FROM gasto
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222
         AND usuario.id = $id;";
@@ -156,10 +156,10 @@ class Gasto extends CRUD
 
     public function findInvest($id)
     {
-        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+        $sql = "SELECT gasto.* FROM $this->table
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333
         AND usuario.id = $id;";
@@ -171,10 +171,10 @@ class Gasto extends CRUD
 
     public function sumfindInvest($id)
     {
-        $sql = "SELECT sum(gasto.valor) FROM gasto 
+        $sql = "SELECT sum(gasto.valor) FROM gasto
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333
         AND usuario.id = $id;";
@@ -186,10 +186,10 @@ class Gasto extends CRUD
 
     public function findLazer($id)
     {
-        $sql = "SELECT gasto.valor, gasto.gasto FROM $this->table 
+        $sql = "SELECT gasto.* FROM $this->table
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444
         AND usuario.id = $id;";
@@ -201,10 +201,10 @@ class Gasto extends CRUD
 
     public function sumfindLazer($id)
     {
-        $sql = "SELECT sum(gasto.valor) FROM gasto 
+        $sql = "SELECT sum(gasto.valor) FROM gasto
 		INNER JOIN usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento
 		ON gasto.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_gasto_id
-		INNER JOIN usuario 
+		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444
         AND usuario.id = $id;";
@@ -212,5 +212,15 @@ class Gasto extends CRUD
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
         return $stmt->fetchAll(PDO::FETCH_BOTH);
+    }
+
+    public function deletaGasto($id_gasto)
+    {
+        $sql = "DELETE FROM $this->table WHERE id = $id_gasto;";
+        $sql1 = "DELETE FROM $this->table1 WHERE fk_gasto_id = $id_gasto;";
+        $stmt = Database::prepare($sql);
+        $stmt2 = Database::prepare($sql1);
+        return $stmt2->execute();
+        return $stmt->execute();
     }
 }

@@ -105,7 +105,7 @@ if (isset($_POST['btn-cadastro'])) :
     $dataplan = date('Y-m-d');
 
 
-    $planejamento->setFixo($lazer);
+    $planejamento->setFixo($fixo);
     $planejamento->setVariavel($variavel);
     $planejamento->setLazer($lazer);
     $planejamento->setInvestimento($investimento);

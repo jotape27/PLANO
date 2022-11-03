@@ -24,7 +24,7 @@
     <div class="preloader">
         <div class="loader"></div>
     </div>
-    <a href="index.php">
+    <a href="../PLANO/">
         <div class="voltar">
             <p>
                 <ion-icon name="home"></ion-icon>InÍcio
