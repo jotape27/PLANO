@@ -2,11 +2,11 @@ const chk = document.getElementById("chk");
 const imgdark = document.getElementsByClassName("img-dark");
 const imglight = document.getElementsByClassName("img-light");
 //const input = document.getElementsByClassName("input-box");
-var i;
-chk.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
-    document.input.classList.toogle("dark");
-});
+// var i;
+// chk.addEventListener("change", () => {
+//     document.body.classList.toggle("dark-mode");
+//     document.input.classList.toogle("dark");
+// });
 
 /*function loader() {
 const loader = document.getElementsByClassName("preloader");

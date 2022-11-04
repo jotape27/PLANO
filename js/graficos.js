@@ -23,11 +23,12 @@ var planoinvest = document.getElementById("planoinvestimento").value;
 var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 var yRealValues = [fixo, variavel, lazer, invest];
 
-var ctx = document.getElementById("planejamento").getContext('2d');
-var ctx1 = document.getElementById("realidade").getContext('2d');
+var plan = document.getElementById("planejamento").getContext('2d');
+var real = document.getElementById("realidade").getContext('2d');
+var ctx2 = document.getElementById("realidade2").getContext('2d');
 
 
-new Chart(ctx, {
+new Chart(plan, {
     //type: "doughnut",
     type: "pie",
     data: {
@@ -56,7 +57,7 @@ new Chart(ctx, {
     }
 });
 
-new Chart(ctx1, {
+new Chart(real, {
     type: "pie",
     data: {
         labels: xValues,
@@ -106,3 +107,33 @@ new Chart(ctx1, {
         }
     }
 });
+
+// new Chart(ctx2, {
+//     type: "pie",
+//     data: {
+//         labels: xValues,
+//         datasets: [{
+//             backgroundColor: barColors,
+//             borderWidth: 2,
+//             scaleStepWidth: 1,
+//             data: yRealValues
+//         }]
+//     },
+//     options: {
+//         legend: {
+//             labels: {
+//                 fontColor: "#000",
+//                 fontSize: 12
+//             }
+//         },
+//         title: {
+//             display: true,
+//             text: "Realidade (%)",
+//             fontColor: "#000",
+//             fontSize: 15
+
+//         }
+//     }
+// });
+
+// $('#myModal').modal(options)
