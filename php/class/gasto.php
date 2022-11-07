@@ -104,7 +104,7 @@ class Gasto extends CRUD
 		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 111
-        AND usuario.id = $id;";
+        AND usuario.id = $id ORDER BY gasto.gasto;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -133,7 +133,7 @@ class Gasto extends CRUD
 		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 222
-        AND usuario.id = $id;";
+        AND usuario.id = $id ORDER BY gasto.gasto;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -162,7 +162,7 @@ class Gasto extends CRUD
 		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 333
-        AND usuario.id = $id;";
+        AND usuario.id = $id ORDER BY gasto.gasto;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -192,7 +192,7 @@ class Gasto extends CRUD
 		INNER JOIN usuario
 		ON usuario.id = usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_usuario_id
 		WHERE usuario_tpgasto_tipo_gasto_usuario_gasto_planejamento.fk_tipo_gasto_id = 444
-        AND usuario.id = $id;";
+        AND usuario.id = $id ORDER BY gasto.gasto;";
         $stmt = Database::prepare($sql);
         $stmt->execute();
         //retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número

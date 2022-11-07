@@ -144,12 +144,27 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
     <div class="div_graficos">
         <!-- espaço gráfico 1 -->
         <canvas id="planejamento"></canvas>
-
         <!-- espaço gráfico 2 -->
         <canvas id="realidade"></canvas>
 
-        <canvas id="chart_fixo"></canvas>
-
+        <div class="modal fade" id="grafico_fixo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="chart_fixo"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <!-- chama funçao que desenha os gráficos acima -->
@@ -167,14 +182,15 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
             <button type="button" class="btn" data-toggle="modal" data-target="#grafico_fixo">
                 <ion-icon name="pie-chart"></ion-icon>
             </button>
-            <ul>
+            <ul id="fixo">
                 <?php
                 if (count($fixo) > 0) {
                     foreach ($fixo as $linha) {
                 ?>
                         <form action="php/crud_delete.php" method="post">
                             <?php
-                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
+                            echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".");
+                            echo "<input type='hidden' class='listgasto' value='" . $linha['valor'] . "'>"; ?>
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
@@ -210,25 +226,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                 </div>
             </ul>
         </div>
-        <!-- Modal Fixo -->
-        <div class="modal fade" id="grafico_fixo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <canvas id="realidade"></canvas>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <br>
         <div class="L4"><br>
             <h2>Variável</h2>

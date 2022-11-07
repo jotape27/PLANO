@@ -18,20 +18,6 @@ var barColors = [
     "#39c0b3",
 ];
 
-// var colorSort = require("color-sorter");
-// var colors = ["#000", "red", "hsl(0, 10%, 60%)"];
-// var sorted = colors.sort(colorSort.sortFn);
-
-// Or:
-// sorted = colorSort(colors)
-
-// => sorted:
-// [
-//  'red',
-//  'hsl(0, 10%, 60%)',
-//  '#000'
-// ]
-
 var fixo = document.getElementById("centfixo").value;
 var variavel = document.getElementById("centvariavel").value;
 var lazer = document.getElementById("centlazer").value;
@@ -45,9 +31,22 @@ var planoinvest = document.getElementById("planoinvestimento").value;
 var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 var yRealValues = [fixo, variavel, lazer, invest];
 
+// var fixos = document.getElementsByClassName("listgasto").value;
+
+// let menu = document.getElementById('fixo');
+// let items = menu.getElementsByClassName('listgasto');
+
+// let data = [].map.call(items, item => item.textContent);
+
+// console.log(data);
+
+
+
 var ctx = document.getElementById("planejamento").getContext("2d");
 var ctx1 = document.getElementById("realidade").getContext("2d");
 var ctx2 = document.getElementById("chart_fixo").getContext("2d");
+
+
 
 new Chart(ctx, {
     //type: "doughnut",
@@ -141,22 +140,22 @@ new Chart(ctx2, {
                 backgroundColor: barColors,
                 borderWidth: 2,
                 scaleStepWidth: 1,
-                data: yRealValues,
+                data: fixo,
             },
         ],
     },
     options: {
         legend: {
             labels: {
-                fontColor: "#fff",
-                fontSize: 12,
+                fontColor: "#000",
+                fontSize: 15,
             },
         },
         title: {
             display: true,
-            text: "Realidade (%)",
-            fontColor: "#fff",
-            fontSize: 15,
+            text: "Fixo (%)",
+            fontColor: "#000",
+            fontSize: 20,
         },
     },
 });
