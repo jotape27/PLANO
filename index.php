@@ -122,7 +122,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
 
 
-    <div class="darkthemes">
+    <!-- <div class="darkthemes">
         <input type="checkbox" class="checkbox" id="chk">
         <label class="label" for="chk">
             <div class="lua">
@@ -133,7 +133,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
             </div>
             <div class="ball"></div>
         </label>
-    </div>
+    </div> -->
 
     <?php
     $namepage = 'index';
@@ -166,21 +166,77 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
             </div>
         </div>
 
+        <div class="modal fade" id="grafico_variavel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="chart_variavel"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="grafico_lazer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="chart_lazer"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="grafico_investimento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="chart_investimento"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- chama funçao que desenha os gráficos acima -->
     <br>
+
     <script src="js/graficos.js"></script>
     <br>
-
 
     <div class="listas">
         <!-- Gastos fixos, em azul -->
         <br>
         <div class="L1"><br>
-            <h2>Fixo</h2>
             <!-- Button trigger modal -->
-            <button type="button" class="btn" data-toggle="modal" data-target="#grafico_fixo">
-                <ion-icon name="pie-chart"></ion-icon>
+            <button type="button" class="btnbotao fixo" data-toggle="modal" data-target="#grafico_fixo">
+                <h2>Fixo<ion-icon name="information-circle"></ion-icon>
+                </h2>
             </button>
             <ul id="fixo">
                 <?php
@@ -196,8 +252,6 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             </button></li>
                         </form>
                 <?php
-
-
                     }
                 } else {
                     echo "<li>-</li>";
@@ -229,7 +283,10 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
         <br>
         <div class="L4"><br>
-            <h2>Variável</h2>
+            <button type="button" class="btnbotao variavel" data-toggle="modal" data-target="#grafico_variavel">
+                <h2>Variável<ion-icon name="information-circle"></ion-icon>
+                </h2>
+            </button>
             <ul>
                 <?php
                 if (count($variavel) > 0) {
@@ -275,7 +332,11 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <!-- Gastos com lazer, em laranja -->
         <br>
         <div class="L2"><br>
-            <h2>Lazer</h2>
+
+            <button type="button" class="btnbotao lazer" data-toggle="modal" data-target="#grafico_lazer">
+                <h2>Lazer<ion-icon name="information-circle"></ion-icon>
+                </h2>
+            </button>
             <ul>
                 <?php
                 if (count($lazer) > 0) {
@@ -320,7 +381,10 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <!-- Investimento, em verde agua -->
         <br>
         <div class="L3"><br>
-            <h2>Investimento</h2>
+            <button type="button" class="btnbotao investimento" data-toggle="modal" data-target="#grafico_investimento">
+                <h2>Investimento<ion-icon name="information-circle"></ion-icon>
+                </h2>
+            </button>
             <ul>
                 <?php
                 if (count($invest) > 0) {

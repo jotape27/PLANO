@@ -151,8 +151,6 @@ include_once 'php/class/usuario.php';
     </div>
 
     <div class="adm-renda">
-
-
         <?php
         $renda = $Soma['sum'] / $countRenda['count'];
 
@@ -160,19 +158,6 @@ include_once 'php/class/usuario.php';
         ?>
         <p>Média de renda mensal dos usuários: <?php echo $media; ?></p>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script src="js/js.js"></script>
     <script src="js/selecionador.js"></script>
