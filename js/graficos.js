@@ -31,11 +31,21 @@ var planoinvest = document.getElementById("planoinvestimento").value;
 var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 var yRealValues = [fixo, variavel, lazer, invest];
 
-var fixos = document.getElementsByClassName("listgasto").value;
-let menu = document.getElementById('fixo');
-let items = menu.getElementsByClassName('listgasto');
-let data = [].map.call(items, item => item.textContent);
-console.log(data);
+
+
+// let items = document.getElementsByClassName('listgasto').textContent;
+// // let data = [].map.call(items, item => item.value);
+// console.log(items);
+
+
+const teste = document.querySelectorAll('.n1.n2.n3');
+
+// teste.forEach((el) => {
+//     if (el.className === 'n1 n2 n3') {
+console.log(teste);
+//     }
+// })
+
 
 
 
@@ -90,29 +100,6 @@ new Chart(ctx1, {
         ],
     },
     options: {
-        // tooltips: {
-        //     enabled: false
-        // },
-        //     plugins: {
-        //         datalabels: {
-        //             formatter: function (value, context) {
-        //                 return context.dataIndex + ': ' + Math.round(value * 100) + '%';
-        //             }
-        //                      formatter: (value, ctx1) => {
-        //                          let sum = 0;
-        //                          let dataArr = ctx1.chart.data.datasets[0].data;
-        //                          dataArr.map(data => {
-        //                              sum += data;
-        //                          });
-        //                          let percentage = (value * 100 / sum).toFixed(2) + "%";
-        //                          return percentage;
-        //                      },
-        //
-        //         },
-        //         color: '#fff',
-        //     }
-        // },
-
         legend: {
             labels: {
                 fontColor: "#fff",
@@ -157,4 +144,3 @@ new Chart(ctx2, {
     },
 });
 
-$("#grafico_fixo").modal(options);

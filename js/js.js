@@ -1,42 +1,14 @@
-const chk = document.getElementById("chk");
-const imgdark = document.getElementsByClassName("img-dark");
-const imglight = document.getElementsByClassName("img-light");
-//const input = document.getElementsByClassName("input-box");
-var i;
-chk.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
-    document.input.classList.toogle("dark");
-});
+// const chk = document.getElementById("chk");
+// const imgdark = document.getElementsByClassName("img-dark");
+// const imglight = document.getElementsByClassName("img-light");
 
-/*function loader() {
-const loader = document.getElementsByClassName("preloader");
-loader.classList.toogle('complete');
-}*/
+// var i;
 
+// chk.addEventListener("change", () => {
+//     document.body.classList.toggle("dark-mode");
+//     document.input.classList.toogle("dark");
+// });
 
-
-function porcent(novoValor) {
-    document.getElementById("exibePorcent").innerHTML = novoValor;
-}
-
-function porcent1(novoValor) {
-    document.getElementById("exibePorcent1").innerHTML = novoValor;
-}
-
-/*
-var imgdark = document.getElementsByClassName("img-dark");
-var imglight = document.getElementsByClassName("img-light");
-var input = document.input;
-var element = document.body;
-input.classList.add("input-dark-mode");
-element.classList.toggle("dark-mode");
-if (imgdark.style.display = "flex")
-imgdark.style.display = "none";
-imglight.style.display = "flex";
-} else {
-imgdark.style.display = "flex";
-imglight.style.display = "none";
-}*/
 function show() {
     var x, i, show, hide;
     x = document.getElementById("senha");
@@ -48,6 +20,7 @@ function show() {
         x.type = "text";
     }
 }
+
 function valshow() {
     var x, i, show, hide;
     x = document.getElementById("valsenha");
@@ -59,6 +32,7 @@ function valshow() {
         x.type = "text";
     }
 }
+
 function hide() {
     var x, i, show, hide;
     x = document.getElementById("senha");

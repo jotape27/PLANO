@@ -250,7 +250,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
-                            <?php echo "<li class='listgasto' hidden>" . $linha['valor'] . "</li>"; ?>
+                            <?php echo "<input type='hidden' class='listgasto' value='" . $linha['valor'] . "'>"; ?>
                         </form>
                 <?php
                     }
@@ -258,10 +258,25 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                     echo "<li>-</li>";
                 }
                 ?>
-
                 <button class="addLista addFixo" id="addFixo" onclick="openFixo()">
                     <ion-icon name="add-outline"></ion-icon>
                 </button>
+
+                <!-- <ul id="menu">
+                    <li class="item">HTML</li>
+                    <li class="item">CSS</li>
+                    <li class="item highlight">JavaScript</li>
+                    <li class="item">TypeScript</li>
+                </ul> -->
+
+                <div data-full="true" class="n1 n2 n3 4">
+                    <div class="n1 n2 n3">text</div>
+                </div>
+                <div class="n1 n2 n3">text</div>
+                <div class="n1 n2 n3">text</div>
+                <div data-full="true" class="n1 n2 n3 4">
+                    <div class="n1 n2 n3">text</div>
+                </div>
 
                 <div class="adcGasto adcFixo" id="adcFixo" hidden>
                     <form action="php/crud_create.php" method="post">
@@ -441,10 +456,11 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
     <script>
         M.AutoInit();
+        $("#grafico_fixo").modal(options);
     </script>
+
 
     <?php include_once 'php/footer.php'; ?>
 </body>
