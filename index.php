@@ -246,10 +246,11 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         <form action="php/crud_delete.php" method="post">
                             <?php
                             echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", ".");
-                            echo "<input type='hidden' class='listgasto' value='" . $linha['valor'] . "'>"; ?>
+                            ?>
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
+                            <?php echo "<li class='listgasto' hidden>" . $linha['valor'] . "</li>"; ?>
                         </form>
                 <?php
                     }

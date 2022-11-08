@@ -31,14 +31,11 @@ var planoinvest = document.getElementById("planoinvestimento").value;
 var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 var yRealValues = [fixo, variavel, lazer, invest];
 
-// var fixos = document.getElementsByClassName("listgasto").value;
-
-// let menu = document.getElementById('fixo');
-// let items = menu.getElementsByClassName('listgasto');
-
-// let data = [].map.call(items, item => item.textContent);
-
-// console.log(data);
+var fixos = document.getElementsByClassName("listgasto").value;
+let menu = document.getElementById('fixo');
+let items = menu.getElementsByClassName('listgasto');
+let data = [].map.call(items, item => item.textContent);
+console.log(data);
 
 
 
