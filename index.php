@@ -160,7 +160,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         <canvas id="chart_fixo"></canvas>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         <canvas id="chart_variavel"></canvas>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         <canvas id="chart_lazer"></canvas>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                         <canvas id="chart_investimento"></canvas>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -269,14 +269,14 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                     <li class="item">TypeScript</li>
                 </ul> -->
 
-                <div data-full="true" class="n1 n2 n3 4">
+                <!-- <div data-full="true" class="n1 n2 n3 4">
                     <div class="n1 n2 n3">text</div>
                 </div>
                 <div class="n1 n2 n3">text</div>
                 <div class="n1 n2 n3">text</div>
                 <div data-full="true" class="n1 n2 n3 4">
                     <div class="n1 n2 n3">text</div>
-                </div>
+                </div> -->
 
                 <div class="adcGasto adcFixo" id="adcFixo" hidden>
                     <form action="php/crud_create.php" method="post">

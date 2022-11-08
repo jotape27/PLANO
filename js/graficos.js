@@ -31,31 +31,32 @@ var planoinvest = document.getElementById("planoinvestimento").value;
 var yPlanValues = [planofixo, planovariavel, planolazer, planoinvest];
 var yRealValues = [fixo, variavel, lazer, invest];
 
+var items = document.getElementsByClassName('listgasto').value;
 
-
-// let items = document.getElementsByClassName('listgasto').textContent;
-// // let data = [].map.call(items, item => item.value);
+// let data = [].map.call(items, item => item.value);
 // console.log(items);
 
-
-const teste = document.querySelectorAll('.n1.n2.n3');
-
+// const teste = document.querySelectorAll('.listgasto');
 // teste.forEach((el) => {
-//     if (el.className === 'n1 n2 n3') {
-console.log(teste);
+//     if (el.className === 'listgasto') {
+//         console.log(teste);
 //     }
 // })
 
 
 
 
-var ctx = document.getElementById("planejamento").getContext("2d");
-var ctx1 = document.getElementById("realidade").getContext("2d");
-var ctx2 = document.getElementById("chart_fixo").getContext("2d");
+var plan = document.getElementById("planejamento").getContext("2d");
+var real = document.getElementById("realidade").getContext("2d");
+
+var fix = document.getElementById("chart_fixo").getContext("2d");
+var vav = document.getElementById("chart_variavel").getContext("2d");
+var laz = document.getElementById("chart_lazer").getContext("2d");
+var inv = document.getElementById("chart_investimento").getContext("2d");
 
 
 
-new Chart(ctx, {
+new Chart(plan, {
     //type: "doughnut",
     type: "pie",
     data: {
@@ -86,7 +87,7 @@ new Chart(ctx, {
     },
 });
 
-new Chart(ctx1, {
+new Chart(real, {
     type: "pie",
     data: {
         labels: xValues,
@@ -115,16 +116,16 @@ new Chart(ctx1, {
     },
 });
 
-new Chart(ctx2, {
+new Chart(fix, {
     type: "pie",
     data: {
-        labels: xValues,
+        // labels: xValues,
         datasets: [
             {
                 backgroundColor: barColors,
                 borderWidth: 2,
                 scaleStepWidth: 1,
-                data: fixo,
+                data: items,
             },
         ],
     },
@@ -137,7 +138,91 @@ new Chart(ctx2, {
         },
         title: {
             display: true,
-            text: "Fixo (%)",
+            text: "Gastos Fixos (%)",
+            fontColor: "#000",
+            fontSize: 20,
+        },
+    },
+});
+new Chart(vav, {
+    type: "pie",
+    data: {
+        // labels: xValues,
+        datasets: [
+            {
+                backgroundColor: barColors,
+                borderWidth: 2,
+                scaleStepWidth: 1,
+                data: items,
+            },
+        ],
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: "#000",
+                fontSize: 15,
+            },
+        },
+        title: {
+            display: true,
+            text: "Gastos Variáveis (%)",
+            fontColor: "#000",
+            fontSize: 20,
+        },
+    },
+});
+new Chart(laz, {
+    type: "pie",
+    data: {
+        // labels: xValues,
+        datasets: [
+            {
+                backgroundColor: barColors,
+                borderWidth: 2,
+                scaleStepWidth: 1,
+                data: items,
+            },
+        ],
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: "#000",
+                fontSize: 15,
+            },
+        },
+        title: {
+            display: true,
+            text: "Gastos com Lazer (%)",
+            fontColor: "#000",
+            fontSize: 20,
+        },
+    },
+});
+new Chart(inv, {
+    type: "pie",
+    data: {
+        // labels: xValues,
+        datasets: [
+            {
+                backgroundColor: barColors,
+                borderWidth: 2,
+                scaleStepWidth: 1,
+                data: items,
+            },
+        ],
+    },
+    options: {
+        legend: {
+            labels: {
+                fontColor: "#000",
+                fontSize: 15,
+            },
+        },
+        title: {
+            display: true,
+            text: "Investimentos (%)",
             fontColor: "#000",
             fontSize: 20,
         },
