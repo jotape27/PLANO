@@ -150,12 +150,12 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <div class="modal fade" id="grafico_fixo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <!-- <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="modal-body">
                         <canvas id="chart_fixo"></canvas>
                     </div>
@@ -169,12 +169,12 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <div class="modal fade" id="grafico_variavel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <!-- <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="modal-body">
                         <canvas id="chart_variavel"></canvas>
                     </div>
@@ -188,12 +188,12 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <div class="modal fade" id="grafico_lazer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <!-- <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="modal-body">
                         <canvas id="chart_lazer"></canvas>
                     </div>
@@ -207,12 +207,12 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
         <div class="modal fade" id="grafico_investimento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLongTitle">Fixo</h4>
+                    <!-- <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle black">Fixo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="modal-body">
                         <canvas id="chart_investimento"></canvas>
                     </div>
