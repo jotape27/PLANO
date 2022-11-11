@@ -250,7 +250,8 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
-                            <?php echo "<input type='hidden' class='listgasto' value='" . $linha['valor'] . "'>"; ?>
+                            <input type='hidden' class="gastofixo" value='<?php echo $linha['valor'] ?>'>
+                            <input type='hidden' class="gastofixonome" value='<?php echo ucfirst($linha['gasto']); ?>'>
                         </form>
                 <?php
                     }
@@ -314,6 +315,8 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
+                            <input type='hidden' class="gastovariavel" value='<?php echo $linha['valor'] ?>'>
+                            <input type='hidden' class="gastovariavelnome" value='<?php echo ucfirst($linha['gasto']); ?>'>
                         </form>
                 <?php
                     }
@@ -363,8 +366,9 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             echo "<li class='li'>" . $linha['gasto'] . " | " . number_format($linha['valor'], 2, ",", "."); ?>
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
-                            </button>
-                            </li>
+                            </button> </li>
+                            <input type='hidden' class="gastolazer" value='<?php echo $linha['valor'] ?>'>
+                            <input type='hidden' class="gastolazernome" value='<?php echo ucfirst($linha['gasto']); ?>'>
                         </form>
                 <?php
                     }
@@ -412,6 +416,8 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
                             <button type="submit" class="deletagasto" value="<?php echo $linha['id']; ?>" name="deletagasto">
                                 <ion-icon name="close-outline"></ion-icon>
                             </button></li>
+                            <input type='hidden' class="gastoinvestimentonome" value='<?php echo ucfirst($linha['gasto']); ?>'>
+                            <input type='hidden' class="gastoinvestimento" value='<?php echo $linha['valor']; ?>'>
                         </form>
                 <?php
 
@@ -463,6 +469,9 @@ $total = $somafixo +  $somavariavel +  $somainvest + $somalazer;
 
 
     <?php include_once 'php/footer.php'; ?>
+
+
+
 </body>
 
 </html>
