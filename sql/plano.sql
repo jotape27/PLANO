@@ -57,11 +57,12 @@ CREATE TABLE perfil_recomendacao (
 );
 CREATE TABLE planejamento (
     id serial4 NOT NULL,
-    porcentagem int4 NULL,
-    fk_tipo_planejamento_id int4 NULL,
     "data" date NULL,
-    CONSTRAINT planejamento_pkey PRIMARY KEY (id),
-    CONSTRAINT fk_planejamento FOREIGN KEY (fk_tipo_planejamento_id) REFERENCES tipo_planejamento(id)
+    porcentagem_fixo int4 NULL,
+    porcentagem_variavel int4 NULL,
+    porcentagem_lazer int4 NULL,
+    porcentagem_investimento int4 NULL,
+    CONSTRAINT planejamento_pkey PRIMARY KEY (id)
 );
 CREATE TABLE usuario (
     id serial4 NOT NULL,
@@ -72,6 +73,7 @@ CREATE TABLE usuario (
     nascimento date NULL,
     senha varchar(500) NULL,
     fk_perfil_id int4 NULL,
+    foto text NULL,
     CONSTRAINT usuario_cpf_key UNIQUE (cpf),
     CONSTRAINT usuario_pkey PRIMARY KEY (id),
     CONSTRAINT fk_usuario_2 FOREIGN KEY (fk_perfil_id) REFERENCES perfil(id) ON DELETE
