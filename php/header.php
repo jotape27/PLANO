@@ -37,14 +37,14 @@ endif;
                     <span class="text">Home</span>
                 </a>
             </li>
-            <li class="list <?php echo $config; ?>">
+            <!-- <li class="list <?php echo $config; ?>">
                 <a href="config.php">
                     <span class="icon">
                         <ion-icon name="settings"></ion-icon>
                     </span>
-                    <span class="text">Configurações</span>
+                    <span class="text">Alterar Plano</span>
                 </a>
-            </li>
+            </li> -->
             <li class="list <?php echo $perfil; ?>">
                 <a href="perfil.php">
                     <span class="icon">
