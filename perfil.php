@@ -207,7 +207,7 @@ if ($genero == "f") {
         </form>
     </div>
 
-    <div id="modal-delete" class="modal">
+    <div id="modal-delete" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h3>Atenção!</h3>
             <p>Deseja excluir esse cliente?</p>

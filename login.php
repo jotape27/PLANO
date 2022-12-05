@@ -17,7 +17,7 @@
     </div>
 
 
-    <div class="darkthemes">
+    <!-- <div class="darkthemes">
         <input type="checkbox" class="checkbox" id="chk">
         <label class="label" for="chk">
             <div class="lua">
@@ -28,7 +28,7 @@
             </div>
             <div class="ball"></div>
         </label>
-    </div>
+    </div> -->
 
     <div class="img imglogin">
         <img src="img/plano-dark.png" class="img-dark">
