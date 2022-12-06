@@ -105,7 +105,7 @@ class Usuario extends CRUD
 
     public function insert()
     {
-        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES 
+        $sql = "INSERT INTO $this->table (nome,sobrenome,cpf,genero,nascimento,senha,fk_perfil_id) VALUES
         (:nome,:sobrenome,:cpf,:genero,:nascimento,:senha,:perfil) RETURNING id";
         //$sql1 = "INSERT INTO $this->table1 (fk_tipo_contato_id,descricao) VALUES (45,:email)";
 
@@ -132,7 +132,7 @@ class Usuario extends CRUD
 
     public function insertContato($id)
     {
-        $sql = "INSERT INTO $this->table1 (fk_usuario_id, email, celular) VALUES (:id,:email,:celular)";
+        $sql = "INSERT INTO $this->table1 (fk_usuario_id, email, celular) VALUES (:id,:email,:celular);";
         $stmt = Database::prepare($sql);
 
         $stmt->bindParam(':id', $id);
